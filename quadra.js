@@ -26,10 +26,6 @@
 
 //console.log(vquadras)
 
-const express =require('express')
-const app = express()
-
-app.use(express.json() )
 
 var vquadras = []
 
@@ -175,8 +171,3 @@ function delete_quadra(req,res){
   })
 }
 app.delete('/quadra/:id', delete_quadra)
-
-
-app.listen(3000, () => {
-  console.log('http://localhost:3000')
-})

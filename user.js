@@ -136,8 +136,5 @@ function delete_user(req, res){ //Aula 6: Inclusão de uma função DELETE na ap
 app.delete('user/:id', delete_user)
             
 
-app.listen(3000, () => {
-    console.log('http://localhost:3000')
-})
 
 

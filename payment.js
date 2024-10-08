@@ -1,12 +1,9 @@
 const express = require('express')
-const app = express()
-const port = 3001
-
-app.use(express.json())
+const router = express.Router() // Esse express.Router() precisa ser escrito dessa forma com o R maiusculo
 
 var vpayments = []
 
-app.post('/payment', createPayment)
+router.post('/create', createPayment)
 
 function createPayment(req, res) {
     let { tipo, nome, numero, validade, cvv, chave, valor } = req.bodyf
@@ -29,8 +26,7 @@ function createPayment(req, res) {
     })
 }
 
-
-app.get('/payment', show_payment)
+router.get('/show', show_payment)
 
 function show_payment(req, res) {
 
@@ -41,7 +37,7 @@ function show_payment(req, res) {
     })
 }
 
-app.get('/payment/:id', read_payment)
+router.get('/read/:id', read_payment)
 
 function read_payment (req, res) {
 
@@ -62,7 +58,7 @@ function read_payment (req, res) {
     })
 }
 
-app.put('/payment/:id', update_payment)
+router.put('/update/:id', update_payment)
 
 function update_payment (req, res) {
 
@@ -91,7 +87,7 @@ function update_payment (req, res) {
     })
 }
 
-app.put('/payment/:id', delete_payment)
+router.put('/delete/:id', delete_payment)
 
 function delete_payment (req, res) {
 
@@ -112,8 +108,4 @@ function delete_payment (req, res) {
     })
 }
 
-app.delete('payment/:id', delete_payment)
-
-app.listen(port, () => {
-    console.log(`Servidor rodando na porta ${port}`)
-})
+module.exports = router
