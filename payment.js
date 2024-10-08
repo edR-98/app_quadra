@@ -9,7 +9,7 @@ var vpayments = []
 app.post('/payment', createPayment)
 
 function createPayment(req, res) {
-    let { tipo, nome, numero, validade, cvv, chave, valor } = req.body;
+    let { tipo, nome, numero, validade, cvv, chave, valor } = req.bodyf
 
     var opayment = {
         id: vpayments.length + 1,
@@ -19,14 +19,14 @@ function createPayment(req, res) {
         ...(tipo === 'cartao' ? { numero, validade, cvv } : {}),
         ...(tipo === 'pix' ? { chave } : {}),
         ...(tipo === 'boleto' ? { valor } : {}),
-        deletedAt: null
-    };
+        "deletedAt": null
+    }
 
-    vpayments.push(opayment);
+    vpayments.push(opayment)
 
     return res.status(201).json({ 
         message: 'Dados cadastrados!'
-    });
+    })
 }
 
 
@@ -34,21 +34,10 @@ app.get('/payment', show_payment)
 
 function show_payment(req, res) {
 
-    let {id} = req.params
-
-    const idx = vpayments.findIndex(u => u.id == id)
-
-    if(idx == -1 || vpayments[idx].deletedAt != null){
-        return res.status(404).json({
-        message: "Não encontrado",
-        db: null
-    })
-}
-
     return res.status(202).json({
         message: "Encontrei",
-        db: vpayments[idx]
-    //  db: vpayments.filter( u => u.deletedAt == null)
+    //  db: vpayments[idx]
+        db: vpayments.filter( u => u.deletedAt == null)
     })
 }
 
@@ -60,11 +49,12 @@ function read_payment (req, res) {
 
     const idx = vpayments.findIndex(u => u.id == id)
 
-    if(idx === -1)
+    if(idx == -1 || vpayments.deletedAt != null){
         return res.status(404).json({
         message: "Não encontrado",
         db: null
     })
+}
 
     return res.status(200).json({
         message: "Cadastro encontrado",
@@ -109,21 +99,20 @@ function delete_payment (req, res) {
 
     const idx = vpayments.findIndex(u => u.id == id)
 
-    if(idx != -1)
+    if(idx != -1){
 
-        return res.status(404).json({
+        vpayments[idx].deletedAt = new Date()
+        return res.status(203).json({
+            message: "Foi de vasco",
+        })
+}
+
+    return res.status(404).json({
         message: "Não encontrado",
-        db: null
-    })
-
-    let {nome, numero, validade, cvv} = req.body
-
-    return res.status(200).json({
-        message: "Encontrado",
-        db: vpayments[idx]
     })
 }
 
+app.delete('payment/:id', delete_payment)
 
 app.listen(port, () => {
     console.log(`Servidor rodando na porta ${port}`)

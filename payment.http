@@ -17,8 +17,8 @@ Content-type: application/json
 
     {
     "tipo": "pix",
-    "nome": "Gabriel Lopes Dias",
-    "chave": "gabesarcal215@exemplo.com"
+    "nome": "Gabriel Henrique",
+    "chave": "emaildeexemplo@exemplo.com"
     }
 
 ###
@@ -28,7 +28,7 @@ Content-type: application/json
 
     {
     "tipo": "boleto",
-    "nome": "Ederson Lopes Dias",
+    "nome": "Camila Camargo",
     "valor": 100.00
     }
 
@@ -40,12 +40,12 @@ Content-type: application/json
 
 ###
 
-GET http://localhost:3001/payment/1 HTTP/1.1
+GET http://localhost:3001/payment/2 HTTP/1.1
 Content-type: application/json
 
 ###
 
-PUT http://localhost:3001/payment/1 HTTP/1.1
+PUT http://localhost:3001/payment/2 HTTP/1.1
 Content-type: application/json
 
     {
@@ -54,3 +54,8 @@ Content-type: application/json
         "validade": "12/25",
         "cvv": "123"
     }
+
+###
+
+DELETE http://localhost:3001/payment/2 HTTP/1.1
+content-type: application/json
