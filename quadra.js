@@ -1,3 +1,6 @@
+const express = require('express')
+const router = express.Router()
+
 //var vquadras = ["Quadra1", "Quadra2", "Quadra3", "Quadra4", "Quadra5", "Quadra6"]
 //for(let i=0; i< vquadras.length; i++ ){
   // console.log(vquadras[i])
@@ -171,3 +174,5 @@ function delete_quadra(req,res){
   })
 }
 app.delete('/quadra/:id', delete_quadra)
+
+module.exports = router

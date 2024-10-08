@@ -1,6 +1,5 @@
 const express = require('express')
-const app = express()
-app.use( express .json ())
+const router = express.Router()
 
 var vusers = []
 
@@ -135,6 +134,6 @@ function delete_user(req, res){ //Aula 6: Inclusão de uma função DELETE na ap
 }
 app.delete('user/:id', delete_user)
             
-
+module.exports = router
 
 

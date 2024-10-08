@@ -5,11 +5,11 @@ app.use( express .json ())
 const   cr_payment = require('./payment')
 app.use('/payment', cr_payment)
 
-const   cr_user = require('./payment')
-app.use('/payment', cr_user)
+const   cr_user = require('./user')
+app.use('/user', cr_user)
 
-const   cr_quadra = require('./payment')
-app.use('/payment', cr_quadra)
+const   cr_quadra = require('./quadra')
+app.use('/quadra', cr_quadra)
 
 app.listen(3000, () => {
     console.log('http://localhost:3000')
