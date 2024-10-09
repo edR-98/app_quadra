@@ -1,4 +1,4 @@
-POST http://localhost:3000/create HTTP/1.1
+POST http://localhost:3000/payment/create HTTP/1.1
 Content-type: application/json
 
     {
@@ -9,53 +9,51 @@ Content-type: application/json
     "cvv": "123"
     }
 
+###
+
+# POST http://localhost:3000/create HTTP/1.1
+# Content-type: application/json
+
+#     {
+#     "tipo": "pix",
+#     "nome": "Gabriel Henrique",
+#     "chave": "emaildeexemplo@exemplo.com"
+#     }
+
+# ###
+
+# POST http://localhost:3000/create HTTP/1.1
+# Content-type: application/json
+
+#     {
+#     "tipo": "boleto",
+#     "nome": "Camila Camargo",
+#     "valor": 100.00
+#     }
+
+
+GET http://localhost:3000/payment/read HTTP/1.1
+Content-type: application/json
 
 ###
 
-POST http://localhost:3000/create HTTP/1.1
+GET http://localhost:3000/payment/show/2 HTTP/1.1
+Content-type: application/json
+
+###
+
+PUT http://localhost:3000/payment/update/2 HTTP/1.1
 Content-type: application/json
 
     {
-    "tipo": "pix",
-    "nome": "Gabriel Henrique",
-    "chave": "emaildeexemplo@exemplo.com"
+    "tipo": "cartao",
+    "nome": "Ricardo",
+    "numero": "1234567890123456",
+    "validade": "05/10",
+    "cvv": "321"
     }
 
 ###
 
-POST http://localhost:3000/create HTTP/1.1
-Content-type: application/json
-
-    {
-    "tipo": "boleto",
-    "nome": "Camila Camargo",
-    "valor": 100.00
-    }
-
-
-###
-
-GET http://localhost:3000/show HTTP/1.1
-Content-type: application/json
-
-###
-
-GET http://localhost:3000/read/2 HTTP/1.1
-Content-type: application/json
-
-###
-
-PUT http://localhost:3000/update/2 HTTP/1.1
-Content-type: application/json
-
-    {
-        "nome": "Otavio Lopes Dias",
-        "numero": 1234567890123456,
-        "validade": "12/25",
-        "cvv": "123"
-    }
-
-###
-
-DELETE http://localhost:3000/delete/2 HTTP/1.1
+DELETE http://localhost:3000/payment/delete/2 HTTP/1.1
 content-type: application/json

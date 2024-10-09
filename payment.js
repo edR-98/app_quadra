@@ -3,10 +3,9 @@ const router = express.Router() // Esse express.Router() precisa ser escrito des
 
 var vpayments = []
 
-router.post('/create', createPayment)
+function create_payment(req, res) {
 
-function createPayment(req, res) {
-    let { tipo, nome, numero, validade, cvv, chave, valor } = req.bodyf
+    let { tipo, nome, numero, validade, cvv, chave, valor } = req.body
 
     var opayment = {
         id: vpayments.length + 1,
@@ -26,9 +25,10 @@ function createPayment(req, res) {
     })
 }
 
-router.get('/show', show_payment)
+router.post('/create', create_payment)
 
-function show_payment(req, res) {
+
+function read_payment(req, res) {
 
     return res.status(202).json({
         message: "Encontrei",
@@ -37,15 +37,16 @@ function show_payment(req, res) {
     })
 }
 
-router.get('/read/:id', read_payment)
+router.get('/read', read_payment)
 
-function read_payment (req, res) {
+
+function show_payment (req, res) {
 
     let { id } = req.params;
 
     const idx = vpayments.findIndex(u => u.id == id)
 
-    if(idx == -1 || vpayments.deletedAt != null){
+    if (idx === -1 || vpayments[idx].deletedAt != null){
         return res.status(404).json({
         message: "Não encontrado",
         db: null
@@ -58,16 +59,17 @@ function read_payment (req, res) {
     })
 }
 
-router.put('/update/:id', update_payment)
+router.get('/show/:id', show_payment)
+
 
 function update_payment (req, res) {
 
-    let { id } = req.params;
+    let { id } = req.params
 
     // aqui no vpayments[idx] ele está pegando o objeto dentro do vetor, se não colocar o [idx] ele não encontrará o deletedAt pois o mesmo está dentro do vetor
-    const idx = vpayments[idx].findIndex(u => u.id == id)
+    const idx = vpayments.findIndex(u => u.id == id)
 
-    if(idx == -1 || vpayments.deletedAt != null){
+    if (idx == -1 || vpayments[idx].deletedAt != null) {
         return res.status(404).json({
         message: "Não encontrado",
         db: null
@@ -87,16 +89,16 @@ function update_payment (req, res) {
     })
 }
 
-router.put('/delete/:id', delete_payment)
+router.put('/update/:id', update_payment)
+
 
 function delete_payment (req, res) {
 
-    let { id } = req.params;
+    let { id } = req.params
 
     const idx = vpayments.findIndex(u => u.id == id)
 
     if(idx != -1){
-
         vpayments[idx].deletedAt = new Date()
         return res.status(203).json({
             message: "Foi de vasco",
@@ -107,5 +109,7 @@ function delete_payment (req, res) {
         message: "Não encontrado",
     })
 }
+
+router.delete('/delete/:id', delete_payment)
 
 module.exports = router
