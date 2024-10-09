@@ -11,12 +11,29 @@ function create_payment(req, res) {
         id: vpayments.length + 1,
         tipo: tipo,
         nome: nome,
-        // Adicionar outros campos pelo tipo
-        ...(tipo === 'cartao' ? { numero, validade, cvv } : {}),
-        ...(tipo === 'pix' ? { chave } : {}),
-        ...(tipo === 'boleto' ? { valor } : {}),
-        "deletedAt": null
+        numero: null,
+        validade: null,
+        cvv: null,
+        chave: null,
+        valor: null,
+        deletedAt: null
     }
+    
+    if (tipo === 'cartao') {
+        opayment.numero = numero;
+        opayment.validade = validade;
+        opayment.cvv = cvv;
+    } else if (tipo === 'pix') {
+        opayment.chave = chave;
+    } else if (tipo === 'boleto') {
+        opayment.valor = valor;
+    }
+
+    Object.keys(opayment).forEach(key => {
+        if (opayment[key] === null) {
+            delete opayment[key];
+        }
+    })
 
     vpayments.push(opayment)
 

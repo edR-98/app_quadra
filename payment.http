@@ -2,7 +2,7 @@ POST http://localhost:3000/payment/create HTTP/1.1
 Content-type: application/json
 
     {
-    "tipo": "cartao",
+    "tipo": "pix",
     "nome": "Seu Nome",
     "numero": "1234567890123456",
     "validade": "12/25",
