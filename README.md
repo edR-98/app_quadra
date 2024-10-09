@@ -33,3 +33,14 @@ const router = express.Router() --> E esse "R" de Router precisa ser maiúsculo
 
 module.exports = router
 # ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+# 
+
+Para melhor organização dos arquivos e código foram criadas as pastas "controllers", "routes", e "tests".
+
+Pasta "tests" - Ficam os arquivos ".http"
+
+Pasta "routes" - ficaram somente as rotas
+    Ex: "router.get('/read', cuser.create_user)"
+
+Pasta "controllers" - Onde ficara todas as funções
