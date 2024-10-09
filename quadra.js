@@ -48,7 +48,7 @@ function create_quadra(pquadra, pdisponivel,ptempo, plargura,pcomprimento, pequi
 
 
 
-app.post('/quadras', (req, res) => {
+router.post('/quadra', (req, res) => {
   let{quadra, disponivel,tempo, largura,comprimento, equipamentos} = req.body
   create_quadra(quadra, disponivel,tempo, largura,comprimento, equipamentos)
     return res.status(201).json({
@@ -64,7 +64,7 @@ function read_quadra(req, res) {
   })  
 }
 
-app.get('/quadras', (req, res) => {
+router.get('/quadras', (req, res) => {
   return res.status(202).json({
      message: "todos",
      db: vquadras
@@ -72,7 +72,7 @@ app.get('/quadras', (req, res) => {
 })
 
 
-app.get('/quadras/:id', (req, res) => {
+router.get('/quadras/:id', (req, res) => {
   let {id} = req.params
 
   const idx = vquadras.findIndex(u => u.id == id)
@@ -93,7 +93,7 @@ app.get('/quadras/:id', (req, res) => {
     })
 })
 
-app.put('/quadras/:id', (req, res) => {
+router.put('/quadras/:id', (req, res) => {
   let {id} = req.params
   
   const idx = vquadras.findIndex(u => u.id == id)
@@ -135,7 +135,7 @@ function show_quadra(req, res){
   }
 
 }
-app.get('/user/:id', show_quadra)
+router.get('/user/:id', show_quadra)
 
 
 function update_quadra(req, res){
@@ -158,7 +158,7 @@ function update_quadra(req, res){
 
 }
 
-app.put('/quadra/:id/', update_quadra)
+router.put('/quadra/:id/', update_quadra)
 
 function delete_quadra(req,res){
   let{id} =req.params
@@ -173,6 +173,6 @@ function delete_quadra(req,res){
         message:"Não encontrado"
   })
 }
-app.delete('/quadra/:id', delete_quadra)
+router.delete('/quadra/:id', delete_quadra)
 
 module.exports = router
