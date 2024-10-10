@@ -9,7 +9,7 @@ app.use('/user', cr_user)
 //const cr_quadra = require('./routes/quadra')
 //app.use('/quadra', cr_quadra)
 
-const cr_event = require('./routes/event')
+const cr_event = require('./routes/evento')
 app.use('/event', cr_event)
 
 const cr_pagamento = require('./routes/pagamento')

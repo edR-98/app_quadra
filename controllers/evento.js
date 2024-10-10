@@ -1,24 +1,33 @@
-var vevent = []
+var vusers = []; 
+function create_event(req, res) {
+   
+    let { evento, posicao, time, local } = req.body;    
 
-function create_event(req, res){
-    let {evento, posicao, time, local, id } = req.body    
+   
+    if (!evento || !posicao || !time || !local) {
+        return res.status(400).json({ message: "evento criado." });
+    }
+
+    
     var oevent = {
-            "id" : vusers.length+1,
-            "evento" : evento,
-            "posicao" : posicao,
-            "time" : time,
-            "local" : local,
-            "deletedAt": null      
+        "id": vusers.length + 1, 
+        "evento": evento,
+        "posicao": posicao,
+        "time": time,
+        "local": local,
+        "deletedAt": null      
+    };
 
-        }
-        vusers.push(oevent)
+    
+    vusers.push(oevent);
 
-        return res.status(201).json({
-            message: "Usuário criado.",
-            db: vevent
-        })
-
+    
+    return res.status(201).json({
+        message: "Evento criado com sucesso.",
+        db: oevent 
+    });
 }
+
 function delete_event(req, res){
     
     let (id) = req.params
@@ -74,7 +83,6 @@ function read_event(req, res) {
 
     return res.status(202).json({
         message: "evento",
-    //  db: vevent[idx]
         db: vevent.filter( u => u.deletedAt == null)
     })
 }
