@@ -11,9 +11,9 @@ function create_event(req, res){
      "id" : vevent.length+1,
     "deletedta" :null
     }
-    vevent.push(event)
+    vevent.push(oevent)
 
-    return res.status(200).json({
+    return res.status(201).json({
         message: "evento encontrado"
         
     })

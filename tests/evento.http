@@ -2,7 +2,7 @@
     
 ### Aqui no POST ele cria um usuário, e entre {} eu adiciono os usuários
 
-POST http://localhost:3000/event/create HTTP/1.1
+POST http://10.60.46.69:3000/event/create HTTP/1.1
 content-type: application/json
  
 {
@@ -13,7 +13,7 @@ content-type: application/json
  
 ### No PUT ele altera uma informação pegando o ID do usuário, então sempre que eu quiser alterar uma informação especifica eu busco pelo ID "user/1,2,3..." e altero as informações
  
-PUT http://localhost:3000/event/update/1 HTTP/1.1
+PUT http://10.60.46.69:3000/event/update/1 HTTP/1.1
 content-type: application/json
  
 {
@@ -23,15 +23,15 @@ content-type: application/json
 }return res.status(200).json
 ### Nesse GET eu vejo todas as informações de todos os usuários
  
-GET http://localhost:3000/event/read HTTP/1.1
+GET http://10.60.46.69:3000/event/read HTTP/1.1
 content-type: application/json
  
 ### Nesse GET eu vejo um usuário especifico buscando pelo id dele
  
-GET http://localhost:3000/event/show/1 HTTP/1.1
+GET http://10.60.46.69:3000/event/show/1 HTTP/1.1
 content-type: application/json
 
 ###
 
-DELETE http://localhost:3000/event/delete/1 HTTP/1.1
+DELETE http://10.60.46.69:3000/event/delete/1 HTTP/1.1
 content-type: application/json
