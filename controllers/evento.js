@@ -1,6 +1,6 @@
 var vevent = []
 
-function create_event(pevento, pposicao, ptime, plocal, pidusuario){
+function create_event(req, res){
     var event = {
     "evento" : pevento,
      "posicao" : pposicao,
@@ -62,9 +62,36 @@ function update_event(req, res){
            
                 
  }
+ function show_event (req, res) {
 
- Module.exports = {
+    let { id } = req.params;
+
+    const idx = vpayments.findIndex(u => u.id == id)
+
+    if (idx === -1 || vpayments[idx].deletedAt != null){
+        return res.status(404).json({
+        message: "Evento não encontrado",
+        db: null
+    })
+}
+
+    return res.status(200).json({
+        message: "evento encontrado",
+        db: vevent[idx]
+    })
+}
+function read_event(req, res) {
+
+    return res.status(202).json({
+        message: "evento",
+    //  db: vevent[idx]
+        db: vevent.filter( u => u.deletedAt == null)
+    })
+}
+ module.exports = {
     create_event,
     delete_event,
     update_event,
+    show_event,
+    read_event,
  }
