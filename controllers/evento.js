@@ -1,6 +1,8 @@
 var vevent = []
 
 function create_event(req, res){
+    let { evento, posicao, time, local, id } = req.body
+
     var event = {
     "evento" : pevento,
      "posicao" : pposicao,
@@ -10,7 +12,13 @@ function create_event(req, res){
     "deletedta" :null
     }
     vevent.push(event)
+
+    return res.status(200).json({
+        message: "evento encontrado"
+        
+    })
 }
+
 function delete_event(req, res){
     
     let (id) = req.params
@@ -24,29 +32,9 @@ function delete_event(req, res){
         })
     }
     
-    function show_event(req, res){
-        
-        let {id} = req.params
-        
-        const idx = vusers.findIndex(u => u.id == id)
-        
-        if(idx == -1){
-            
-            return res.status(404).json({
-                message: "nao encontrado",
-                db: null       
-            })
-            app.delete('/event/:id', delete_event)
-            
-            app.listen(3000, () => {
-                 console.log ('http://localhost:3000')
-            
-            })
-            
-            }
-            } 
-            
-            
+    return res.status(203).json({
+        message: "evento encontrado"       
+    })
  }
 function update_event(req, res){
             let (id) = req.params
@@ -59,7 +47,9 @@ function update_event(req, res){
                   
                 })
              }
-           
+           return res.status(404).json({
+        message: "evento encontrado"
+           })
                 
  }
  function show_event (req, res) {

@@ -1,9 +1,11 @@
 const express = require(`express`)
 const router = express.Router()
 
+const cevent = require('../controllers/evento')
+
 router.post('/create', cevent.create_event)
  
-router.get( '/read/', cevent.read_user)
+router.get( '/read/', cevent.read_event)
   
 router.get( '/show/:id', cevent.show_event)
     
