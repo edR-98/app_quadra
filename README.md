@@ -34,7 +34,7 @@ const router = express.Router() --> E esse "R" de Router precisa ser maiúsculo
 module.exports = router
 # ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-# 
+# Aula Marcius - 09/10
 
 Para melhor organização dos arquivos e código foram criadas as pastas "controllers", "routes", e "tests".
 
