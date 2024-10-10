@@ -1,24 +1,24 @@
 var vevent = []
 
 function create_event(req, res){
-    let { evento, posicao, time, local, id } = req.body
+    let {evento, posicao, time, local, id } = req.body    
+    var oevent = {
+            "id" : vusers.length+1,
+            "evento" : evento,
+            "posicao" : posicao,
+            "time" : time,
+            "local" : local,
+            "deletedAt": null      
 
-    var event = {
-    "evento" : pevento,
-     "posicao" : pposicao,
-     "time" : ptime,
-     "local" : plocal,
-     "id" : vevent.length+1,
-    "deletedta" :null
-    }
-    vevent.push(oevent)
+        }
+        vusers.push(oevent)
 
-    return res.status(201).json({
-        message: "evento encontrado"
-        
-    })
+        return res.status(201).json({
+            message: "Usuário criado.",
+            db: vevent
+        })
+
 }
-
 function delete_event(req, res){
     
     let (id) = req.params
