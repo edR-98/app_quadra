@@ -83,5 +83,5 @@ function read_event(req, res) {
     delete_event,
     update_event,
     show_event,
-    read_event,
+    read_event
  }
