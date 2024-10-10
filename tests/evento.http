@@ -1,0 +1,37 @@
+
+    
+### Aqui no POST ele cria um usuário, e entre {} eu adiciono os usuários
+
+POST http://localhost:3000/event HTTP/1.1
+content-type: application/json
+ 
+{
+        "time": "a",
+        "posicao": "atacante",
+        "local": "Multsport"
+}
+ 
+### No PUT ele altera uma informação pegando o ID do usuário, então sempre que eu quiser alterar uma informação especifica eu busco pelo ID "user/1,2,3..." e altero as informações
+ 
+PUT http://localhost:3000/event/2 HTTP/1.1
+content-type: application/json
+ 
+{
+        "time": "b",
+        "posicao": "zagueiro",
+        "local": "Multsport"
+}return res.status(200).json
+### Nesse GET eu vejo todas as informações de todos os usuários
+ 
+GET http://localhost:3000/event HTTP/1.1
+content-type: application/json
+ 
+### Nesse GET eu vejo um usuário especifico buscando pelo id dele
+ 
+GET http://localhost:3000/event/1 HTTP/1.1
+content-type: application/json
+
+###
+
+DELETE http://localhost:3000/event/1 HTTP/1.1
+content-type: application/json
