@@ -20,7 +20,7 @@ function create_user(req, res){
 }
 
 function read_user(req, res) {
-    return res.status(200).json({
+    return res.status(201).json({
         message: "Listando todos os usuários...", 
         db : vusers.filter(u => u.deletedAt == null)  // Aula 6
     } )
@@ -32,7 +32,7 @@ function get_user_by_id(req, res) {  /// Função que recupera usuário por ID e
 
      const idx = vusers[idx].findIndex(u => u.id == id)
 
-        if(idx == -1 || vusers.deletedAt != null){  //Aula 6
+        if(idx == -1 || vusers[idx].deletedAt != null){  //Aula 6
 
             return res.status(404).json({
                 message: "Usuário não encontrado.",
