@@ -1,4 +1,4 @@
-POST http://10.0.2.15:3000/pagamento/create HTTP/1.1
+POST http://10.60.46.68:3000/pagamento/create HTTP/1.1
 Content-type: application/json
 
     {
@@ -11,7 +11,7 @@ Content-type: application/json
 
 ###
 
-POST http://10.0.2.15:3000/create HTTP/1.1
+POST http://10.60.46.68:3000/create HTTP/1.1
 Content-type: application/json
 
     {
@@ -22,7 +22,7 @@ Content-type: application/json
 
 ###
 
-POST http://10.0.2.15:3000/create HTTP/1.1
+POST http://10.60.46.68:3000/create HTTP/1.1
 Content-type: application/json
 
     {
@@ -32,17 +32,17 @@ Content-type: application/json
     }
 
 
-GET http://10.0.2.15:3000/pagamento/read HTTP/1.1
+GET http://10.60.46.68:3000/pagamento/read HTTP/1.1
 Content-type: application/json
 
 ###
 
-GET http://10.0.2.15:3000/pagamento/show/2 HTTP/1.1
+GET http://10.60.46.68:3000/pagamento/show/2 HTTP/1.1
 Content-type: application/json
 
 ###
 
-PUT http://10.0.2.15:3000/pagamento/update/7 HTTP/1.1
+PUT http://10.60.46.68:3000/pagamento/update/7 HTTP/1.1
 Content-type: application/json
 
     {
@@ -55,5 +55,5 @@ Content-type: application/json
 
 ###
 
-DELETE http://10.0.2.15:3000/pagamento/delete/3 HTTP/1.1
+DELETE http://10.60.46.68:3000/pagamento/delete/3 HTTP/1.1
 content-type: application/json
