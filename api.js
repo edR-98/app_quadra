@@ -6,17 +6,14 @@ app.use( express .json ())
 const cr_user = require('./routes/user')
 app.use('/user', cr_user)
 
-//const cr_quadra = require('./routes/quadra')
-//app.use('/quadra', cr_quadra)
+const cr_quadra = require('./routes/quadra')
+app.use('/quadra', cr_quadra)
 
 const cr_event = require('./routes/evento')
 app.use('/event', cr_event)
 
 const cr_pagamento = require('./routes/pagamento')
 app.use('/pagamento', cr_pagamento)
-
-const cr_quadra = require('./routes/quadra')
-app.use('/quadra', cr_quadra)
 
 app.listen(3000, () => {
     console.log('http://localhost:3000')
