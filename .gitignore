@@ -131,3 +131,7 @@ dist
 
 package-lock.json
 
+# Prisma
+.env
+src/generated
+

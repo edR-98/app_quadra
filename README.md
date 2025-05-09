@@ -44,3 +44,49 @@ Pasta "routes" - ficaram somente as rotas
     Ex: "router.get('/read', cuser.create_user)"
 
 Pasta "controllers" - Onde ficara todas as funções
+
+
+
+
+# Estruturando projeto
+
+Montar todas páginas front-end, estilização e todo o ecossima do projeto, ex. da página inicial vai para todas, de tal página vai para tal e assim por diante.
+
+Escrever e entregar no teams toda a documentação do projeto, explicando miudo por miudo
+
+Tenho 20 dias para fazer tudo isso em CASA!
+
+Enquanto isso revisar todo o Maui e fazer funcionar 100% e também estiliza-lo para melhor apresentação.
+
+Popular bando de dados com pelo menos 12 quadras 
+
+Categorias de quadras que vão entrar para o projeto:
+
+- Campo Society (gramado sintético)	
+- Quadra de basquete	
+- Quadra de vôlei
+- Quadra de Tênis
+
+# Página inicial
+
+Menu de navegação:
+    - Todas as categorias
+    - Entrar e Cadastrar
+    - Perfil do usuario (dados)
+
+
+Quadras em destaque:
+    - No carrousel vou colocar a quadra id 1 para rodar as fotos
+    - Essas imagens ficaram passando em carroussel e serão as quadras mais alugadas
+
+Categorias de quadras:
+    - As 4 categorias em cards 
+
+Alguma coisa:? por enquanto não
+
+Rodapé:
+    - Conheça-nos (sobre nós)
+    - Anuncie sua quadra (jogo para o Whatsaap)
+
+
+Na aula pokedex, ele ensina a quando clicar em "perfil" ele entrega todas as informçãoes do pokemon ou seja entrega todas as informações do usuario, por uma rota.

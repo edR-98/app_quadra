@@ -1,15 +1,35 @@
 {
   "name": "projeto-integrador",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/api.js",
   "scripts": {
+    "dev": "npx nodemon --exec \"node .\" --watch \"src/*.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "//////////////////////////////////////////////////// Extensões usadas na aula ///////////////////////////////////////////////////////////////////////",
   "dependencies": {
-    "express": "^4.21.1"
-  }
+    "@prisma/client": "^6.7.0",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "post": "^0.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10",
+    "prisma": "^6.7.0"
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edR-98/app_quadra.git"
+  },
+  "bugs": {
+    "url": "https://github.com/edR-98/app_quadra/issues"
+  },
+  "homepage": "https://github.com/edR-98/app_quadra#readme"
 }

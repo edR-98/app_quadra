@@ -1,0 +1,68 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+
+model Usuario {
+  id    Int     @id @default(autoincrement())
+  nome        String
+  nascimento  DateTime
+  email       String   @unique
+  cpf         String   @unique
+  senha       String
+  criado_em   DateTime @default(now())
+  locacao     Locacao[]
+  
+  @@map("usuarios") // <-- Define o nome da tabela
+}
+
+model Quadra {
+  id               Int      @id @default(autoincrement())
+  nome_local       String
+  tipo_quadra      String
+  localizacao      String
+  imagem_principal String
+  imagem_pri       String
+  imagem_seg       String
+  imagem_ter       String
+  telefone         String
+  disponibilidade  String
+  preco            Float    // Use Float para valores com casas decimais
+  dimensoes        String
+  iluminacao       Boolean
+  vestiarios       Boolean
+  bebedouro        Boolean
+  estacionamento   Boolean
+  arquibancada     Boolean
+  coberta          Boolean
+  acessibilidade   Boolean
+  wi_fi            Boolean
+  criado_em        DateTime @default(now())
+  locacao          Locacao[]
+
+  @@map("quadras") // Nome da tabela no banco
+}
+
+  model Locacao {
+  id          Int       @id @default(autoincrement())
+  id_usuario  Int
+  id_quadra   Int
+  usuario     Usuario @relation(fields: [id_usuario], references: [id])
+  quadra      Quadra   @relation(fields: [id_quadra], references: [id])
+  data        Int
+  hora        Int
+
+  @@map("locacoes") // Nome da tabela no banco
+}
