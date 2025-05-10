@@ -30,13 +30,13 @@ model Usuario {
 
 model Quadra {
   id               Int      @id @default(autoincrement())
-  nome_local       String
-  tipo_quadra      String
+  nomeLocal        String    @map("nome_local")
+  tipoQuadra       String    @map("tipo_quadra")
   localizacao      String
-  imagem_principal String
-  imagem_pri       String
-  imagem_seg       String
-  imagem_ter       String
+  imagemPrincipal  String    @map("imagem_principal")
+  imagemPri        String    @map("imagem_pri")
+  imagemSeg        String    @map("imagem_seg")
+  imagemTer        String    @map("imagem_ter")
   telefone         String
   disponibilidade  String
   preco            Float    // Use Float para valores com casas decimais
@@ -48,8 +48,8 @@ model Quadra {
   arquibancada     Boolean
   coberta          Boolean
   acessibilidade   Boolean
-  wi_fi            Boolean
-  criado_em        DateTime @default(now())
+  wifi             Boolean   @map("wi_fi")
+  criado_em        DateTime @default(now()) 
   locacao          Locacao[]
 
   @@map("quadras") // Nome da tabela no banco

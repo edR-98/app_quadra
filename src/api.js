@@ -69,15 +69,74 @@ app.delete("/produtos/:id", async (req, res) => {
 // Quadras ------------------------------------------------------------------------------------------------------------------------------------------------ // 
 
 app.get('/quadras', async (req, res) => {
-  const quadras = await prisma.quadra.findMany(); 
+  
+  // if ((req.query.arquibancada !== "true") && (req.query.arquibancada !== "false")) {
+  //   return res.status(400).send("Valor de filtro não permitido");
+    
+  // const precoMin = req.query.preco_min; <--- Essa linha é para o preço --->
+  // const precoMax = req.query.preco_max;
+
+  const tipoQuadra = (req.query.tipo_quadra === '') ? undefined : req.query.tipo_quadra;
+  const iluminacao = (req.query.iluminacao === undefined) ? undefined : req.query.iluminacao === "true";
+  const vestiarios = req.query.vestiarios === "true";
+  const bebedouro = req.query.bebedouro === "true";
+  const estacionamento = req.query.estacionamento === "true";
+  const arquibancada = req.query.arquibancada === "true";
+  const coberta = req.query.coberta === "true";
+  const acessibilidade = req.query.acessibilidade === "true";
+  const wifi = req.query.wifi === "true";
+
+
+  const quadras = await prisma.quadra.findMany({ where: {
+    tipoQuadra,
+    iluminacao,
+    // vestiarios,
+    // bebedouro,
+    // estacionamento,
+    // arquibancada,
+    // coberta,
+    // acessibilidade,
+    // wifi
+  }}); 
   res.json(quadras); 
 });
 
-// Fazer aqui depois bem bunitinhu
-app.get('/quadras/categorias/:categoria', async (req, res) => {
-  const quadras = await prisma.quadra.findMany( { where: {} ); 
-  res.json(quadras); 
-});
+// app.get('/quadras', async (req, res) => {
+//   const {
+//     tipoQuadra,
+//     iluminacao,
+//     vestiarios,
+//     bebedouro,
+//     estacionamento,
+//     arquibancada,
+//     coberta,
+//     acessibilidade,
+//     wifi
+//   } = req.query;
+
+//   const filtros = {};
+
+//   if (tipoQuadra) filtros.tipo_quadra = tipo_quadra;
+//   if (iluminacao !== undefined) filtros.iluminacao = iluminacao === "true";
+//   if (vestiarios !== undefined) filtros.vestiarios = vestiarios === "true";
+//   if (bebedouro !== undefined) filtros.bebedouro = bebedouro === "true";
+//   if (estacionamento !== undefined) filtros.estacionamento = estacionamento === "true";
+//   if (arquibancada !== undefined) filtros.arquibancada = arquibancada === "true";
+//   if (coberta !== undefined) filtros.coberta = coberta === "true";
+//   if (acessibilidade !== undefined) filtros.acessibilidade = acessibilidade === "true";
+//   if (wifi !== undefined) filtros.wi_fi = wifi === "true";
+
+//   try {
+//     const quadras = await prisma.quadra.findMany({
+//       where: filtros
+//     });
+//     res.json(quadras);
+//   } catch (error) {
+//     console.error('Erro ao buscar quadras:', error);
+//     res.status(500).json({ error: 'Erro ao buscar quadras' });
+//   }
+// });
+
 
 app.get("/quadras/:id", async (req, res) => {
 
@@ -90,6 +149,8 @@ app.get("/quadras/:id", async (req, res) => {
       res.json(quadra); 
     }
 });
+
+
 
 app.get("/quadras/:id/usuarios", async (req, res) => {
   const idQuadra = parseInt(req.params.id); 

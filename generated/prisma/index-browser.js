@@ -132,13 +132,13 @@ exports.Prisma.UsuarioScalarFieldEnum = {
 
 exports.Prisma.QuadraScalarFieldEnum = {
   id: 'id',
-  nome_local: 'nome_local',
-  tipo_quadra: 'tipo_quadra',
+  nomeLocal: 'nomeLocal',
+  tipoQuadra: 'tipoQuadra',
   localizacao: 'localizacao',
-  imagem_principal: 'imagem_principal',
-  imagem_pri: 'imagem_pri',
-  imagem_seg: 'imagem_seg',
-  imagem_ter: 'imagem_ter',
+  imagemPrincipal: 'imagemPrincipal',
+  imagemPri: 'imagemPri',
+  imagemSeg: 'imagemSeg',
+  imagemTer: 'imagemTer',
   telefone: 'telefone',
   disponibilidade: 'disponibilidade',
   preco: 'preco',
@@ -150,7 +150,7 @@ exports.Prisma.QuadraScalarFieldEnum = {
   arquibancada: 'arquibancada',
   coberta: 'coberta',
   acessibilidade: 'acessibilidade',
-  wi_fi: 'wi_fi',
+  wifi: 'wifi',
   criado_em: 'criado_em'
 };
 
@@ -175,13 +175,13 @@ exports.Prisma.UsuarioOrderByRelevanceFieldEnum = {
 };
 
 exports.Prisma.QuadraOrderByRelevanceFieldEnum = {
-  nome_local: 'nome_local',
-  tipo_quadra: 'tipo_quadra',
+  nomeLocal: 'nomeLocal',
+  tipoQuadra: 'tipoQuadra',
   localizacao: 'localizacao',
-  imagem_principal: 'imagem_principal',
-  imagem_pri: 'imagem_pri',
-  imagem_seg: 'imagem_seg',
-  imagem_ter: 'imagem_ter',
+  imagemPrincipal: 'imagemPrincipal',
+  imagemPri: 'imagemPri',
+  imagemSeg: 'imagemSeg',
+  imagemTer: 'imagemTer',
   telefone: 'telefone',
   disponibilidade: 'disponibilidade',
   dimensoes: 'dimensoes'

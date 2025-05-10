@@ -2123,13 +2123,13 @@ export namespace Prisma {
 
   export type QuadraMinAggregateOutputType = {
     id: number | null
-    nome_local: string | null
-    tipo_quadra: string | null
+    nomeLocal: string | null
+    tipoQuadra: string | null
     localizacao: string | null
-    imagem_principal: string | null
-    imagem_pri: string | null
-    imagem_seg: string | null
-    imagem_ter: string | null
+    imagemPrincipal: string | null
+    imagemPri: string | null
+    imagemSeg: string | null
+    imagemTer: string | null
     telefone: string | null
     disponibilidade: string | null
     preco: number | null
@@ -2141,19 +2141,19 @@ export namespace Prisma {
     arquibancada: boolean | null
     coberta: boolean | null
     acessibilidade: boolean | null
-    wi_fi: boolean | null
+    wifi: boolean | null
     criado_em: Date | null
   }
 
   export type QuadraMaxAggregateOutputType = {
     id: number | null
-    nome_local: string | null
-    tipo_quadra: string | null
+    nomeLocal: string | null
+    tipoQuadra: string | null
     localizacao: string | null
-    imagem_principal: string | null
-    imagem_pri: string | null
-    imagem_seg: string | null
-    imagem_ter: string | null
+    imagemPrincipal: string | null
+    imagemPri: string | null
+    imagemSeg: string | null
+    imagemTer: string | null
     telefone: string | null
     disponibilidade: string | null
     preco: number | null
@@ -2165,19 +2165,19 @@ export namespace Prisma {
     arquibancada: boolean | null
     coberta: boolean | null
     acessibilidade: boolean | null
-    wi_fi: boolean | null
+    wifi: boolean | null
     criado_em: Date | null
   }
 
   export type QuadraCountAggregateOutputType = {
     id: number
-    nome_local: number
-    tipo_quadra: number
+    nomeLocal: number
+    tipoQuadra: number
     localizacao: number
-    imagem_principal: number
-    imagem_pri: number
-    imagem_seg: number
-    imagem_ter: number
+    imagemPrincipal: number
+    imagemPri: number
+    imagemSeg: number
+    imagemTer: number
     telefone: number
     disponibilidade: number
     preco: number
@@ -2189,7 +2189,7 @@ export namespace Prisma {
     arquibancada: number
     coberta: number
     acessibilidade: number
-    wi_fi: number
+    wifi: number
     criado_em: number
     _all: number
   }
@@ -2207,13 +2207,13 @@ export namespace Prisma {
 
   export type QuadraMinAggregateInputType = {
     id?: true
-    nome_local?: true
-    tipo_quadra?: true
+    nomeLocal?: true
+    tipoQuadra?: true
     localizacao?: true
-    imagem_principal?: true
-    imagem_pri?: true
-    imagem_seg?: true
-    imagem_ter?: true
+    imagemPrincipal?: true
+    imagemPri?: true
+    imagemSeg?: true
+    imagemTer?: true
     telefone?: true
     disponibilidade?: true
     preco?: true
@@ -2225,19 +2225,19 @@ export namespace Prisma {
     arquibancada?: true
     coberta?: true
     acessibilidade?: true
-    wi_fi?: true
+    wifi?: true
     criado_em?: true
   }
 
   export type QuadraMaxAggregateInputType = {
     id?: true
-    nome_local?: true
-    tipo_quadra?: true
+    nomeLocal?: true
+    tipoQuadra?: true
     localizacao?: true
-    imagem_principal?: true
-    imagem_pri?: true
-    imagem_seg?: true
-    imagem_ter?: true
+    imagemPrincipal?: true
+    imagemPri?: true
+    imagemSeg?: true
+    imagemTer?: true
     telefone?: true
     disponibilidade?: true
     preco?: true
@@ -2249,19 +2249,19 @@ export namespace Prisma {
     arquibancada?: true
     coberta?: true
     acessibilidade?: true
-    wi_fi?: true
+    wifi?: true
     criado_em?: true
   }
 
   export type QuadraCountAggregateInputType = {
     id?: true
-    nome_local?: true
-    tipo_quadra?: true
+    nomeLocal?: true
+    tipoQuadra?: true
     localizacao?: true
-    imagem_principal?: true
-    imagem_pri?: true
-    imagem_seg?: true
-    imagem_ter?: true
+    imagemPrincipal?: true
+    imagemPri?: true
+    imagemSeg?: true
+    imagemTer?: true
     telefone?: true
     disponibilidade?: true
     preco?: true
@@ -2273,7 +2273,7 @@ export namespace Prisma {
     arquibancada?: true
     coberta?: true
     acessibilidade?: true
-    wi_fi?: true
+    wifi?: true
     criado_em?: true
     _all?: true
   }
@@ -2366,13 +2366,13 @@ export namespace Prisma {
 
   export type QuadraGroupByOutputType = {
     id: number
-    nome_local: string
-    tipo_quadra: string
+    nomeLocal: string
+    tipoQuadra: string
     localizacao: string
-    imagem_principal: string
-    imagem_pri: string
-    imagem_seg: string
-    imagem_ter: string
+    imagemPrincipal: string
+    imagemPri: string
+    imagemSeg: string
+    imagemTer: string
     telefone: string
     disponibilidade: string
     preco: number
@@ -2384,7 +2384,7 @@ export namespace Prisma {
     arquibancada: boolean
     coberta: boolean
     acessibilidade: boolean
-    wi_fi: boolean
+    wifi: boolean
     criado_em: Date
     _count: QuadraCountAggregateOutputType | null
     _avg: QuadraAvgAggregateOutputType | null
@@ -2409,13 +2409,13 @@ export namespace Prisma {
 
   export type QuadraSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    nome_local?: boolean
-    tipo_quadra?: boolean
+    nomeLocal?: boolean
+    tipoQuadra?: boolean
     localizacao?: boolean
-    imagem_principal?: boolean
-    imagem_pri?: boolean
-    imagem_seg?: boolean
-    imagem_ter?: boolean
+    imagemPrincipal?: boolean
+    imagemPri?: boolean
+    imagemSeg?: boolean
+    imagemTer?: boolean
     telefone?: boolean
     disponibilidade?: boolean
     preco?: boolean
@@ -2427,7 +2427,7 @@ export namespace Prisma {
     arquibancada?: boolean
     coberta?: boolean
     acessibilidade?: boolean
-    wi_fi?: boolean
+    wifi?: boolean
     criado_em?: boolean
     locacao?: boolean | Quadra$locacaoArgs<ExtArgs>
     _count?: boolean | QuadraCountOutputTypeDefaultArgs<ExtArgs>
@@ -2437,13 +2437,13 @@ export namespace Prisma {
 
   export type QuadraSelectScalar = {
     id?: boolean
-    nome_local?: boolean
-    tipo_quadra?: boolean
+    nomeLocal?: boolean
+    tipoQuadra?: boolean
     localizacao?: boolean
-    imagem_principal?: boolean
-    imagem_pri?: boolean
-    imagem_seg?: boolean
-    imagem_ter?: boolean
+    imagemPrincipal?: boolean
+    imagemPri?: boolean
+    imagemSeg?: boolean
+    imagemTer?: boolean
     telefone?: boolean
     disponibilidade?: boolean
     preco?: boolean
@@ -2455,11 +2455,11 @@ export namespace Prisma {
     arquibancada?: boolean
     coberta?: boolean
     acessibilidade?: boolean
-    wi_fi?: boolean
+    wifi?: boolean
     criado_em?: boolean
   }
 
-  export type QuadraOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nome_local" | "tipo_quadra" | "localizacao" | "imagem_principal" | "imagem_pri" | "imagem_seg" | "imagem_ter" | "telefone" | "disponibilidade" | "preco" | "dimensoes" | "iluminacao" | "vestiarios" | "bebedouro" | "estacionamento" | "arquibancada" | "coberta" | "acessibilidade" | "wi_fi" | "criado_em", ExtArgs["result"]["quadra"]>
+  export type QuadraOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nomeLocal" | "tipoQuadra" | "localizacao" | "imagemPrincipal" | "imagemPri" | "imagemSeg" | "imagemTer" | "telefone" | "disponibilidade" | "preco" | "dimensoes" | "iluminacao" | "vestiarios" | "bebedouro" | "estacionamento" | "arquibancada" | "coberta" | "acessibilidade" | "wifi" | "criado_em", ExtArgs["result"]["quadra"]>
   export type QuadraInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     locacao?: boolean | Quadra$locacaoArgs<ExtArgs>
     _count?: boolean | QuadraCountOutputTypeDefaultArgs<ExtArgs>
@@ -2472,13 +2472,13 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      nome_local: string
-      tipo_quadra: string
+      nomeLocal: string
+      tipoQuadra: string
       localizacao: string
-      imagem_principal: string
-      imagem_pri: string
-      imagem_seg: string
-      imagem_ter: string
+      imagemPrincipal: string
+      imagemPri: string
+      imagemSeg: string
+      imagemTer: string
       telefone: string
       disponibilidade: string
       preco: number
@@ -2490,7 +2490,7 @@ export namespace Prisma {
       arquibancada: boolean
       coberta: boolean
       acessibilidade: boolean
-      wi_fi: boolean
+      wifi: boolean
       criado_em: Date
     }, ExtArgs["result"]["quadra"]>
     composites: {}
@@ -2863,13 +2863,13 @@ export namespace Prisma {
    */
   interface QuadraFieldRefs {
     readonly id: FieldRef<"Quadra", 'Int'>
-    readonly nome_local: FieldRef<"Quadra", 'String'>
-    readonly tipo_quadra: FieldRef<"Quadra", 'String'>
+    readonly nomeLocal: FieldRef<"Quadra", 'String'>
+    readonly tipoQuadra: FieldRef<"Quadra", 'String'>
     readonly localizacao: FieldRef<"Quadra", 'String'>
-    readonly imagem_principal: FieldRef<"Quadra", 'String'>
-    readonly imagem_pri: FieldRef<"Quadra", 'String'>
-    readonly imagem_seg: FieldRef<"Quadra", 'String'>
-    readonly imagem_ter: FieldRef<"Quadra", 'String'>
+    readonly imagemPrincipal: FieldRef<"Quadra", 'String'>
+    readonly imagemPri: FieldRef<"Quadra", 'String'>
+    readonly imagemSeg: FieldRef<"Quadra", 'String'>
+    readonly imagemTer: FieldRef<"Quadra", 'String'>
     readonly telefone: FieldRef<"Quadra", 'String'>
     readonly disponibilidade: FieldRef<"Quadra", 'String'>
     readonly preco: FieldRef<"Quadra", 'Float'>
@@ -2881,7 +2881,7 @@ export namespace Prisma {
     readonly arquibancada: FieldRef<"Quadra", 'Boolean'>
     readonly coberta: FieldRef<"Quadra", 'Boolean'>
     readonly acessibilidade: FieldRef<"Quadra", 'Boolean'>
-    readonly wi_fi: FieldRef<"Quadra", 'Boolean'>
+    readonly wifi: FieldRef<"Quadra", 'Boolean'>
     readonly criado_em: FieldRef<"Quadra", 'DateTime'>
   }
     
@@ -4280,13 +4280,13 @@ export namespace Prisma {
 
   export const QuadraScalarFieldEnum: {
     id: 'id',
-    nome_local: 'nome_local',
-    tipo_quadra: 'tipo_quadra',
+    nomeLocal: 'nomeLocal',
+    tipoQuadra: 'tipoQuadra',
     localizacao: 'localizacao',
-    imagem_principal: 'imagem_principal',
-    imagem_pri: 'imagem_pri',
-    imagem_seg: 'imagem_seg',
-    imagem_ter: 'imagem_ter',
+    imagemPrincipal: 'imagemPrincipal',
+    imagemPri: 'imagemPri',
+    imagemSeg: 'imagemSeg',
+    imagemTer: 'imagemTer',
     telefone: 'telefone',
     disponibilidade: 'disponibilidade',
     preco: 'preco',
@@ -4298,7 +4298,7 @@ export namespace Prisma {
     arquibancada: 'arquibancada',
     coberta: 'coberta',
     acessibilidade: 'acessibilidade',
-    wi_fi: 'wi_fi',
+    wifi: 'wifi',
     criado_em: 'criado_em'
   };
 
@@ -4335,13 +4335,13 @@ export namespace Prisma {
 
 
   export const QuadraOrderByRelevanceFieldEnum: {
-    nome_local: 'nome_local',
-    tipo_quadra: 'tipo_quadra',
+    nomeLocal: 'nomeLocal',
+    tipoQuadra: 'tipoQuadra',
     localizacao: 'localizacao',
-    imagem_principal: 'imagem_principal',
-    imagem_pri: 'imagem_pri',
-    imagem_seg: 'imagem_seg',
-    imagem_ter: 'imagem_ter',
+    imagemPrincipal: 'imagemPrincipal',
+    imagemPri: 'imagemPri',
+    imagemSeg: 'imagemSeg',
+    imagemTer: 'imagemTer',
     telefone: 'telefone',
     disponibilidade: 'disponibilidade',
     dimensoes: 'dimensoes'
@@ -4466,13 +4466,13 @@ export namespace Prisma {
     OR?: QuadraWhereInput[]
     NOT?: QuadraWhereInput | QuadraWhereInput[]
     id?: IntFilter<"Quadra"> | number
-    nome_local?: StringFilter<"Quadra"> | string
-    tipo_quadra?: StringFilter<"Quadra"> | string
+    nomeLocal?: StringFilter<"Quadra"> | string
+    tipoQuadra?: StringFilter<"Quadra"> | string
     localizacao?: StringFilter<"Quadra"> | string
-    imagem_principal?: StringFilter<"Quadra"> | string
-    imagem_pri?: StringFilter<"Quadra"> | string
-    imagem_seg?: StringFilter<"Quadra"> | string
-    imagem_ter?: StringFilter<"Quadra"> | string
+    imagemPrincipal?: StringFilter<"Quadra"> | string
+    imagemPri?: StringFilter<"Quadra"> | string
+    imagemSeg?: StringFilter<"Quadra"> | string
+    imagemTer?: StringFilter<"Quadra"> | string
     telefone?: StringFilter<"Quadra"> | string
     disponibilidade?: StringFilter<"Quadra"> | string
     preco?: FloatFilter<"Quadra"> | number
@@ -4484,20 +4484,20 @@ export namespace Prisma {
     arquibancada?: BoolFilter<"Quadra"> | boolean
     coberta?: BoolFilter<"Quadra"> | boolean
     acessibilidade?: BoolFilter<"Quadra"> | boolean
-    wi_fi?: BoolFilter<"Quadra"> | boolean
+    wifi?: BoolFilter<"Quadra"> | boolean
     criado_em?: DateTimeFilter<"Quadra"> | Date | string
     locacao?: LocacaoListRelationFilter
   }
 
   export type QuadraOrderByWithRelationInput = {
     id?: SortOrder
-    nome_local?: SortOrder
-    tipo_quadra?: SortOrder
+    nomeLocal?: SortOrder
+    tipoQuadra?: SortOrder
     localizacao?: SortOrder
-    imagem_principal?: SortOrder
-    imagem_pri?: SortOrder
-    imagem_seg?: SortOrder
-    imagem_ter?: SortOrder
+    imagemPrincipal?: SortOrder
+    imagemPri?: SortOrder
+    imagemSeg?: SortOrder
+    imagemTer?: SortOrder
     telefone?: SortOrder
     disponibilidade?: SortOrder
     preco?: SortOrder
@@ -4509,7 +4509,7 @@ export namespace Prisma {
     arquibancada?: SortOrder
     coberta?: SortOrder
     acessibilidade?: SortOrder
-    wi_fi?: SortOrder
+    wifi?: SortOrder
     criado_em?: SortOrder
     locacao?: LocacaoOrderByRelationAggregateInput
     _relevance?: QuadraOrderByRelevanceInput
@@ -4520,13 +4520,13 @@ export namespace Prisma {
     AND?: QuadraWhereInput | QuadraWhereInput[]
     OR?: QuadraWhereInput[]
     NOT?: QuadraWhereInput | QuadraWhereInput[]
-    nome_local?: StringFilter<"Quadra"> | string
-    tipo_quadra?: StringFilter<"Quadra"> | string
+    nomeLocal?: StringFilter<"Quadra"> | string
+    tipoQuadra?: StringFilter<"Quadra"> | string
     localizacao?: StringFilter<"Quadra"> | string
-    imagem_principal?: StringFilter<"Quadra"> | string
-    imagem_pri?: StringFilter<"Quadra"> | string
-    imagem_seg?: StringFilter<"Quadra"> | string
-    imagem_ter?: StringFilter<"Quadra"> | string
+    imagemPrincipal?: StringFilter<"Quadra"> | string
+    imagemPri?: StringFilter<"Quadra"> | string
+    imagemSeg?: StringFilter<"Quadra"> | string
+    imagemTer?: StringFilter<"Quadra"> | string
     telefone?: StringFilter<"Quadra"> | string
     disponibilidade?: StringFilter<"Quadra"> | string
     preco?: FloatFilter<"Quadra"> | number
@@ -4538,20 +4538,20 @@ export namespace Prisma {
     arquibancada?: BoolFilter<"Quadra"> | boolean
     coberta?: BoolFilter<"Quadra"> | boolean
     acessibilidade?: BoolFilter<"Quadra"> | boolean
-    wi_fi?: BoolFilter<"Quadra"> | boolean
+    wifi?: BoolFilter<"Quadra"> | boolean
     criado_em?: DateTimeFilter<"Quadra"> | Date | string
     locacao?: LocacaoListRelationFilter
   }, "id">
 
   export type QuadraOrderByWithAggregationInput = {
     id?: SortOrder
-    nome_local?: SortOrder
-    tipo_quadra?: SortOrder
+    nomeLocal?: SortOrder
+    tipoQuadra?: SortOrder
     localizacao?: SortOrder
-    imagem_principal?: SortOrder
-    imagem_pri?: SortOrder
-    imagem_seg?: SortOrder
-    imagem_ter?: SortOrder
+    imagemPrincipal?: SortOrder
+    imagemPri?: SortOrder
+    imagemSeg?: SortOrder
+    imagemTer?: SortOrder
     telefone?: SortOrder
     disponibilidade?: SortOrder
     preco?: SortOrder
@@ -4563,7 +4563,7 @@ export namespace Prisma {
     arquibancada?: SortOrder
     coberta?: SortOrder
     acessibilidade?: SortOrder
-    wi_fi?: SortOrder
+    wifi?: SortOrder
     criado_em?: SortOrder
     _count?: QuadraCountOrderByAggregateInput
     _avg?: QuadraAvgOrderByAggregateInput
@@ -4577,13 +4577,13 @@ export namespace Prisma {
     OR?: QuadraScalarWhereWithAggregatesInput[]
     NOT?: QuadraScalarWhereWithAggregatesInput | QuadraScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Quadra"> | number
-    nome_local?: StringWithAggregatesFilter<"Quadra"> | string
-    tipo_quadra?: StringWithAggregatesFilter<"Quadra"> | string
+    nomeLocal?: StringWithAggregatesFilter<"Quadra"> | string
+    tipoQuadra?: StringWithAggregatesFilter<"Quadra"> | string
     localizacao?: StringWithAggregatesFilter<"Quadra"> | string
-    imagem_principal?: StringWithAggregatesFilter<"Quadra"> | string
-    imagem_pri?: StringWithAggregatesFilter<"Quadra"> | string
-    imagem_seg?: StringWithAggregatesFilter<"Quadra"> | string
-    imagem_ter?: StringWithAggregatesFilter<"Quadra"> | string
+    imagemPrincipal?: StringWithAggregatesFilter<"Quadra"> | string
+    imagemPri?: StringWithAggregatesFilter<"Quadra"> | string
+    imagemSeg?: StringWithAggregatesFilter<"Quadra"> | string
+    imagemTer?: StringWithAggregatesFilter<"Quadra"> | string
     telefone?: StringWithAggregatesFilter<"Quadra"> | string
     disponibilidade?: StringWithAggregatesFilter<"Quadra"> | string
     preco?: FloatWithAggregatesFilter<"Quadra"> | number
@@ -4595,7 +4595,7 @@ export namespace Prisma {
     arquibancada?: BoolWithAggregatesFilter<"Quadra"> | boolean
     coberta?: BoolWithAggregatesFilter<"Quadra"> | boolean
     acessibilidade?: BoolWithAggregatesFilter<"Quadra"> | boolean
-    wi_fi?: BoolWithAggregatesFilter<"Quadra"> | boolean
+    wifi?: BoolWithAggregatesFilter<"Quadra"> | boolean
     criado_em?: DateTimeWithAggregatesFilter<"Quadra"> | Date | string
   }
 
@@ -4731,13 +4731,13 @@ export namespace Prisma {
   }
 
   export type QuadraCreateInput = {
-    nome_local: string
-    tipo_quadra: string
+    nomeLocal: string
+    tipoQuadra: string
     localizacao: string
-    imagem_principal: string
-    imagem_pri: string
-    imagem_seg: string
-    imagem_ter: string
+    imagemPrincipal: string
+    imagemPri: string
+    imagemSeg: string
+    imagemTer: string
     telefone: string
     disponibilidade: string
     preco: number
@@ -4749,20 +4749,20 @@ export namespace Prisma {
     arquibancada: boolean
     coberta: boolean
     acessibilidade: boolean
-    wi_fi: boolean
+    wifi: boolean
     criado_em?: Date | string
     locacao?: LocacaoCreateNestedManyWithoutQuadraInput
   }
 
   export type QuadraUncheckedCreateInput = {
     id?: number
-    nome_local: string
-    tipo_quadra: string
+    nomeLocal: string
+    tipoQuadra: string
     localizacao: string
-    imagem_principal: string
-    imagem_pri: string
-    imagem_seg: string
-    imagem_ter: string
+    imagemPrincipal: string
+    imagemPri: string
+    imagemSeg: string
+    imagemTer: string
     telefone: string
     disponibilidade: string
     preco: number
@@ -4774,19 +4774,19 @@ export namespace Prisma {
     arquibancada: boolean
     coberta: boolean
     acessibilidade: boolean
-    wi_fi: boolean
+    wifi: boolean
     criado_em?: Date | string
     locacao?: LocacaoUncheckedCreateNestedManyWithoutQuadraInput
   }
 
   export type QuadraUpdateInput = {
-    nome_local?: StringFieldUpdateOperationsInput | string
-    tipo_quadra?: StringFieldUpdateOperationsInput | string
+    nomeLocal?: StringFieldUpdateOperationsInput | string
+    tipoQuadra?: StringFieldUpdateOperationsInput | string
     localizacao?: StringFieldUpdateOperationsInput | string
-    imagem_principal?: StringFieldUpdateOperationsInput | string
-    imagem_pri?: StringFieldUpdateOperationsInput | string
-    imagem_seg?: StringFieldUpdateOperationsInput | string
-    imagem_ter?: StringFieldUpdateOperationsInput | string
+    imagemPrincipal?: StringFieldUpdateOperationsInput | string
+    imagemPri?: StringFieldUpdateOperationsInput | string
+    imagemSeg?: StringFieldUpdateOperationsInput | string
+    imagemTer?: StringFieldUpdateOperationsInput | string
     telefone?: StringFieldUpdateOperationsInput | string
     disponibilidade?: StringFieldUpdateOperationsInput | string
     preco?: FloatFieldUpdateOperationsInput | number
@@ -4798,20 +4798,20 @@ export namespace Prisma {
     arquibancada?: BoolFieldUpdateOperationsInput | boolean
     coberta?: BoolFieldUpdateOperationsInput | boolean
     acessibilidade?: BoolFieldUpdateOperationsInput | boolean
-    wi_fi?: BoolFieldUpdateOperationsInput | boolean
+    wifi?: BoolFieldUpdateOperationsInput | boolean
     criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
     locacao?: LocacaoUpdateManyWithoutQuadraNestedInput
   }
 
   export type QuadraUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    nome_local?: StringFieldUpdateOperationsInput | string
-    tipo_quadra?: StringFieldUpdateOperationsInput | string
+    nomeLocal?: StringFieldUpdateOperationsInput | string
+    tipoQuadra?: StringFieldUpdateOperationsInput | string
     localizacao?: StringFieldUpdateOperationsInput | string
-    imagem_principal?: StringFieldUpdateOperationsInput | string
-    imagem_pri?: StringFieldUpdateOperationsInput | string
-    imagem_seg?: StringFieldUpdateOperationsInput | string
-    imagem_ter?: StringFieldUpdateOperationsInput | string
+    imagemPrincipal?: StringFieldUpdateOperationsInput | string
+    imagemPri?: StringFieldUpdateOperationsInput | string
+    imagemSeg?: StringFieldUpdateOperationsInput | string
+    imagemTer?: StringFieldUpdateOperationsInput | string
     telefone?: StringFieldUpdateOperationsInput | string
     disponibilidade?: StringFieldUpdateOperationsInput | string
     preco?: FloatFieldUpdateOperationsInput | number
@@ -4823,20 +4823,20 @@ export namespace Prisma {
     arquibancada?: BoolFieldUpdateOperationsInput | boolean
     coberta?: BoolFieldUpdateOperationsInput | boolean
     acessibilidade?: BoolFieldUpdateOperationsInput | boolean
-    wi_fi?: BoolFieldUpdateOperationsInput | boolean
+    wifi?: BoolFieldUpdateOperationsInput | boolean
     criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
     locacao?: LocacaoUncheckedUpdateManyWithoutQuadraNestedInput
   }
 
   export type QuadraCreateManyInput = {
     id?: number
-    nome_local: string
-    tipo_quadra: string
+    nomeLocal: string
+    tipoQuadra: string
     localizacao: string
-    imagem_principal: string
-    imagem_pri: string
-    imagem_seg: string
-    imagem_ter: string
+    imagemPrincipal: string
+    imagemPri: string
+    imagemSeg: string
+    imagemTer: string
     telefone: string
     disponibilidade: string
     preco: number
@@ -4848,18 +4848,18 @@ export namespace Prisma {
     arquibancada: boolean
     coberta: boolean
     acessibilidade: boolean
-    wi_fi: boolean
+    wifi: boolean
     criado_em?: Date | string
   }
 
   export type QuadraUpdateManyMutationInput = {
-    nome_local?: StringFieldUpdateOperationsInput | string
-    tipo_quadra?: StringFieldUpdateOperationsInput | string
+    nomeLocal?: StringFieldUpdateOperationsInput | string
+    tipoQuadra?: StringFieldUpdateOperationsInput | string
     localizacao?: StringFieldUpdateOperationsInput | string
-    imagem_principal?: StringFieldUpdateOperationsInput | string
-    imagem_pri?: StringFieldUpdateOperationsInput | string
-    imagem_seg?: StringFieldUpdateOperationsInput | string
-    imagem_ter?: StringFieldUpdateOperationsInput | string
+    imagemPrincipal?: StringFieldUpdateOperationsInput | string
+    imagemPri?: StringFieldUpdateOperationsInput | string
+    imagemSeg?: StringFieldUpdateOperationsInput | string
+    imagemTer?: StringFieldUpdateOperationsInput | string
     telefone?: StringFieldUpdateOperationsInput | string
     disponibilidade?: StringFieldUpdateOperationsInput | string
     preco?: FloatFieldUpdateOperationsInput | number
@@ -4871,19 +4871,19 @@ export namespace Prisma {
     arquibancada?: BoolFieldUpdateOperationsInput | boolean
     coberta?: BoolFieldUpdateOperationsInput | boolean
     acessibilidade?: BoolFieldUpdateOperationsInput | boolean
-    wi_fi?: BoolFieldUpdateOperationsInput | boolean
+    wifi?: BoolFieldUpdateOperationsInput | boolean
     criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type QuadraUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    nome_local?: StringFieldUpdateOperationsInput | string
-    tipo_quadra?: StringFieldUpdateOperationsInput | string
+    nomeLocal?: StringFieldUpdateOperationsInput | string
+    tipoQuadra?: StringFieldUpdateOperationsInput | string
     localizacao?: StringFieldUpdateOperationsInput | string
-    imagem_principal?: StringFieldUpdateOperationsInput | string
-    imagem_pri?: StringFieldUpdateOperationsInput | string
-    imagem_seg?: StringFieldUpdateOperationsInput | string
-    imagem_ter?: StringFieldUpdateOperationsInput | string
+    imagemPrincipal?: StringFieldUpdateOperationsInput | string
+    imagemPri?: StringFieldUpdateOperationsInput | string
+    imagemSeg?: StringFieldUpdateOperationsInput | string
+    imagemTer?: StringFieldUpdateOperationsInput | string
     telefone?: StringFieldUpdateOperationsInput | string
     disponibilidade?: StringFieldUpdateOperationsInput | string
     preco?: FloatFieldUpdateOperationsInput | number
@@ -4895,7 +4895,7 @@ export namespace Prisma {
     arquibancada?: BoolFieldUpdateOperationsInput | boolean
     coberta?: BoolFieldUpdateOperationsInput | boolean
     acessibilidade?: BoolFieldUpdateOperationsInput | boolean
-    wi_fi?: BoolFieldUpdateOperationsInput | boolean
+    wifi?: BoolFieldUpdateOperationsInput | boolean
     criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -5113,13 +5113,13 @@ export namespace Prisma {
 
   export type QuadraCountOrderByAggregateInput = {
     id?: SortOrder
-    nome_local?: SortOrder
-    tipo_quadra?: SortOrder
+    nomeLocal?: SortOrder
+    tipoQuadra?: SortOrder
     localizacao?: SortOrder
-    imagem_principal?: SortOrder
-    imagem_pri?: SortOrder
-    imagem_seg?: SortOrder
-    imagem_ter?: SortOrder
+    imagemPrincipal?: SortOrder
+    imagemPri?: SortOrder
+    imagemSeg?: SortOrder
+    imagemTer?: SortOrder
     telefone?: SortOrder
     disponibilidade?: SortOrder
     preco?: SortOrder
@@ -5131,7 +5131,7 @@ export namespace Prisma {
     arquibancada?: SortOrder
     coberta?: SortOrder
     acessibilidade?: SortOrder
-    wi_fi?: SortOrder
+    wifi?: SortOrder
     criado_em?: SortOrder
   }
 
@@ -5142,13 +5142,13 @@ export namespace Prisma {
 
   export type QuadraMaxOrderByAggregateInput = {
     id?: SortOrder
-    nome_local?: SortOrder
-    tipo_quadra?: SortOrder
+    nomeLocal?: SortOrder
+    tipoQuadra?: SortOrder
     localizacao?: SortOrder
-    imagem_principal?: SortOrder
-    imagem_pri?: SortOrder
-    imagem_seg?: SortOrder
-    imagem_ter?: SortOrder
+    imagemPrincipal?: SortOrder
+    imagemPri?: SortOrder
+    imagemSeg?: SortOrder
+    imagemTer?: SortOrder
     telefone?: SortOrder
     disponibilidade?: SortOrder
     preco?: SortOrder
@@ -5160,19 +5160,19 @@ export namespace Prisma {
     arquibancada?: SortOrder
     coberta?: SortOrder
     acessibilidade?: SortOrder
-    wi_fi?: SortOrder
+    wifi?: SortOrder
     criado_em?: SortOrder
   }
 
   export type QuadraMinOrderByAggregateInput = {
     id?: SortOrder
-    nome_local?: SortOrder
-    tipo_quadra?: SortOrder
+    nomeLocal?: SortOrder
+    tipoQuadra?: SortOrder
     localizacao?: SortOrder
-    imagem_principal?: SortOrder
-    imagem_pri?: SortOrder
-    imagem_seg?: SortOrder
-    imagem_ter?: SortOrder
+    imagemPrincipal?: SortOrder
+    imagemPri?: SortOrder
+    imagemSeg?: SortOrder
+    imagemTer?: SortOrder
     telefone?: SortOrder
     disponibilidade?: SortOrder
     preco?: SortOrder
@@ -5184,7 +5184,7 @@ export namespace Prisma {
     arquibancada?: SortOrder
     coberta?: SortOrder
     acessibilidade?: SortOrder
-    wi_fi?: SortOrder
+    wifi?: SortOrder
     criado_em?: SortOrder
   }
 
@@ -5646,13 +5646,13 @@ export namespace Prisma {
   }
 
   export type QuadraCreateWithoutLocacaoInput = {
-    nome_local: string
-    tipo_quadra: string
+    nomeLocal: string
+    tipoQuadra: string
     localizacao: string
-    imagem_principal: string
-    imagem_pri: string
-    imagem_seg: string
-    imagem_ter: string
+    imagemPrincipal: string
+    imagemPri: string
+    imagemSeg: string
+    imagemTer: string
     telefone: string
     disponibilidade: string
     preco: number
@@ -5664,19 +5664,19 @@ export namespace Prisma {
     arquibancada: boolean
     coberta: boolean
     acessibilidade: boolean
-    wi_fi: boolean
+    wifi: boolean
     criado_em?: Date | string
   }
 
   export type QuadraUncheckedCreateWithoutLocacaoInput = {
     id?: number
-    nome_local: string
-    tipo_quadra: string
+    nomeLocal: string
+    tipoQuadra: string
     localizacao: string
-    imagem_principal: string
-    imagem_pri: string
-    imagem_seg: string
-    imagem_ter: string
+    imagemPrincipal: string
+    imagemPri: string
+    imagemSeg: string
+    imagemTer: string
     telefone: string
     disponibilidade: string
     preco: number
@@ -5688,7 +5688,7 @@ export namespace Prisma {
     arquibancada: boolean
     coberta: boolean
     acessibilidade: boolean
-    wi_fi: boolean
+    wifi: boolean
     criado_em?: Date | string
   }
 
@@ -5739,13 +5739,13 @@ export namespace Prisma {
   }
 
   export type QuadraUpdateWithoutLocacaoInput = {
-    nome_local?: StringFieldUpdateOperationsInput | string
-    tipo_quadra?: StringFieldUpdateOperationsInput | string
+    nomeLocal?: StringFieldUpdateOperationsInput | string
+    tipoQuadra?: StringFieldUpdateOperationsInput | string
     localizacao?: StringFieldUpdateOperationsInput | string
-    imagem_principal?: StringFieldUpdateOperationsInput | string
-    imagem_pri?: StringFieldUpdateOperationsInput | string
-    imagem_seg?: StringFieldUpdateOperationsInput | string
-    imagem_ter?: StringFieldUpdateOperationsInput | string
+    imagemPrincipal?: StringFieldUpdateOperationsInput | string
+    imagemPri?: StringFieldUpdateOperationsInput | string
+    imagemSeg?: StringFieldUpdateOperationsInput | string
+    imagemTer?: StringFieldUpdateOperationsInput | string
     telefone?: StringFieldUpdateOperationsInput | string
     disponibilidade?: StringFieldUpdateOperationsInput | string
     preco?: FloatFieldUpdateOperationsInput | number
@@ -5757,19 +5757,19 @@ export namespace Prisma {
     arquibancada?: BoolFieldUpdateOperationsInput | boolean
     coberta?: BoolFieldUpdateOperationsInput | boolean
     acessibilidade?: BoolFieldUpdateOperationsInput | boolean
-    wi_fi?: BoolFieldUpdateOperationsInput | boolean
+    wifi?: BoolFieldUpdateOperationsInput | boolean
     criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type QuadraUncheckedUpdateWithoutLocacaoInput = {
     id?: IntFieldUpdateOperationsInput | number
-    nome_local?: StringFieldUpdateOperationsInput | string
-    tipo_quadra?: StringFieldUpdateOperationsInput | string
+    nomeLocal?: StringFieldUpdateOperationsInput | string
+    tipoQuadra?: StringFieldUpdateOperationsInput | string
     localizacao?: StringFieldUpdateOperationsInput | string
-    imagem_principal?: StringFieldUpdateOperationsInput | string
-    imagem_pri?: StringFieldUpdateOperationsInput | string
-    imagem_seg?: StringFieldUpdateOperationsInput | string
-    imagem_ter?: StringFieldUpdateOperationsInput | string
+    imagemPrincipal?: StringFieldUpdateOperationsInput | string
+    imagemPri?: StringFieldUpdateOperationsInput | string
+    imagemSeg?: StringFieldUpdateOperationsInput | string
+    imagemTer?: StringFieldUpdateOperationsInput | string
     telefone?: StringFieldUpdateOperationsInput | string
     disponibilidade?: StringFieldUpdateOperationsInput | string
     preco?: FloatFieldUpdateOperationsInput | number
@@ -5781,7 +5781,7 @@ export namespace Prisma {
     arquibancada?: BoolFieldUpdateOperationsInput | boolean
     coberta?: BoolFieldUpdateOperationsInput | boolean
     acessibilidade?: BoolFieldUpdateOperationsInput | boolean
-    wi_fi?: BoolFieldUpdateOperationsInput | boolean
+    wifi?: BoolFieldUpdateOperationsInput | boolean
     criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

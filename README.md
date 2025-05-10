@@ -90,3 +90,16 @@ Rodapé:
 
 
 Na aula pokedex, ele ensina a quando clicar em "perfil" ele entrega todas as informçãoes do pokemon ou seja entrega todas as informações do usuario, por uma rota.
+
+# Segurança
+
+Nesse caso o usuario pode tentar colocar algo diferente de "true" ou "false", e por isso é bom "forçar" para que valores diferentes desses dois seja barrado com uma mensagem de erro.
+Código em questão:
+    if ((req.query.arquibancada !== "true") && (req.query.arquibancada !== "false")) {
+        return res.status(400).send("Valor de filtro não permitido");
+    }
+
+# Comandos explicação
+
+- npx prisma generate = Quando precisar mudar o nome no "modelo" você atualiza usando esse comando.
+- npx prisma migrate dev = Esse comando serve para criar tabelas no banco de dados e alterar nome de campos na tabela
