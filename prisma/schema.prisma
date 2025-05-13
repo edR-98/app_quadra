@@ -38,7 +38,6 @@ model Quadra {
   imagemSeg        String    @map("imagem_seg")
   imagemTer        String    @map("imagem_ter")
   telefone         String
-  disponibilidade  String
   preco            Float    // Use Float para valores com casas decimais
   dimensoes        String
   iluminacao       Boolean

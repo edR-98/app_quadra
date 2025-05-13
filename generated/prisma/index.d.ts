@@ -2131,7 +2131,6 @@ export namespace Prisma {
     imagemSeg: string | null
     imagemTer: string | null
     telefone: string | null
-    disponibilidade: string | null
     preco: number | null
     dimensoes: string | null
     iluminacao: boolean | null
@@ -2155,7 +2154,6 @@ export namespace Prisma {
     imagemSeg: string | null
     imagemTer: string | null
     telefone: string | null
-    disponibilidade: string | null
     preco: number | null
     dimensoes: string | null
     iluminacao: boolean | null
@@ -2179,7 +2177,6 @@ export namespace Prisma {
     imagemSeg: number
     imagemTer: number
     telefone: number
-    disponibilidade: number
     preco: number
     dimensoes: number
     iluminacao: number
@@ -2215,7 +2212,6 @@ export namespace Prisma {
     imagemSeg?: true
     imagemTer?: true
     telefone?: true
-    disponibilidade?: true
     preco?: true
     dimensoes?: true
     iluminacao?: true
@@ -2239,7 +2235,6 @@ export namespace Prisma {
     imagemSeg?: true
     imagemTer?: true
     telefone?: true
-    disponibilidade?: true
     preco?: true
     dimensoes?: true
     iluminacao?: true
@@ -2263,7 +2258,6 @@ export namespace Prisma {
     imagemSeg?: true
     imagemTer?: true
     telefone?: true
-    disponibilidade?: true
     preco?: true
     dimensoes?: true
     iluminacao?: true
@@ -2374,7 +2368,6 @@ export namespace Prisma {
     imagemSeg: string
     imagemTer: string
     telefone: string
-    disponibilidade: string
     preco: number
     dimensoes: string
     iluminacao: boolean
@@ -2417,7 +2410,6 @@ export namespace Prisma {
     imagemSeg?: boolean
     imagemTer?: boolean
     telefone?: boolean
-    disponibilidade?: boolean
     preco?: boolean
     dimensoes?: boolean
     iluminacao?: boolean
@@ -2445,7 +2437,6 @@ export namespace Prisma {
     imagemSeg?: boolean
     imagemTer?: boolean
     telefone?: boolean
-    disponibilidade?: boolean
     preco?: boolean
     dimensoes?: boolean
     iluminacao?: boolean
@@ -2459,7 +2450,7 @@ export namespace Prisma {
     criado_em?: boolean
   }
 
-  export type QuadraOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nomeLocal" | "tipoQuadra" | "localizacao" | "imagemPrincipal" | "imagemPri" | "imagemSeg" | "imagemTer" | "telefone" | "disponibilidade" | "preco" | "dimensoes" | "iluminacao" | "vestiarios" | "bebedouro" | "estacionamento" | "arquibancada" | "coberta" | "acessibilidade" | "wifi" | "criado_em", ExtArgs["result"]["quadra"]>
+  export type QuadraOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nomeLocal" | "tipoQuadra" | "localizacao" | "imagemPrincipal" | "imagemPri" | "imagemSeg" | "imagemTer" | "telefone" | "preco" | "dimensoes" | "iluminacao" | "vestiarios" | "bebedouro" | "estacionamento" | "arquibancada" | "coberta" | "acessibilidade" | "wifi" | "criado_em", ExtArgs["result"]["quadra"]>
   export type QuadraInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     locacao?: boolean | Quadra$locacaoArgs<ExtArgs>
     _count?: boolean | QuadraCountOutputTypeDefaultArgs<ExtArgs>
@@ -2480,7 +2471,6 @@ export namespace Prisma {
       imagemSeg: string
       imagemTer: string
       telefone: string
-      disponibilidade: string
       preco: number
       dimensoes: string
       iluminacao: boolean
@@ -2871,7 +2861,6 @@ export namespace Prisma {
     readonly imagemSeg: FieldRef<"Quadra", 'String'>
     readonly imagemTer: FieldRef<"Quadra", 'String'>
     readonly telefone: FieldRef<"Quadra", 'String'>
-    readonly disponibilidade: FieldRef<"Quadra", 'String'>
     readonly preco: FieldRef<"Quadra", 'Float'>
     readonly dimensoes: FieldRef<"Quadra", 'String'>
     readonly iluminacao: FieldRef<"Quadra", 'Boolean'>
@@ -4288,7 +4277,6 @@ export namespace Prisma {
     imagemSeg: 'imagemSeg',
     imagemTer: 'imagemTer',
     telefone: 'telefone',
-    disponibilidade: 'disponibilidade',
     preco: 'preco',
     dimensoes: 'dimensoes',
     iluminacao: 'iluminacao',
@@ -4343,7 +4331,6 @@ export namespace Prisma {
     imagemSeg: 'imagemSeg',
     imagemTer: 'imagemTer',
     telefone: 'telefone',
-    disponibilidade: 'disponibilidade',
     dimensoes: 'dimensoes'
   };
 
@@ -4474,7 +4461,6 @@ export namespace Prisma {
     imagemSeg?: StringFilter<"Quadra"> | string
     imagemTer?: StringFilter<"Quadra"> | string
     telefone?: StringFilter<"Quadra"> | string
-    disponibilidade?: StringFilter<"Quadra"> | string
     preco?: FloatFilter<"Quadra"> | number
     dimensoes?: StringFilter<"Quadra"> | string
     iluminacao?: BoolFilter<"Quadra"> | boolean
@@ -4499,7 +4485,6 @@ export namespace Prisma {
     imagemSeg?: SortOrder
     imagemTer?: SortOrder
     telefone?: SortOrder
-    disponibilidade?: SortOrder
     preco?: SortOrder
     dimensoes?: SortOrder
     iluminacao?: SortOrder
@@ -4528,7 +4513,6 @@ export namespace Prisma {
     imagemSeg?: StringFilter<"Quadra"> | string
     imagemTer?: StringFilter<"Quadra"> | string
     telefone?: StringFilter<"Quadra"> | string
-    disponibilidade?: StringFilter<"Quadra"> | string
     preco?: FloatFilter<"Quadra"> | number
     dimensoes?: StringFilter<"Quadra"> | string
     iluminacao?: BoolFilter<"Quadra"> | boolean
@@ -4553,7 +4537,6 @@ export namespace Prisma {
     imagemSeg?: SortOrder
     imagemTer?: SortOrder
     telefone?: SortOrder
-    disponibilidade?: SortOrder
     preco?: SortOrder
     dimensoes?: SortOrder
     iluminacao?: SortOrder
@@ -4585,7 +4568,6 @@ export namespace Prisma {
     imagemSeg?: StringWithAggregatesFilter<"Quadra"> | string
     imagemTer?: StringWithAggregatesFilter<"Quadra"> | string
     telefone?: StringWithAggregatesFilter<"Quadra"> | string
-    disponibilidade?: StringWithAggregatesFilter<"Quadra"> | string
     preco?: FloatWithAggregatesFilter<"Quadra"> | number
     dimensoes?: StringWithAggregatesFilter<"Quadra"> | string
     iluminacao?: BoolWithAggregatesFilter<"Quadra"> | boolean
@@ -4739,7 +4721,6 @@ export namespace Prisma {
     imagemSeg: string
     imagemTer: string
     telefone: string
-    disponibilidade: string
     preco: number
     dimensoes: string
     iluminacao: boolean
@@ -4764,7 +4745,6 @@ export namespace Prisma {
     imagemSeg: string
     imagemTer: string
     telefone: string
-    disponibilidade: string
     preco: number
     dimensoes: string
     iluminacao: boolean
@@ -4788,7 +4768,6 @@ export namespace Prisma {
     imagemSeg?: StringFieldUpdateOperationsInput | string
     imagemTer?: StringFieldUpdateOperationsInput | string
     telefone?: StringFieldUpdateOperationsInput | string
-    disponibilidade?: StringFieldUpdateOperationsInput | string
     preco?: FloatFieldUpdateOperationsInput | number
     dimensoes?: StringFieldUpdateOperationsInput | string
     iluminacao?: BoolFieldUpdateOperationsInput | boolean
@@ -4813,7 +4792,6 @@ export namespace Prisma {
     imagemSeg?: StringFieldUpdateOperationsInput | string
     imagemTer?: StringFieldUpdateOperationsInput | string
     telefone?: StringFieldUpdateOperationsInput | string
-    disponibilidade?: StringFieldUpdateOperationsInput | string
     preco?: FloatFieldUpdateOperationsInput | number
     dimensoes?: StringFieldUpdateOperationsInput | string
     iluminacao?: BoolFieldUpdateOperationsInput | boolean
@@ -4838,7 +4816,6 @@ export namespace Prisma {
     imagemSeg: string
     imagemTer: string
     telefone: string
-    disponibilidade: string
     preco: number
     dimensoes: string
     iluminacao: boolean
@@ -4861,7 +4838,6 @@ export namespace Prisma {
     imagemSeg?: StringFieldUpdateOperationsInput | string
     imagemTer?: StringFieldUpdateOperationsInput | string
     telefone?: StringFieldUpdateOperationsInput | string
-    disponibilidade?: StringFieldUpdateOperationsInput | string
     preco?: FloatFieldUpdateOperationsInput | number
     dimensoes?: StringFieldUpdateOperationsInput | string
     iluminacao?: BoolFieldUpdateOperationsInput | boolean
@@ -4885,7 +4861,6 @@ export namespace Prisma {
     imagemSeg?: StringFieldUpdateOperationsInput | string
     imagemTer?: StringFieldUpdateOperationsInput | string
     telefone?: StringFieldUpdateOperationsInput | string
-    disponibilidade?: StringFieldUpdateOperationsInput | string
     preco?: FloatFieldUpdateOperationsInput | number
     dimensoes?: StringFieldUpdateOperationsInput | string
     iluminacao?: BoolFieldUpdateOperationsInput | boolean
@@ -5121,7 +5096,6 @@ export namespace Prisma {
     imagemSeg?: SortOrder
     imagemTer?: SortOrder
     telefone?: SortOrder
-    disponibilidade?: SortOrder
     preco?: SortOrder
     dimensoes?: SortOrder
     iluminacao?: SortOrder
@@ -5150,7 +5124,6 @@ export namespace Prisma {
     imagemSeg?: SortOrder
     imagemTer?: SortOrder
     telefone?: SortOrder
-    disponibilidade?: SortOrder
     preco?: SortOrder
     dimensoes?: SortOrder
     iluminacao?: SortOrder
@@ -5174,7 +5147,6 @@ export namespace Prisma {
     imagemSeg?: SortOrder
     imagemTer?: SortOrder
     telefone?: SortOrder
-    disponibilidade?: SortOrder
     preco?: SortOrder
     dimensoes?: SortOrder
     iluminacao?: SortOrder
@@ -5654,7 +5626,6 @@ export namespace Prisma {
     imagemSeg: string
     imagemTer: string
     telefone: string
-    disponibilidade: string
     preco: number
     dimensoes: string
     iluminacao: boolean
@@ -5678,7 +5649,6 @@ export namespace Prisma {
     imagemSeg: string
     imagemTer: string
     telefone: string
-    disponibilidade: string
     preco: number
     dimensoes: string
     iluminacao: boolean
@@ -5747,7 +5717,6 @@ export namespace Prisma {
     imagemSeg?: StringFieldUpdateOperationsInput | string
     imagemTer?: StringFieldUpdateOperationsInput | string
     telefone?: StringFieldUpdateOperationsInput | string
-    disponibilidade?: StringFieldUpdateOperationsInput | string
     preco?: FloatFieldUpdateOperationsInput | number
     dimensoes?: StringFieldUpdateOperationsInput | string
     iluminacao?: BoolFieldUpdateOperationsInput | boolean
@@ -5771,7 +5740,6 @@ export namespace Prisma {
     imagemSeg?: StringFieldUpdateOperationsInput | string
     imagemTer?: StringFieldUpdateOperationsInput | string
     telefone?: StringFieldUpdateOperationsInput | string
-    disponibilidade?: StringFieldUpdateOperationsInput | string
     preco?: FloatFieldUpdateOperationsInput | number
     dimensoes?: StringFieldUpdateOperationsInput | string
     iluminacao?: BoolFieldUpdateOperationsInput | boolean

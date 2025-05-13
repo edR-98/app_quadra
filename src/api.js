@@ -15,21 +15,7 @@ app.get('/', (req, res) => {
 
 app.use(bodyParser.json()); 
 
-// ------------------------------------------------------------------------------------------------------------------------------------------------ // 
-
-
-app.post("/produtos", async (req, res) => {
-
-  if ((req.body.nome === undefined) || (req.body.preco === undefined) ) { 
-    res.status(400).send("Campos obrigatórios faltantes");
-  } else {
-    const novoProduto = await prisma.produto.create({ data: {
-      nome: req.body.nome,
-      preco: req.body.preco
-    }});
-    res.status(201).location(`/produtos/${novoProduto.id}`).send();
-  }
-});
+// PRODUTOS ------------------------------------------------------------------------------------------------------------------------------------------------ // 
 
 app.put("/produtos/:id", async (req, res) => {
   const id = parseInt(req.params.id); 
@@ -73,31 +59,35 @@ app.get('/quadras', async (req, res) => {
   // if ((req.query.arquibancada !== "true") && (req.query.arquibancada !== "false")) {
   //   return res.status(400).send("Valor de filtro não permitido");
     
-  // const precoMin = req.query.preco_min; <--- Essa linha é para o preço --->
-  // const precoMax = req.query.preco_max;
-
+  const precoMin = parseFloat(req.query.preco_min);
+  const precoMax = parseFloat(req.query.preco_max);
   const tipoQuadra = (req.query.tipo_quadra === '') ? undefined : req.query.tipo_quadra;
-  const iluminacao = (req.query.iluminacao === undefined) ? undefined : req.query.iluminacao === "true";
-  const vestiarios = req.query.vestiarios === "true";
-  const bebedouro = req.query.bebedouro === "true";
-  const estacionamento = req.query.estacionamento === "true";
-  const arquibancada = req.query.arquibancada === "true";
-  const coberta = req.query.coberta === "true";
-  const acessibilidade = req.query.acessibilidade === "true";
-  const wifi = req.query.wifi === "true";
+  const iluminacao = (req.query.iluminacao === undefined) ? undefined : req.query.iluminacao == '1';
+  const vestiarios = (req.query.vestiarios === undefined) ? undefined : req.query.vestiarios;
+  const bebedouro = (req.query.bebedouro === undefined) ? undefined : req.query.bebedouro;
+  const estacionamento = (req.query.estacionamento === undefined) ? undefined : req.query.estacionamento;
+  const arquibancada = (req.query.arquibancada === undefined) ? undefined : req.query.arquibancada;
+  const coberta = (req.query.coberta === undefined) ? undefined : req.query.coberta;
+  const acessibilidade = (req.query.acessibilidade === undefined) ? undefined : req.query.acessibilidade;
+  const wifi = (req.query.wifi === undefined) ? undefined : req.query.wifi;
 
 
   const quadras = await prisma.quadra.findMany({ where: {
     tipoQuadra,
     iluminacao,
-    // vestiarios,
-    // bebedouro,
-    // estacionamento,
-    // arquibancada,
-    // coberta,
-    // acessibilidade,
-    // wifi
+    vestiarios,
+    bebedouro,
+    estacionamento,
+    arquibancada,
+    coberta,
+    acessibilidade,
+    wifi,
+    preco: {
+      gte: precoMin,  // maior ou igual a 100
+      lte: precoMax   // menor ou igual a 150
+    }
   }}); 
+
   res.json(quadras); 
 });
 
@@ -233,9 +223,22 @@ app.get("/usuarios/:id/quadras", async (req, res) => {
   }
 });
 
-// FAzer um post para criar conta
+app.post("/usuarios", async (req, res) => {
 
-// fazer um post para autenticar o usuário
+  if ((req.body.nome === undefined) || (req.body.nascimento === undefined) || (req.body.email === undefined) || (req.body.cpf === undefined) || (req.body.senha === undefined) ) { 
+    res.status(400).send("Campos obrigatórios faltantes");
+  } else {
+    const novoUsuario = await prisma.usuario.create({ data: {
+      nome: req.body.nome,
+      nascimento: req.body.nascimento,
+      email: req.body.email,
+      cpf: req.body.cpf,
+      senha: req.body.senha
+    }});
+    
+    res.status(201).location(`/usuarios/${novoUsuario.id}`).send();
+  }
+});
 
 
 // Locações ------------------------------------------------------------------------------------------------------------------------------------------------ //
@@ -257,7 +260,18 @@ app.get("/locacoes/:id", async (req, res) => {
     }
 });
 
-// fazer um post em locacoes
+app.post("/locacoes", async (req, res) => {
+
+  if ((req.body.nome === undefined) || (req.body.preco === undefined) ) { 
+    res.status(400).send("Campos obrigatórios faltantes");
+  } else {
+    const novaLocacao = await prisma.locacao.create({ data: {
+      nome: req.body.nome,
+      preco: req.body.preco
+    }});
+    res.status(201).location(`/locacoes/${novaLocacao.id}`).send();
+  }
+});
 
 // fazer um get em locacoes buscando as quadras pelo id do usário
 

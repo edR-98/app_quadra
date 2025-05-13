@@ -140,7 +140,6 @@ exports.Prisma.QuadraScalarFieldEnum = {
   imagemSeg: 'imagemSeg',
   imagemTer: 'imagemTer',
   telefone: 'telefone',
-  disponibilidade: 'disponibilidade',
   preco: 'preco',
   dimensoes: 'dimensoes',
   iluminacao: 'iluminacao',
@@ -183,7 +182,6 @@ exports.Prisma.QuadraOrderByRelevanceFieldEnum = {
   imagemSeg: 'imagemSeg',
   imagemTer: 'imagemTer',
   telefone: 'telefone',
-  disponibilidade: 'disponibilidade',
   dimensoes: 'dimensoes'
 };
 
