@@ -56,12 +56,11 @@ model Quadra {
 
   model Locacao {
   id          Int       @id @default(autoincrement())
-  id_usuario  Int
-  id_quadra   Int
-  usuario     Usuario @relation(fields: [id_usuario], references: [id])
-  quadra      Quadra   @relation(fields: [id_quadra], references: [id])
-  data        Int
-  hora        Int
+  idUsuario  Int      @map("id_usuario")
+  idQuadra   Int      @map("id_quadra")
+  usuario     Usuario @relation(fields: [idUsuario], references: [id])
+  quadra      Quadra   @relation(fields: [idQuadra], references: [id])
+  dataHora    DateTime @map("data_hora")
 
   @@map("locacoes") // Nome da tabela no banco
 }

@@ -155,10 +155,9 @@ exports.Prisma.QuadraScalarFieldEnum = {
 
 exports.Prisma.LocacaoScalarFieldEnum = {
   id: 'id',
-  id_usuario: 'id_usuario',
-  id_quadra: 'id_quadra',
-  data: 'data',
-  hora: 'hora'
+  idUsuario: 'idUsuario',
+  idQuadra: 'idQuadra',
+  dataHora: 'dataHora'
 };
 
 exports.Prisma.SortOrder = {

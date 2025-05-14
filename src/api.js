@@ -63,14 +63,17 @@ app.get('/quadras', async (req, res) => {
   const precoMax = parseFloat(req.query.preco_max);
   const tipoQuadra = (req.query.tipo_quadra === '') ? undefined : req.query.tipo_quadra;
   const iluminacao = (req.query.iluminacao === undefined) ? undefined : req.query.iluminacao == '1';
-  const vestiarios = (req.query.vestiarios === undefined) ? undefined : req.query.vestiarios;
-  const bebedouro = (req.query.bebedouro === undefined) ? undefined : req.query.bebedouro;
-  const estacionamento = (req.query.estacionamento === undefined) ? undefined : req.query.estacionamento;
-  const arquibancada = (req.query.arquibancada === undefined) ? undefined : req.query.arquibancada;
-  const coberta = (req.query.coberta === undefined) ? undefined : req.query.coberta;
-  const acessibilidade = (req.query.acessibilidade === undefined) ? undefined : req.query.acessibilidade;
-  const wifi = (req.query.wifi === undefined) ? undefined : req.query.wifi;
-
+  const vestiarios = (req.query.vestiarios === undefined) ? undefined : req.query.vestiarios == '1';
+  const bebedouro = (req.query.bebedouro === undefined) ? undefined : req.query.bebedouro == '1';
+  const estacionamento = (req.query.estacionamento === undefined) ? undefined : req.query.estacionamento == '1';
+  const arquibancada = (req.query.arquibancada === undefined) ? undefined : req.query.arquibancada == '1';
+  const coberta = (req.query.coberta === undefined) ? undefined : req.query.coberta == '1';
+  const acessibilidade = (req.query.acessibilidade === undefined) ? undefined : req.query.acessibilidade == '1';
+  const wifi = (req.query.wifi === undefined) ? undefined : req.query.wifi == '1';
+  
+  if (isNaN(precoMin) || isNaN(precoMax)) {
+    return res.status(400).json({ error: "Preço inválido" });
+  }
 
   const quadras = await prisma.quadra.findMany({ where: {
     tipoQuadra,
@@ -82,50 +85,14 @@ app.get('/quadras', async (req, res) => {
     coberta,
     acessibilidade,
     wifi,
-    preco: {
-      gte: precoMin,  // maior ou igual a 100
-      lte: precoMax   // menor ou igual a 150
+    preco: { // Filtra quadras com preço entre precoMin e precoMax
+      gte: precoMin,  // gte = "greater than or equal", ou seja, maior ou igual ao preço mínimo 
+      lte: precoMax   // lte = "less than or equal", ou seja, menor ou igual ao preço máximo
     }
   }}); 
 
   res.json(quadras); 
 });
-
-// app.get('/quadras', async (req, res) => {
-//   const {
-//     tipoQuadra,
-//     iluminacao,
-//     vestiarios,
-//     bebedouro,
-//     estacionamento,
-//     arquibancada,
-//     coberta,
-//     acessibilidade,
-//     wifi
-//   } = req.query;
-
-//   const filtros = {};
-
-//   if (tipoQuadra) filtros.tipo_quadra = tipo_quadra;
-//   if (iluminacao !== undefined) filtros.iluminacao = iluminacao === "true";
-//   if (vestiarios !== undefined) filtros.vestiarios = vestiarios === "true";
-//   if (bebedouro !== undefined) filtros.bebedouro = bebedouro === "true";
-//   if (estacionamento !== undefined) filtros.estacionamento = estacionamento === "true";
-//   if (arquibancada !== undefined) filtros.arquibancada = arquibancada === "true";
-//   if (coberta !== undefined) filtros.coberta = coberta === "true";
-//   if (acessibilidade !== undefined) filtros.acessibilidade = acessibilidade === "true";
-//   if (wifi !== undefined) filtros.wi_fi = wifi === "true";
-
-//   try {
-//     const quadras = await prisma.quadra.findMany({
-//       where: filtros
-//     });
-//     res.json(quadras);
-//   } catch (error) {
-//     console.error('Erro ao buscar quadras:', error);
-//     res.status(500).json({ error: 'Erro ao buscar quadras' });
-//   }
-// });
 
 
 app.get("/quadras/:id", async (req, res) => {
@@ -139,7 +106,6 @@ app.get("/quadras/:id", async (req, res) => {
       res.json(quadra); 
     }
 });
-
 
 
 app.get("/quadras/:id/usuarios", async (req, res) => {
@@ -164,7 +130,6 @@ app.get("/quadras/:id/usuarios", async (req, res) => {
     res.status(500).json({ error: "Erro ao obter os usuários que alugaram essa quadra" });
   }
 });
-
 
 
 app.delete("/quadras/:id", async (req, res) => {
@@ -262,12 +227,13 @@ app.get("/locacoes/:id", async (req, res) => {
 
 app.post("/locacoes", async (req, res) => {
 
-  if ((req.body.nome === undefined) || (req.body.preco === undefined) ) { 
+  if ((req.body.id_usuario === undefined) || (req.body.id_quadra === undefined) || (req.body.data_hora === undefined)) { 
     res.status(400).send("Campos obrigatórios faltantes");
   } else {
     const novaLocacao = await prisma.locacao.create({ data: {
-      nome: req.body.nome,
-      preco: req.body.preco
+      idUsuario: req.body.id_usuario,
+      idQuadra: req.body.id_quadra,
+      dataHora: new Date(req.body.data_hora)
     }});
     res.status(201).location(`/locacoes/${novaLocacao.id}`).send();
   }
@@ -278,3 +244,6 @@ app.post("/locacoes", async (req, res) => {
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);
 });
+
+
+// Datepicker

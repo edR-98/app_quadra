@@ -3271,84 +3271,70 @@ export namespace Prisma {
 
   export type LocacaoAvgAggregateOutputType = {
     id: number | null
-    id_usuario: number | null
-    id_quadra: number | null
-    data: number | null
-    hora: number | null
+    idUsuario: number | null
+    idQuadra: number | null
   }
 
   export type LocacaoSumAggregateOutputType = {
     id: number | null
-    id_usuario: number | null
-    id_quadra: number | null
-    data: number | null
-    hora: number | null
+    idUsuario: number | null
+    idQuadra: number | null
   }
 
   export type LocacaoMinAggregateOutputType = {
     id: number | null
-    id_usuario: number | null
-    id_quadra: number | null
-    data: number | null
-    hora: number | null
+    idUsuario: number | null
+    idQuadra: number | null
+    dataHora: Date | null
   }
 
   export type LocacaoMaxAggregateOutputType = {
     id: number | null
-    id_usuario: number | null
-    id_quadra: number | null
-    data: number | null
-    hora: number | null
+    idUsuario: number | null
+    idQuadra: number | null
+    dataHora: Date | null
   }
 
   export type LocacaoCountAggregateOutputType = {
     id: number
-    id_usuario: number
-    id_quadra: number
-    data: number
-    hora: number
+    idUsuario: number
+    idQuadra: number
+    dataHora: number
     _all: number
   }
 
 
   export type LocacaoAvgAggregateInputType = {
     id?: true
-    id_usuario?: true
-    id_quadra?: true
-    data?: true
-    hora?: true
+    idUsuario?: true
+    idQuadra?: true
   }
 
   export type LocacaoSumAggregateInputType = {
     id?: true
-    id_usuario?: true
-    id_quadra?: true
-    data?: true
-    hora?: true
+    idUsuario?: true
+    idQuadra?: true
   }
 
   export type LocacaoMinAggregateInputType = {
     id?: true
-    id_usuario?: true
-    id_quadra?: true
-    data?: true
-    hora?: true
+    idUsuario?: true
+    idQuadra?: true
+    dataHora?: true
   }
 
   export type LocacaoMaxAggregateInputType = {
     id?: true
-    id_usuario?: true
-    id_quadra?: true
-    data?: true
-    hora?: true
+    idUsuario?: true
+    idQuadra?: true
+    dataHora?: true
   }
 
   export type LocacaoCountAggregateInputType = {
     id?: true
-    id_usuario?: true
-    id_quadra?: true
-    data?: true
-    hora?: true
+    idUsuario?: true
+    idQuadra?: true
+    dataHora?: true
     _all?: true
   }
 
@@ -3440,10 +3426,9 @@ export namespace Prisma {
 
   export type LocacaoGroupByOutputType = {
     id: number
-    id_usuario: number
-    id_quadra: number
-    data: number
-    hora: number
+    idUsuario: number
+    idQuadra: number
+    dataHora: Date
     _count: LocacaoCountAggregateOutputType | null
     _avg: LocacaoAvgAggregateOutputType | null
     _sum: LocacaoSumAggregateOutputType | null
@@ -3467,10 +3452,9 @@ export namespace Prisma {
 
   export type LocacaoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    id_usuario?: boolean
-    id_quadra?: boolean
-    data?: boolean
-    hora?: boolean
+    idUsuario?: boolean
+    idQuadra?: boolean
+    dataHora?: boolean
     usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
     quadra?: boolean | QuadraDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["locacao"]>
@@ -3479,13 +3463,12 @@ export namespace Prisma {
 
   export type LocacaoSelectScalar = {
     id?: boolean
-    id_usuario?: boolean
-    id_quadra?: boolean
-    data?: boolean
-    hora?: boolean
+    idUsuario?: boolean
+    idQuadra?: boolean
+    dataHora?: boolean
   }
 
-  export type LocacaoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "id_usuario" | "id_quadra" | "data" | "hora", ExtArgs["result"]["locacao"]>
+  export type LocacaoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "idUsuario" | "idQuadra" | "dataHora", ExtArgs["result"]["locacao"]>
   export type LocacaoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
     quadra?: boolean | QuadraDefaultArgs<ExtArgs>
@@ -3499,10 +3482,9 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      id_usuario: number
-      id_quadra: number
-      data: number
-      hora: number
+      idUsuario: number
+      idQuadra: number
+      dataHora: Date
     }, ExtArgs["result"]["locacao"]>
     composites: {}
   }
@@ -3875,10 +3857,9 @@ export namespace Prisma {
    */
   interface LocacaoFieldRefs {
     readonly id: FieldRef<"Locacao", 'Int'>
-    readonly id_usuario: FieldRef<"Locacao", 'Int'>
-    readonly id_quadra: FieldRef<"Locacao", 'Int'>
-    readonly data: FieldRef<"Locacao", 'Int'>
-    readonly hora: FieldRef<"Locacao", 'Int'>
+    readonly idUsuario: FieldRef<"Locacao", 'Int'>
+    readonly idQuadra: FieldRef<"Locacao", 'Int'>
+    readonly dataHora: FieldRef<"Locacao", 'DateTime'>
   }
     
 
@@ -4295,10 +4276,9 @@ export namespace Prisma {
 
   export const LocacaoScalarFieldEnum: {
     id: 'id',
-    id_usuario: 'id_usuario',
-    id_quadra: 'id_quadra',
-    data: 'data',
-    hora: 'hora'
+    idUsuario: 'idUsuario',
+    idQuadra: 'idQuadra',
+    dataHora: 'dataHora'
   };
 
   export type LocacaoScalarFieldEnum = (typeof LocacaoScalarFieldEnum)[keyof typeof LocacaoScalarFieldEnum]
@@ -4586,20 +4566,18 @@ export namespace Prisma {
     OR?: LocacaoWhereInput[]
     NOT?: LocacaoWhereInput | LocacaoWhereInput[]
     id?: IntFilter<"Locacao"> | number
-    id_usuario?: IntFilter<"Locacao"> | number
-    id_quadra?: IntFilter<"Locacao"> | number
-    data?: IntFilter<"Locacao"> | number
-    hora?: IntFilter<"Locacao"> | number
+    idUsuario?: IntFilter<"Locacao"> | number
+    idQuadra?: IntFilter<"Locacao"> | number
+    dataHora?: DateTimeFilter<"Locacao"> | Date | string
     usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
     quadra?: XOR<QuadraScalarRelationFilter, QuadraWhereInput>
   }
 
   export type LocacaoOrderByWithRelationInput = {
     id?: SortOrder
-    id_usuario?: SortOrder
-    id_quadra?: SortOrder
-    data?: SortOrder
-    hora?: SortOrder
+    idUsuario?: SortOrder
+    idQuadra?: SortOrder
+    dataHora?: SortOrder
     usuario?: UsuarioOrderByWithRelationInput
     quadra?: QuadraOrderByWithRelationInput
   }
@@ -4609,20 +4587,18 @@ export namespace Prisma {
     AND?: LocacaoWhereInput | LocacaoWhereInput[]
     OR?: LocacaoWhereInput[]
     NOT?: LocacaoWhereInput | LocacaoWhereInput[]
-    id_usuario?: IntFilter<"Locacao"> | number
-    id_quadra?: IntFilter<"Locacao"> | number
-    data?: IntFilter<"Locacao"> | number
-    hora?: IntFilter<"Locacao"> | number
+    idUsuario?: IntFilter<"Locacao"> | number
+    idQuadra?: IntFilter<"Locacao"> | number
+    dataHora?: DateTimeFilter<"Locacao"> | Date | string
     usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
     quadra?: XOR<QuadraScalarRelationFilter, QuadraWhereInput>
   }, "id">
 
   export type LocacaoOrderByWithAggregationInput = {
     id?: SortOrder
-    id_usuario?: SortOrder
-    id_quadra?: SortOrder
-    data?: SortOrder
-    hora?: SortOrder
+    idUsuario?: SortOrder
+    idQuadra?: SortOrder
+    dataHora?: SortOrder
     _count?: LocacaoCountOrderByAggregateInput
     _avg?: LocacaoAvgOrderByAggregateInput
     _max?: LocacaoMaxOrderByAggregateInput
@@ -4635,10 +4611,9 @@ export namespace Prisma {
     OR?: LocacaoScalarWhereWithAggregatesInput[]
     NOT?: LocacaoScalarWhereWithAggregatesInput | LocacaoScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Locacao"> | number
-    id_usuario?: IntWithAggregatesFilter<"Locacao"> | number
-    id_quadra?: IntWithAggregatesFilter<"Locacao"> | number
-    data?: IntWithAggregatesFilter<"Locacao"> | number
-    hora?: IntWithAggregatesFilter<"Locacao"> | number
+    idUsuario?: IntWithAggregatesFilter<"Locacao"> | number
+    idQuadra?: IntWithAggregatesFilter<"Locacao"> | number
+    dataHora?: DateTimeWithAggregatesFilter<"Locacao"> | Date | string
   }
 
   export type UsuarioCreateInput = {
@@ -4875,54 +4850,47 @@ export namespace Prisma {
   }
 
   export type LocacaoCreateInput = {
-    data: number
-    hora: number
+    dataHora: Date | string
     usuario: UsuarioCreateNestedOneWithoutLocacaoInput
     quadra: QuadraCreateNestedOneWithoutLocacaoInput
   }
 
   export type LocacaoUncheckedCreateInput = {
     id?: number
-    id_usuario: number
-    id_quadra: number
-    data: number
-    hora: number
+    idUsuario: number
+    idQuadra: number
+    dataHora: Date | string
   }
 
   export type LocacaoUpdateInput = {
-    data?: IntFieldUpdateOperationsInput | number
-    hora?: IntFieldUpdateOperationsInput | number
+    dataHora?: DateTimeFieldUpdateOperationsInput | Date | string
     usuario?: UsuarioUpdateOneRequiredWithoutLocacaoNestedInput
     quadra?: QuadraUpdateOneRequiredWithoutLocacaoNestedInput
   }
 
   export type LocacaoUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    id_usuario?: IntFieldUpdateOperationsInput | number
-    id_quadra?: IntFieldUpdateOperationsInput | number
-    data?: IntFieldUpdateOperationsInput | number
-    hora?: IntFieldUpdateOperationsInput | number
+    idUsuario?: IntFieldUpdateOperationsInput | number
+    idQuadra?: IntFieldUpdateOperationsInput | number
+    dataHora?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type LocacaoCreateManyInput = {
     id?: number
-    id_usuario: number
-    id_quadra: number
-    data: number
-    hora: number
+    idUsuario: number
+    idQuadra: number
+    dataHora: Date | string
   }
 
   export type LocacaoUpdateManyMutationInput = {
-    data?: IntFieldUpdateOperationsInput | number
-    hora?: IntFieldUpdateOperationsInput | number
+    dataHora?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type LocacaoUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    id_usuario?: IntFieldUpdateOperationsInput | number
-    id_quadra?: IntFieldUpdateOperationsInput | number
-    data?: IntFieldUpdateOperationsInput | number
-    hora?: IntFieldUpdateOperationsInput | number
+    idUsuario?: IntFieldUpdateOperationsInput | number
+    idQuadra?: IntFieldUpdateOperationsInput | number
+    dataHora?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -5201,42 +5169,35 @@ export namespace Prisma {
 
   export type LocacaoCountOrderByAggregateInput = {
     id?: SortOrder
-    id_usuario?: SortOrder
-    id_quadra?: SortOrder
-    data?: SortOrder
-    hora?: SortOrder
+    idUsuario?: SortOrder
+    idQuadra?: SortOrder
+    dataHora?: SortOrder
   }
 
   export type LocacaoAvgOrderByAggregateInput = {
     id?: SortOrder
-    id_usuario?: SortOrder
-    id_quadra?: SortOrder
-    data?: SortOrder
-    hora?: SortOrder
+    idUsuario?: SortOrder
+    idQuadra?: SortOrder
   }
 
   export type LocacaoMaxOrderByAggregateInput = {
     id?: SortOrder
-    id_usuario?: SortOrder
-    id_quadra?: SortOrder
-    data?: SortOrder
-    hora?: SortOrder
+    idUsuario?: SortOrder
+    idQuadra?: SortOrder
+    dataHora?: SortOrder
   }
 
   export type LocacaoMinOrderByAggregateInput = {
     id?: SortOrder
-    id_usuario?: SortOrder
-    id_quadra?: SortOrder
-    data?: SortOrder
-    hora?: SortOrder
+    idUsuario?: SortOrder
+    idQuadra?: SortOrder
+    dataHora?: SortOrder
   }
 
   export type LocacaoSumOrderByAggregateInput = {
     id?: SortOrder
-    id_usuario?: SortOrder
-    id_quadra?: SortOrder
-    data?: SortOrder
-    hora?: SortOrder
+    idUsuario?: SortOrder
+    idQuadra?: SortOrder
   }
 
   export type LocacaoCreateNestedManyWithoutUsuarioInput = {
@@ -5505,16 +5466,14 @@ export namespace Prisma {
   }
 
   export type LocacaoCreateWithoutUsuarioInput = {
-    data: number
-    hora: number
+    dataHora: Date | string
     quadra: QuadraCreateNestedOneWithoutLocacaoInput
   }
 
   export type LocacaoUncheckedCreateWithoutUsuarioInput = {
     id?: number
-    id_quadra: number
-    data: number
-    hora: number
+    idQuadra: number
+    dataHora: Date | string
   }
 
   export type LocacaoCreateOrConnectWithoutUsuarioInput = {
@@ -5548,23 +5507,20 @@ export namespace Prisma {
     OR?: LocacaoScalarWhereInput[]
     NOT?: LocacaoScalarWhereInput | LocacaoScalarWhereInput[]
     id?: IntFilter<"Locacao"> | number
-    id_usuario?: IntFilter<"Locacao"> | number
-    id_quadra?: IntFilter<"Locacao"> | number
-    data?: IntFilter<"Locacao"> | number
-    hora?: IntFilter<"Locacao"> | number
+    idUsuario?: IntFilter<"Locacao"> | number
+    idQuadra?: IntFilter<"Locacao"> | number
+    dataHora?: DateTimeFilter<"Locacao"> | Date | string
   }
 
   export type LocacaoCreateWithoutQuadraInput = {
-    data: number
-    hora: number
+    dataHora: Date | string
     usuario: UsuarioCreateNestedOneWithoutLocacaoInput
   }
 
   export type LocacaoUncheckedCreateWithoutQuadraInput = {
     id?: number
-    id_usuario: number
-    data: number
-    hora: number
+    idUsuario: number
+    dataHora: Date | string
   }
 
   export type LocacaoCreateOrConnectWithoutQuadraInput = {
@@ -5755,56 +5711,48 @@ export namespace Prisma {
 
   export type LocacaoCreateManyUsuarioInput = {
     id?: number
-    id_quadra: number
-    data: number
-    hora: number
+    idQuadra: number
+    dataHora: Date | string
   }
 
   export type LocacaoUpdateWithoutUsuarioInput = {
-    data?: IntFieldUpdateOperationsInput | number
-    hora?: IntFieldUpdateOperationsInput | number
+    dataHora?: DateTimeFieldUpdateOperationsInput | Date | string
     quadra?: QuadraUpdateOneRequiredWithoutLocacaoNestedInput
   }
 
   export type LocacaoUncheckedUpdateWithoutUsuarioInput = {
     id?: IntFieldUpdateOperationsInput | number
-    id_quadra?: IntFieldUpdateOperationsInput | number
-    data?: IntFieldUpdateOperationsInput | number
-    hora?: IntFieldUpdateOperationsInput | number
+    idQuadra?: IntFieldUpdateOperationsInput | number
+    dataHora?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type LocacaoUncheckedUpdateManyWithoutUsuarioInput = {
     id?: IntFieldUpdateOperationsInput | number
-    id_quadra?: IntFieldUpdateOperationsInput | number
-    data?: IntFieldUpdateOperationsInput | number
-    hora?: IntFieldUpdateOperationsInput | number
+    idQuadra?: IntFieldUpdateOperationsInput | number
+    dataHora?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type LocacaoCreateManyQuadraInput = {
     id?: number
-    id_usuario: number
-    data: number
-    hora: number
+    idUsuario: number
+    dataHora: Date | string
   }
 
   export type LocacaoUpdateWithoutQuadraInput = {
-    data?: IntFieldUpdateOperationsInput | number
-    hora?: IntFieldUpdateOperationsInput | number
+    dataHora?: DateTimeFieldUpdateOperationsInput | Date | string
     usuario?: UsuarioUpdateOneRequiredWithoutLocacaoNestedInput
   }
 
   export type LocacaoUncheckedUpdateWithoutQuadraInput = {
     id?: IntFieldUpdateOperationsInput | number
-    id_usuario?: IntFieldUpdateOperationsInput | number
-    data?: IntFieldUpdateOperationsInput | number
-    hora?: IntFieldUpdateOperationsInput | number
+    idUsuario?: IntFieldUpdateOperationsInput | number
+    dataHora?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type LocacaoUncheckedUpdateManyWithoutQuadraInput = {
     id?: IntFieldUpdateOperationsInput | number
-    id_usuario?: IntFieldUpdateOperationsInput | number
-    data?: IntFieldUpdateOperationsInput | number
-    hora?: IntFieldUpdateOperationsInput | number
+    idUsuario?: IntFieldUpdateOperationsInput | number
+    dataHora?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 
