@@ -173,7 +173,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\gabriel.ldias1\\Desktop\\GitHub\\app_quadra\\generated\\prisma",
+      "value": "C:\\Users\\Gabriel\\Documents\\GitHub\\app_quadra\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -187,7 +187,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\gabriel.ldias1\\Desktop\\GitHub\\app_quadra\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\Gabriel\\Documents\\GitHub\\app_quadra\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
