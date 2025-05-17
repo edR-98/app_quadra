@@ -15,42 +15,6 @@ app.get('/', (req, res) => {
 
 app.use(bodyParser.json()); 
 
-// PRODUTOS ------------------------------------------------------------------------------------------------------------------------------------------------ // 
-
-app.put("/produtos/:id", async (req, res) => {
-  const id = parseInt(req.params.id); 
-
-  if ((req.body.nome === undefined) || (req.body.preco === undefined) ) { 
-    res.status(400).send("Campos obrigatórios faltantes");
-  } else {
-  try {
-    await prisma.produto.update({
-      where: { id },
-      data: { 
-        nome: req.body.nome,
-        preco: req.body.preco
-      } 
-    });
-    res.status(204).send();
-  } catch(error) {
-    res.status(404).send("Produto não encontrado");
-  }
-}
-});
-
-app.delete("/produtos/:id", async (req, res) => {
-  const id = parseInt(req.params.id); 
-  
-  try {
-    await prisma.produto.delete({
-      where: { id }
-    });
-    res.status(202).send();
-  } catch(error) {
-    res.status(404).send("Produto não encontrado");
-  }
-});
-
 
 // Quadras ------------------------------------------------------------------------------------------------------------------------------------------------ // 
 
@@ -63,7 +27,7 @@ app.get('/quadras', async (req, res) => {
   const precoMax = parseFloat(req.query.preco_max);
   const tipoQuadra = (req.query.tipo_quadra === '') ? undefined : req.query.tipo_quadra;
   const iluminacao = (req.query.iluminacao === undefined) ? undefined : req.query.iluminacao == '1';
-  const vestiarios = (req.query.vestiarios === undefined) ? undefined : req.query.vestiarios == '1';
+  const vestiario = (req.query.vestiario === undefined) ? undefined : req.query.vestiario == '1';
   const bebedouro = (req.query.bebedouro === undefined) ? undefined : req.query.bebedouro == '1';
   const estacionamento = (req.query.estacionamento === undefined) ? undefined : req.query.estacionamento == '1';
   const arquibancada = (req.query.arquibancada === undefined) ? undefined : req.query.arquibancada == '1';
@@ -78,7 +42,7 @@ app.get('/quadras', async (req, res) => {
   const quadras = await prisma.quadra.findMany({ where: {
     tipoQuadra,
     iluminacao,
-    vestiarios,
+    vestiario,
     bebedouro,
     estacionamento,
     arquibancada,
@@ -240,6 +204,80 @@ app.post("/locacoes", async (req, res) => {
 });
 
 // fazer um get em locacoes buscando as quadras pelo id do usário
+
+// Favoritos ------------------------------------------------------------------------------------------------------------------------------------------------ //
+
+app.get('/favoritos', async (req, res) => {
+  const favoritos = await prisma.favorito.findMany();
+  res.json(favoritos); 
+});
+
+app.get("/favoritos/:id", async (req, res) => {
+
+  const id = parseInt(req.params.id); 
+  const favorito = await prisma.favorito.findUnique({ where: {id} });
+
+    if (favorito === null) {
+      res.status(404).json({ error: "favorito não encontrado" }); 
+    } else {
+      res.json(favorito);
+    }
+});
+
+
+
+app.post("/favoritos", async (req, res) => {
+
+  if ((req.body.id_usuario === undefined) || (req.body.id_quadra === undefined) || (req.body.favoritado_em === undefined)) { 
+    res.status(400).send("Campos obrigatórios faltantes");
+  } else {
+    const novoFavorito = await prisma.favorito.create({ data: {
+      idUsuario: req.body.id_usuario,
+      idQuadra: req.body.id_quadra,
+      favoritadoEm: new Date(req.body.favoritado_em)
+    }});
+    res.status(201).location(`/favoritos/${novoFavorito.id}`).send();
+  }
+});
+
+
+
+app.put("/favoritos/:id", async (req, res) => {
+  const id = parseInt(req.params.id); 
+
+  if ((req.body.nome === undefined) || (req.body.preco === undefined) ) { 
+    res.status(400).send("Campos obrigatórios faltantes");
+  } else {
+  try {
+    await prisma.favorito.update({
+      where: { id },
+      data: { 
+        nome: req.body.nome,
+        preco: req.body.preco
+      } 
+    });
+    res.status(204).send();
+  } catch(error) {
+    res.status(404).send("favorito não encontrado");
+  }
+}
+});
+
+app.delete("/favoritos/:id", async (req, res) => {
+  const id = parseInt(req.params.id); 
+  
+  try {
+    await prisma.favorito.delete({
+      where: { id }
+    });
+    res.status(202).send();
+  } catch(error) {
+    res.status(404).send("favorito não encontrado");
+  }
+});
+
+
+// ------------------------------------------------------------------------------------------------------------------------------------------------ 
 
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);

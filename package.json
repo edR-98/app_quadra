@@ -1,6 +1,7 @@
 {
-  "name": "projeto-integrador",
+  "name": "app_quadra",
   "version": "1.0.0",
+  "type": "module",
   "main": "src/api.js",
   "scripts": {
     "dev": "npx nodemon --exec \"node .\" --watch \"src/*.js\"",

@@ -24,12 +24,13 @@ model Usuario {
   senha       String
   criado_em   DateTime @default(now())
   locacao     Locacao[]
+  favorito    Favorito[]
   
   @@map("usuarios") // <-- Define o nome da tabela
 }
 
 model Quadra {
-  id               Int      @id @default(autoincrement())
+  id               Int       @id @default(autoincrement())
   nomeLocal        String    @map("nome_local")
   tipoQuadra       String    @map("tipo_quadra")
   localizacao      String
@@ -41,26 +42,43 @@ model Quadra {
   preco            Float    // Use Float para valores com casas decimais
   dimensoes        String
   iluminacao       Boolean
-  vestiarios       Boolean
+  vestiario        Boolean
   bebedouro        Boolean
   estacionamento   Boolean
   arquibancada     Boolean
   coberta          Boolean
   acessibilidade   Boolean
   wifi             Boolean   @map("wi_fi")
-  criado_em        DateTime @default(now()) 
+  criado_em        DateTime  @default(now()) 
+
   locacao          Locacao[]
+  favorito         Favorito[]
 
   @@map("quadras") // Nome da tabela no banco
 }
 
   model Locacao {
   id          Int       @id @default(autoincrement())
-  idUsuario  Int      @map("id_usuario")
-  idQuadra   Int      @map("id_quadra")
-  usuario     Usuario @relation(fields: [idUsuario], references: [id])
-  quadra      Quadra   @relation(fields: [idQuadra], references: [id])
-  dataHora    DateTime @map("data_hora")
+  idUsuario   Int       @map("id_usuario")
+  idQuadra    Int       @map("id_quadra")
+  dataHora    DateTime  @map("data_hora")
+
+  usuario     Usuario   @relation(fields: [idUsuario], references: [id])
+  quadra      Quadra    @relation(fields: [idQuadra], references: [id])
 
   @@map("locacoes") // Nome da tabela no banco
+}
+
+  model Favorito {
+  id            Int      @id @default(autoincrement())
+  idUsuario     Int      @map("id_usuario")
+  idQuadra      Int      @map("id_quadra")
+  favoritadoEm  DateTime @map("favoritado_em")
+
+  usuario       Usuario  @relation(fields: [idUsuario], references: [id])
+  quadra        Quadra   @relation(fields: [idQuadra], references: [id])
+
+  @@unique([idUsuario, idQuadra]) // impede favoritos duplicados
+  
+  @@map("favoritos") // nome real da tabela
 }

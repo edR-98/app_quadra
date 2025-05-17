@@ -143,7 +143,7 @@ exports.Prisma.QuadraScalarFieldEnum = {
   preco: 'preco',
   dimensoes: 'dimensoes',
   iluminacao: 'iluminacao',
-  vestiarios: 'vestiarios',
+  vestiario: 'vestiario',
   bebedouro: 'bebedouro',
   estacionamento: 'estacionamento',
   arquibancada: 'arquibancada',
@@ -158,6 +158,13 @@ exports.Prisma.LocacaoScalarFieldEnum = {
   idUsuario: 'idUsuario',
   idQuadra: 'idQuadra',
   dataHora: 'dataHora'
+};
+
+exports.Prisma.FavoritoScalarFieldEnum = {
+  id: 'id',
+  idUsuario: 'idUsuario',
+  idQuadra: 'idQuadra',
+  favoritadoEm: 'favoritadoEm'
 };
 
 exports.Prisma.SortOrder = {
@@ -188,7 +195,8 @@ exports.Prisma.QuadraOrderByRelevanceFieldEnum = {
 exports.Prisma.ModelName = {
   Usuario: 'Usuario',
   Quadra: 'Quadra',
-  Locacao: 'Locacao'
+  Locacao: 'Locacao',
+  Favorito: 'Favorito'
 };
 
 /**

@@ -28,6 +28,11 @@ export type Quadra = $Result.DefaultSelection<Prisma.$QuadraPayload>
  * 
  */
 export type Locacao = $Result.DefaultSelection<Prisma.$LocacaoPayload>
+/**
+ * Model Favorito
+ * 
+ */
+export type Favorito = $Result.DefaultSelection<Prisma.$FavoritoPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -183,6 +188,16 @@ export class PrismaClient<
     * ```
     */
   get locacao(): Prisma.LocacaoDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.favorito`: Exposes CRUD operations for the **Favorito** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Favoritos
+    * const favoritos = await prisma.favorito.findMany()
+    * ```
+    */
+  get favorito(): Prisma.FavoritoDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -625,7 +640,8 @@ export namespace Prisma {
   export const ModelName: {
     Usuario: 'Usuario',
     Quadra: 'Quadra',
-    Locacao: 'Locacao'
+    Locacao: 'Locacao',
+    Favorito: 'Favorito'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -644,7 +660,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "usuario" | "quadra" | "locacao"
+      modelProps: "usuario" | "quadra" | "locacao" | "favorito"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -846,6 +862,72 @@ export namespace Prisma {
           }
         }
       }
+      Favorito: {
+        payload: Prisma.$FavoritoPayload<ExtArgs>
+        fields: Prisma.FavoritoFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.FavoritoFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FavoritoPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.FavoritoFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FavoritoPayload>
+          }
+          findFirst: {
+            args: Prisma.FavoritoFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FavoritoPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.FavoritoFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FavoritoPayload>
+          }
+          findMany: {
+            args: Prisma.FavoritoFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FavoritoPayload>[]
+          }
+          create: {
+            args: Prisma.FavoritoCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FavoritoPayload>
+          }
+          createMany: {
+            args: Prisma.FavoritoCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.FavoritoDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FavoritoPayload>
+          }
+          update: {
+            args: Prisma.FavoritoUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FavoritoPayload>
+          }
+          deleteMany: {
+            args: Prisma.FavoritoDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.FavoritoUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.FavoritoUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FavoritoPayload>
+          }
+          aggregate: {
+            args: Prisma.FavoritoAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateFavorito>
+          }
+          groupBy: {
+            args: Prisma.FavoritoGroupByArgs<ExtArgs>
+            result: $Utils.Optional<FavoritoGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.FavoritoCountArgs<ExtArgs>
+            result: $Utils.Optional<FavoritoCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -933,6 +1015,7 @@ export namespace Prisma {
     usuario?: UsuarioOmit
     quadra?: QuadraOmit
     locacao?: LocacaoOmit
+    favorito?: FavoritoOmit
   }
 
   /* Types for Logging */
@@ -1028,10 +1111,12 @@ export namespace Prisma {
 
   export type UsuarioCountOutputType = {
     locacao: number
+    favorito: number
   }
 
   export type UsuarioCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     locacao?: boolean | UsuarioCountOutputTypeCountLocacaoArgs
+    favorito?: boolean | UsuarioCountOutputTypeCountFavoritoArgs
   }
 
   // Custom InputTypes
@@ -1052,6 +1137,13 @@ export namespace Prisma {
     where?: LocacaoWhereInput
   }
 
+  /**
+   * UsuarioCountOutputType without action
+   */
+  export type UsuarioCountOutputTypeCountFavoritoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FavoritoWhereInput
+  }
+
 
   /**
    * Count Type QuadraCountOutputType
@@ -1059,10 +1151,12 @@ export namespace Prisma {
 
   export type QuadraCountOutputType = {
     locacao: number
+    favorito: number
   }
 
   export type QuadraCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     locacao?: boolean | QuadraCountOutputTypeCountLocacaoArgs
+    favorito?: boolean | QuadraCountOutputTypeCountFavoritoArgs
   }
 
   // Custom InputTypes
@@ -1081,6 +1175,13 @@ export namespace Prisma {
    */
   export type QuadraCountOutputTypeCountLocacaoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: LocacaoWhereInput
+  }
+
+  /**
+   * QuadraCountOutputType without action
+   */
+  export type QuadraCountOutputTypeCountFavoritoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FavoritoWhereInput
   }
 
 
@@ -1303,6 +1404,7 @@ export namespace Prisma {
     senha?: boolean
     criado_em?: boolean
     locacao?: boolean | Usuario$locacaoArgs<ExtArgs>
+    favorito?: boolean | Usuario$favoritoArgs<ExtArgs>
     _count?: boolean | UsuarioCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["usuario"]>
 
@@ -1321,6 +1423,7 @@ export namespace Prisma {
   export type UsuarioOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nome" | "nascimento" | "email" | "cpf" | "senha" | "criado_em", ExtArgs["result"]["usuario"]>
   export type UsuarioInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     locacao?: boolean | Usuario$locacaoArgs<ExtArgs>
+    favorito?: boolean | Usuario$favoritoArgs<ExtArgs>
     _count?: boolean | UsuarioCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -1328,6 +1431,7 @@ export namespace Prisma {
     name: "Usuario"
     objects: {
       locacao: Prisma.$LocacaoPayload<ExtArgs>[]
+      favorito: Prisma.$FavoritoPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -1678,6 +1782,7 @@ export namespace Prisma {
   export interface Prisma__UsuarioClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     locacao<T extends Usuario$locacaoArgs<ExtArgs> = {}>(args?: Subset<T, Usuario$locacaoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LocacaoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    favorito<T extends Usuario$favoritoArgs<ExtArgs> = {}>(args?: Subset<T, Usuario$favoritoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FavoritoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2081,6 +2186,30 @@ export namespace Prisma {
   }
 
   /**
+   * Usuario.favorito
+   */
+  export type Usuario$favoritoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Favorito
+     */
+    select?: FavoritoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Favorito
+     */
+    omit?: FavoritoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FavoritoInclude<ExtArgs> | null
+    where?: FavoritoWhereInput
+    orderBy?: FavoritoOrderByWithRelationInput | FavoritoOrderByWithRelationInput[]
+    cursor?: FavoritoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FavoritoScalarFieldEnum | FavoritoScalarFieldEnum[]
+  }
+
+  /**
    * Usuario without action
    */
   export type UsuarioDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2134,7 +2263,7 @@ export namespace Prisma {
     preco: number | null
     dimensoes: string | null
     iluminacao: boolean | null
-    vestiarios: boolean | null
+    vestiario: boolean | null
     bebedouro: boolean | null
     estacionamento: boolean | null
     arquibancada: boolean | null
@@ -2157,7 +2286,7 @@ export namespace Prisma {
     preco: number | null
     dimensoes: string | null
     iluminacao: boolean | null
-    vestiarios: boolean | null
+    vestiario: boolean | null
     bebedouro: boolean | null
     estacionamento: boolean | null
     arquibancada: boolean | null
@@ -2180,7 +2309,7 @@ export namespace Prisma {
     preco: number
     dimensoes: number
     iluminacao: number
-    vestiarios: number
+    vestiario: number
     bebedouro: number
     estacionamento: number
     arquibancada: number
@@ -2215,7 +2344,7 @@ export namespace Prisma {
     preco?: true
     dimensoes?: true
     iluminacao?: true
-    vestiarios?: true
+    vestiario?: true
     bebedouro?: true
     estacionamento?: true
     arquibancada?: true
@@ -2238,7 +2367,7 @@ export namespace Prisma {
     preco?: true
     dimensoes?: true
     iluminacao?: true
-    vestiarios?: true
+    vestiario?: true
     bebedouro?: true
     estacionamento?: true
     arquibancada?: true
@@ -2261,7 +2390,7 @@ export namespace Prisma {
     preco?: true
     dimensoes?: true
     iluminacao?: true
-    vestiarios?: true
+    vestiario?: true
     bebedouro?: true
     estacionamento?: true
     arquibancada?: true
@@ -2371,7 +2500,7 @@ export namespace Prisma {
     preco: number
     dimensoes: string
     iluminacao: boolean
-    vestiarios: boolean
+    vestiario: boolean
     bebedouro: boolean
     estacionamento: boolean
     arquibancada: boolean
@@ -2413,7 +2542,7 @@ export namespace Prisma {
     preco?: boolean
     dimensoes?: boolean
     iluminacao?: boolean
-    vestiarios?: boolean
+    vestiario?: boolean
     bebedouro?: boolean
     estacionamento?: boolean
     arquibancada?: boolean
@@ -2422,6 +2551,7 @@ export namespace Prisma {
     wifi?: boolean
     criado_em?: boolean
     locacao?: boolean | Quadra$locacaoArgs<ExtArgs>
+    favorito?: boolean | Quadra$favoritoArgs<ExtArgs>
     _count?: boolean | QuadraCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["quadra"]>
 
@@ -2440,7 +2570,7 @@ export namespace Prisma {
     preco?: boolean
     dimensoes?: boolean
     iluminacao?: boolean
-    vestiarios?: boolean
+    vestiario?: boolean
     bebedouro?: boolean
     estacionamento?: boolean
     arquibancada?: boolean
@@ -2450,9 +2580,10 @@ export namespace Prisma {
     criado_em?: boolean
   }
 
-  export type QuadraOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nomeLocal" | "tipoQuadra" | "localizacao" | "imagemPrincipal" | "imagemPri" | "imagemSeg" | "imagemTer" | "telefone" | "preco" | "dimensoes" | "iluminacao" | "vestiarios" | "bebedouro" | "estacionamento" | "arquibancada" | "coberta" | "acessibilidade" | "wifi" | "criado_em", ExtArgs["result"]["quadra"]>
+  export type QuadraOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nomeLocal" | "tipoQuadra" | "localizacao" | "imagemPrincipal" | "imagemPri" | "imagemSeg" | "imagemTer" | "telefone" | "preco" | "dimensoes" | "iluminacao" | "vestiario" | "bebedouro" | "estacionamento" | "arquibancada" | "coberta" | "acessibilidade" | "wifi" | "criado_em", ExtArgs["result"]["quadra"]>
   export type QuadraInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     locacao?: boolean | Quadra$locacaoArgs<ExtArgs>
+    favorito?: boolean | Quadra$favoritoArgs<ExtArgs>
     _count?: boolean | QuadraCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -2460,6 +2591,7 @@ export namespace Prisma {
     name: "Quadra"
     objects: {
       locacao: Prisma.$LocacaoPayload<ExtArgs>[]
+      favorito: Prisma.$FavoritoPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -2474,7 +2606,7 @@ export namespace Prisma {
       preco: number
       dimensoes: string
       iluminacao: boolean
-      vestiarios: boolean
+      vestiario: boolean
       bebedouro: boolean
       estacionamento: boolean
       arquibancada: boolean
@@ -2823,6 +2955,7 @@ export namespace Prisma {
   export interface Prisma__QuadraClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     locacao<T extends Quadra$locacaoArgs<ExtArgs> = {}>(args?: Subset<T, Quadra$locacaoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LocacaoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    favorito<T extends Quadra$favoritoArgs<ExtArgs> = {}>(args?: Subset<T, Quadra$favoritoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FavoritoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2864,7 +2997,7 @@ export namespace Prisma {
     readonly preco: FieldRef<"Quadra", 'Float'>
     readonly dimensoes: FieldRef<"Quadra", 'String'>
     readonly iluminacao: FieldRef<"Quadra", 'Boolean'>
-    readonly vestiarios: FieldRef<"Quadra", 'Boolean'>
+    readonly vestiario: FieldRef<"Quadra", 'Boolean'>
     readonly bebedouro: FieldRef<"Quadra", 'Boolean'>
     readonly estacionamento: FieldRef<"Quadra", 'Boolean'>
     readonly arquibancada: FieldRef<"Quadra", 'Boolean'>
@@ -3236,6 +3369,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: LocacaoScalarFieldEnum | LocacaoScalarFieldEnum[]
+  }
+
+  /**
+   * Quadra.favorito
+   */
+  export type Quadra$favoritoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Favorito
+     */
+    select?: FavoritoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Favorito
+     */
+    omit?: FavoritoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FavoritoInclude<ExtArgs> | null
+    where?: FavoritoWhereInput
+    orderBy?: FavoritoOrderByWithRelationInput | FavoritoOrderByWithRelationInput[]
+    cursor?: FavoritoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FavoritoScalarFieldEnum | FavoritoScalarFieldEnum[]
   }
 
   /**
@@ -4222,6 +4379,970 @@ export namespace Prisma {
 
 
   /**
+   * Model Favorito
+   */
+
+  export type AggregateFavorito = {
+    _count: FavoritoCountAggregateOutputType | null
+    _avg: FavoritoAvgAggregateOutputType | null
+    _sum: FavoritoSumAggregateOutputType | null
+    _min: FavoritoMinAggregateOutputType | null
+    _max: FavoritoMaxAggregateOutputType | null
+  }
+
+  export type FavoritoAvgAggregateOutputType = {
+    id: number | null
+    idUsuario: number | null
+    idQuadra: number | null
+  }
+
+  export type FavoritoSumAggregateOutputType = {
+    id: number | null
+    idUsuario: number | null
+    idQuadra: number | null
+  }
+
+  export type FavoritoMinAggregateOutputType = {
+    id: number | null
+    idUsuario: number | null
+    idQuadra: number | null
+    favoritadoEm: Date | null
+  }
+
+  export type FavoritoMaxAggregateOutputType = {
+    id: number | null
+    idUsuario: number | null
+    idQuadra: number | null
+    favoritadoEm: Date | null
+  }
+
+  export type FavoritoCountAggregateOutputType = {
+    id: number
+    idUsuario: number
+    idQuadra: number
+    favoritadoEm: number
+    _all: number
+  }
+
+
+  export type FavoritoAvgAggregateInputType = {
+    id?: true
+    idUsuario?: true
+    idQuadra?: true
+  }
+
+  export type FavoritoSumAggregateInputType = {
+    id?: true
+    idUsuario?: true
+    idQuadra?: true
+  }
+
+  export type FavoritoMinAggregateInputType = {
+    id?: true
+    idUsuario?: true
+    idQuadra?: true
+    favoritadoEm?: true
+  }
+
+  export type FavoritoMaxAggregateInputType = {
+    id?: true
+    idUsuario?: true
+    idQuadra?: true
+    favoritadoEm?: true
+  }
+
+  export type FavoritoCountAggregateInputType = {
+    id?: true
+    idUsuario?: true
+    idQuadra?: true
+    favoritadoEm?: true
+    _all?: true
+  }
+
+  export type FavoritoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Favorito to aggregate.
+     */
+    where?: FavoritoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Favoritos to fetch.
+     */
+    orderBy?: FavoritoOrderByWithRelationInput | FavoritoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: FavoritoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Favoritos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Favoritos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Favoritos
+    **/
+    _count?: true | FavoritoCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: FavoritoAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: FavoritoSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: FavoritoMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: FavoritoMaxAggregateInputType
+  }
+
+  export type GetFavoritoAggregateType<T extends FavoritoAggregateArgs> = {
+        [P in keyof T & keyof AggregateFavorito]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateFavorito[P]>
+      : GetScalarType<T[P], AggregateFavorito[P]>
+  }
+
+
+
+
+  export type FavoritoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FavoritoWhereInput
+    orderBy?: FavoritoOrderByWithAggregationInput | FavoritoOrderByWithAggregationInput[]
+    by: FavoritoScalarFieldEnum[] | FavoritoScalarFieldEnum
+    having?: FavoritoScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: FavoritoCountAggregateInputType | true
+    _avg?: FavoritoAvgAggregateInputType
+    _sum?: FavoritoSumAggregateInputType
+    _min?: FavoritoMinAggregateInputType
+    _max?: FavoritoMaxAggregateInputType
+  }
+
+  export type FavoritoGroupByOutputType = {
+    id: number
+    idUsuario: number
+    idQuadra: number
+    favoritadoEm: Date
+    _count: FavoritoCountAggregateOutputType | null
+    _avg: FavoritoAvgAggregateOutputType | null
+    _sum: FavoritoSumAggregateOutputType | null
+    _min: FavoritoMinAggregateOutputType | null
+    _max: FavoritoMaxAggregateOutputType | null
+  }
+
+  type GetFavoritoGroupByPayload<T extends FavoritoGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<FavoritoGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof FavoritoGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], FavoritoGroupByOutputType[P]>
+            : GetScalarType<T[P], FavoritoGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type FavoritoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    idUsuario?: boolean
+    idQuadra?: boolean
+    favoritadoEm?: boolean
+    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+    quadra?: boolean | QuadraDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["favorito"]>
+
+
+
+  export type FavoritoSelectScalar = {
+    id?: boolean
+    idUsuario?: boolean
+    idQuadra?: boolean
+    favoritadoEm?: boolean
+  }
+
+  export type FavoritoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "idUsuario" | "idQuadra" | "favoritadoEm", ExtArgs["result"]["favorito"]>
+  export type FavoritoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+    quadra?: boolean | QuadraDefaultArgs<ExtArgs>
+  }
+
+  export type $FavoritoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Favorito"
+    objects: {
+      usuario: Prisma.$UsuarioPayload<ExtArgs>
+      quadra: Prisma.$QuadraPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      idUsuario: number
+      idQuadra: number
+      favoritadoEm: Date
+    }, ExtArgs["result"]["favorito"]>
+    composites: {}
+  }
+
+  type FavoritoGetPayload<S extends boolean | null | undefined | FavoritoDefaultArgs> = $Result.GetResult<Prisma.$FavoritoPayload, S>
+
+  type FavoritoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<FavoritoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: FavoritoCountAggregateInputType | true
+    }
+
+  export interface FavoritoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Favorito'], meta: { name: 'Favorito' } }
+    /**
+     * Find zero or one Favorito that matches the filter.
+     * @param {FavoritoFindUniqueArgs} args - Arguments to find a Favorito
+     * @example
+     * // Get one Favorito
+     * const favorito = await prisma.favorito.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends FavoritoFindUniqueArgs>(args: SelectSubset<T, FavoritoFindUniqueArgs<ExtArgs>>): Prisma__FavoritoClient<$Result.GetResult<Prisma.$FavoritoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Favorito that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {FavoritoFindUniqueOrThrowArgs} args - Arguments to find a Favorito
+     * @example
+     * // Get one Favorito
+     * const favorito = await prisma.favorito.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends FavoritoFindUniqueOrThrowArgs>(args: SelectSubset<T, FavoritoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__FavoritoClient<$Result.GetResult<Prisma.$FavoritoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Favorito that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FavoritoFindFirstArgs} args - Arguments to find a Favorito
+     * @example
+     * // Get one Favorito
+     * const favorito = await prisma.favorito.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends FavoritoFindFirstArgs>(args?: SelectSubset<T, FavoritoFindFirstArgs<ExtArgs>>): Prisma__FavoritoClient<$Result.GetResult<Prisma.$FavoritoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Favorito that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FavoritoFindFirstOrThrowArgs} args - Arguments to find a Favorito
+     * @example
+     * // Get one Favorito
+     * const favorito = await prisma.favorito.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends FavoritoFindFirstOrThrowArgs>(args?: SelectSubset<T, FavoritoFindFirstOrThrowArgs<ExtArgs>>): Prisma__FavoritoClient<$Result.GetResult<Prisma.$FavoritoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Favoritos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FavoritoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Favoritos
+     * const favoritos = await prisma.favorito.findMany()
+     * 
+     * // Get first 10 Favoritos
+     * const favoritos = await prisma.favorito.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const favoritoWithIdOnly = await prisma.favorito.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends FavoritoFindManyArgs>(args?: SelectSubset<T, FavoritoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FavoritoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Favorito.
+     * @param {FavoritoCreateArgs} args - Arguments to create a Favorito.
+     * @example
+     * // Create one Favorito
+     * const Favorito = await prisma.favorito.create({
+     *   data: {
+     *     // ... data to create a Favorito
+     *   }
+     * })
+     * 
+     */
+    create<T extends FavoritoCreateArgs>(args: SelectSubset<T, FavoritoCreateArgs<ExtArgs>>): Prisma__FavoritoClient<$Result.GetResult<Prisma.$FavoritoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Favoritos.
+     * @param {FavoritoCreateManyArgs} args - Arguments to create many Favoritos.
+     * @example
+     * // Create many Favoritos
+     * const favorito = await prisma.favorito.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends FavoritoCreateManyArgs>(args?: SelectSubset<T, FavoritoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Favorito.
+     * @param {FavoritoDeleteArgs} args - Arguments to delete one Favorito.
+     * @example
+     * // Delete one Favorito
+     * const Favorito = await prisma.favorito.delete({
+     *   where: {
+     *     // ... filter to delete one Favorito
+     *   }
+     * })
+     * 
+     */
+    delete<T extends FavoritoDeleteArgs>(args: SelectSubset<T, FavoritoDeleteArgs<ExtArgs>>): Prisma__FavoritoClient<$Result.GetResult<Prisma.$FavoritoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Favorito.
+     * @param {FavoritoUpdateArgs} args - Arguments to update one Favorito.
+     * @example
+     * // Update one Favorito
+     * const favorito = await prisma.favorito.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends FavoritoUpdateArgs>(args: SelectSubset<T, FavoritoUpdateArgs<ExtArgs>>): Prisma__FavoritoClient<$Result.GetResult<Prisma.$FavoritoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Favoritos.
+     * @param {FavoritoDeleteManyArgs} args - Arguments to filter Favoritos to delete.
+     * @example
+     * // Delete a few Favoritos
+     * const { count } = await prisma.favorito.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends FavoritoDeleteManyArgs>(args?: SelectSubset<T, FavoritoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Favoritos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FavoritoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Favoritos
+     * const favorito = await prisma.favorito.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends FavoritoUpdateManyArgs>(args: SelectSubset<T, FavoritoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Favorito.
+     * @param {FavoritoUpsertArgs} args - Arguments to update or create a Favorito.
+     * @example
+     * // Update or create a Favorito
+     * const favorito = await prisma.favorito.upsert({
+     *   create: {
+     *     // ... data to create a Favorito
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Favorito we want to update
+     *   }
+     * })
+     */
+    upsert<T extends FavoritoUpsertArgs>(args: SelectSubset<T, FavoritoUpsertArgs<ExtArgs>>): Prisma__FavoritoClient<$Result.GetResult<Prisma.$FavoritoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Favoritos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FavoritoCountArgs} args - Arguments to filter Favoritos to count.
+     * @example
+     * // Count the number of Favoritos
+     * const count = await prisma.favorito.count({
+     *   where: {
+     *     // ... the filter for the Favoritos we want to count
+     *   }
+     * })
+    **/
+    count<T extends FavoritoCountArgs>(
+      args?: Subset<T, FavoritoCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], FavoritoCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Favorito.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FavoritoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends FavoritoAggregateArgs>(args: Subset<T, FavoritoAggregateArgs>): Prisma.PrismaPromise<GetFavoritoAggregateType<T>>
+
+    /**
+     * Group by Favorito.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FavoritoGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends FavoritoGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: FavoritoGroupByArgs['orderBy'] }
+        : { orderBy?: FavoritoGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, FavoritoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFavoritoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Favorito model
+   */
+  readonly fields: FavoritoFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Favorito.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__FavoritoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    usuario<T extends UsuarioDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsuarioDefaultArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    quadra<T extends QuadraDefaultArgs<ExtArgs> = {}>(args?: Subset<T, QuadraDefaultArgs<ExtArgs>>): Prisma__QuadraClient<$Result.GetResult<Prisma.$QuadraPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Favorito model
+   */
+  interface FavoritoFieldRefs {
+    readonly id: FieldRef<"Favorito", 'Int'>
+    readonly idUsuario: FieldRef<"Favorito", 'Int'>
+    readonly idQuadra: FieldRef<"Favorito", 'Int'>
+    readonly favoritadoEm: FieldRef<"Favorito", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Favorito findUnique
+   */
+  export type FavoritoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Favorito
+     */
+    select?: FavoritoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Favorito
+     */
+    omit?: FavoritoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FavoritoInclude<ExtArgs> | null
+    /**
+     * Filter, which Favorito to fetch.
+     */
+    where: FavoritoWhereUniqueInput
+  }
+
+  /**
+   * Favorito findUniqueOrThrow
+   */
+  export type FavoritoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Favorito
+     */
+    select?: FavoritoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Favorito
+     */
+    omit?: FavoritoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FavoritoInclude<ExtArgs> | null
+    /**
+     * Filter, which Favorito to fetch.
+     */
+    where: FavoritoWhereUniqueInput
+  }
+
+  /**
+   * Favorito findFirst
+   */
+  export type FavoritoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Favorito
+     */
+    select?: FavoritoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Favorito
+     */
+    omit?: FavoritoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FavoritoInclude<ExtArgs> | null
+    /**
+     * Filter, which Favorito to fetch.
+     */
+    where?: FavoritoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Favoritos to fetch.
+     */
+    orderBy?: FavoritoOrderByWithRelationInput | FavoritoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Favoritos.
+     */
+    cursor?: FavoritoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Favoritos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Favoritos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Favoritos.
+     */
+    distinct?: FavoritoScalarFieldEnum | FavoritoScalarFieldEnum[]
+  }
+
+  /**
+   * Favorito findFirstOrThrow
+   */
+  export type FavoritoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Favorito
+     */
+    select?: FavoritoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Favorito
+     */
+    omit?: FavoritoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FavoritoInclude<ExtArgs> | null
+    /**
+     * Filter, which Favorito to fetch.
+     */
+    where?: FavoritoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Favoritos to fetch.
+     */
+    orderBy?: FavoritoOrderByWithRelationInput | FavoritoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Favoritos.
+     */
+    cursor?: FavoritoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Favoritos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Favoritos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Favoritos.
+     */
+    distinct?: FavoritoScalarFieldEnum | FavoritoScalarFieldEnum[]
+  }
+
+  /**
+   * Favorito findMany
+   */
+  export type FavoritoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Favorito
+     */
+    select?: FavoritoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Favorito
+     */
+    omit?: FavoritoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FavoritoInclude<ExtArgs> | null
+    /**
+     * Filter, which Favoritos to fetch.
+     */
+    where?: FavoritoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Favoritos to fetch.
+     */
+    orderBy?: FavoritoOrderByWithRelationInput | FavoritoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Favoritos.
+     */
+    cursor?: FavoritoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Favoritos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Favoritos.
+     */
+    skip?: number
+    distinct?: FavoritoScalarFieldEnum | FavoritoScalarFieldEnum[]
+  }
+
+  /**
+   * Favorito create
+   */
+  export type FavoritoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Favorito
+     */
+    select?: FavoritoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Favorito
+     */
+    omit?: FavoritoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FavoritoInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Favorito.
+     */
+    data: XOR<FavoritoCreateInput, FavoritoUncheckedCreateInput>
+  }
+
+  /**
+   * Favorito createMany
+   */
+  export type FavoritoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Favoritos.
+     */
+    data: FavoritoCreateManyInput | FavoritoCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Favorito update
+   */
+  export type FavoritoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Favorito
+     */
+    select?: FavoritoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Favorito
+     */
+    omit?: FavoritoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FavoritoInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Favorito.
+     */
+    data: XOR<FavoritoUpdateInput, FavoritoUncheckedUpdateInput>
+    /**
+     * Choose, which Favorito to update.
+     */
+    where: FavoritoWhereUniqueInput
+  }
+
+  /**
+   * Favorito updateMany
+   */
+  export type FavoritoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Favoritos.
+     */
+    data: XOR<FavoritoUpdateManyMutationInput, FavoritoUncheckedUpdateManyInput>
+    /**
+     * Filter which Favoritos to update
+     */
+    where?: FavoritoWhereInput
+    /**
+     * Limit how many Favoritos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Favorito upsert
+   */
+  export type FavoritoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Favorito
+     */
+    select?: FavoritoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Favorito
+     */
+    omit?: FavoritoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FavoritoInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Favorito to update in case it exists.
+     */
+    where: FavoritoWhereUniqueInput
+    /**
+     * In case the Favorito found by the `where` argument doesn't exist, create a new Favorito with this data.
+     */
+    create: XOR<FavoritoCreateInput, FavoritoUncheckedCreateInput>
+    /**
+     * In case the Favorito was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<FavoritoUpdateInput, FavoritoUncheckedUpdateInput>
+  }
+
+  /**
+   * Favorito delete
+   */
+  export type FavoritoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Favorito
+     */
+    select?: FavoritoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Favorito
+     */
+    omit?: FavoritoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FavoritoInclude<ExtArgs> | null
+    /**
+     * Filter which Favorito to delete.
+     */
+    where: FavoritoWhereUniqueInput
+  }
+
+  /**
+   * Favorito deleteMany
+   */
+  export type FavoritoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Favoritos to delete
+     */
+    where?: FavoritoWhereInput
+    /**
+     * Limit how many Favoritos to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Favorito without action
+   */
+  export type FavoritoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Favorito
+     */
+    select?: FavoritoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Favorito
+     */
+    omit?: FavoritoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FavoritoInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -4261,7 +5382,7 @@ export namespace Prisma {
     preco: 'preco',
     dimensoes: 'dimensoes',
     iluminacao: 'iluminacao',
-    vestiarios: 'vestiarios',
+    vestiario: 'vestiario',
     bebedouro: 'bebedouro',
     estacionamento: 'estacionamento',
     arquibancada: 'arquibancada',
@@ -4282,6 +5403,16 @@ export namespace Prisma {
   };
 
   export type LocacaoScalarFieldEnum = (typeof LocacaoScalarFieldEnum)[keyof typeof LocacaoScalarFieldEnum]
+
+
+  export const FavoritoScalarFieldEnum: {
+    id: 'id',
+    idUsuario: 'idUsuario',
+    idQuadra: 'idQuadra',
+    favoritadoEm: 'favoritadoEm'
+  };
+
+  export type FavoritoScalarFieldEnum = (typeof FavoritoScalarFieldEnum)[keyof typeof FavoritoScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -4372,6 +5503,7 @@ export namespace Prisma {
     senha?: StringFilter<"Usuario"> | string
     criado_em?: DateTimeFilter<"Usuario"> | Date | string
     locacao?: LocacaoListRelationFilter
+    favorito?: FavoritoListRelationFilter
   }
 
   export type UsuarioOrderByWithRelationInput = {
@@ -4383,6 +5515,7 @@ export namespace Prisma {
     senha?: SortOrder
     criado_em?: SortOrder
     locacao?: LocacaoOrderByRelationAggregateInput
+    favorito?: FavoritoOrderByRelationAggregateInput
     _relevance?: UsuarioOrderByRelevanceInput
   }
 
@@ -4398,6 +5531,7 @@ export namespace Prisma {
     senha?: StringFilter<"Usuario"> | string
     criado_em?: DateTimeFilter<"Usuario"> | Date | string
     locacao?: LocacaoListRelationFilter
+    favorito?: FavoritoListRelationFilter
   }, "id" | "email" | "cpf">
 
   export type UsuarioOrderByWithAggregationInput = {
@@ -4444,7 +5578,7 @@ export namespace Prisma {
     preco?: FloatFilter<"Quadra"> | number
     dimensoes?: StringFilter<"Quadra"> | string
     iluminacao?: BoolFilter<"Quadra"> | boolean
-    vestiarios?: BoolFilter<"Quadra"> | boolean
+    vestiario?: BoolFilter<"Quadra"> | boolean
     bebedouro?: BoolFilter<"Quadra"> | boolean
     estacionamento?: BoolFilter<"Quadra"> | boolean
     arquibancada?: BoolFilter<"Quadra"> | boolean
@@ -4453,6 +5587,7 @@ export namespace Prisma {
     wifi?: BoolFilter<"Quadra"> | boolean
     criado_em?: DateTimeFilter<"Quadra"> | Date | string
     locacao?: LocacaoListRelationFilter
+    favorito?: FavoritoListRelationFilter
   }
 
   export type QuadraOrderByWithRelationInput = {
@@ -4468,7 +5603,7 @@ export namespace Prisma {
     preco?: SortOrder
     dimensoes?: SortOrder
     iluminacao?: SortOrder
-    vestiarios?: SortOrder
+    vestiario?: SortOrder
     bebedouro?: SortOrder
     estacionamento?: SortOrder
     arquibancada?: SortOrder
@@ -4477,6 +5612,7 @@ export namespace Prisma {
     wifi?: SortOrder
     criado_em?: SortOrder
     locacao?: LocacaoOrderByRelationAggregateInput
+    favorito?: FavoritoOrderByRelationAggregateInput
     _relevance?: QuadraOrderByRelevanceInput
   }
 
@@ -4496,7 +5632,7 @@ export namespace Prisma {
     preco?: FloatFilter<"Quadra"> | number
     dimensoes?: StringFilter<"Quadra"> | string
     iluminacao?: BoolFilter<"Quadra"> | boolean
-    vestiarios?: BoolFilter<"Quadra"> | boolean
+    vestiario?: BoolFilter<"Quadra"> | boolean
     bebedouro?: BoolFilter<"Quadra"> | boolean
     estacionamento?: BoolFilter<"Quadra"> | boolean
     arquibancada?: BoolFilter<"Quadra"> | boolean
@@ -4505,6 +5641,7 @@ export namespace Prisma {
     wifi?: BoolFilter<"Quadra"> | boolean
     criado_em?: DateTimeFilter<"Quadra"> | Date | string
     locacao?: LocacaoListRelationFilter
+    favorito?: FavoritoListRelationFilter
   }, "id">
 
   export type QuadraOrderByWithAggregationInput = {
@@ -4520,7 +5657,7 @@ export namespace Prisma {
     preco?: SortOrder
     dimensoes?: SortOrder
     iluminacao?: SortOrder
-    vestiarios?: SortOrder
+    vestiario?: SortOrder
     bebedouro?: SortOrder
     estacionamento?: SortOrder
     arquibancada?: SortOrder
@@ -4551,7 +5688,7 @@ export namespace Prisma {
     preco?: FloatWithAggregatesFilter<"Quadra"> | number
     dimensoes?: StringWithAggregatesFilter<"Quadra"> | string
     iluminacao?: BoolWithAggregatesFilter<"Quadra"> | boolean
-    vestiarios?: BoolWithAggregatesFilter<"Quadra"> | boolean
+    vestiario?: BoolWithAggregatesFilter<"Quadra"> | boolean
     bebedouro?: BoolWithAggregatesFilter<"Quadra"> | boolean
     estacionamento?: BoolWithAggregatesFilter<"Quadra"> | boolean
     arquibancada?: BoolWithAggregatesFilter<"Quadra"> | boolean
@@ -4616,6 +5753,62 @@ export namespace Prisma {
     dataHora?: DateTimeWithAggregatesFilter<"Locacao"> | Date | string
   }
 
+  export type FavoritoWhereInput = {
+    AND?: FavoritoWhereInput | FavoritoWhereInput[]
+    OR?: FavoritoWhereInput[]
+    NOT?: FavoritoWhereInput | FavoritoWhereInput[]
+    id?: IntFilter<"Favorito"> | number
+    idUsuario?: IntFilter<"Favorito"> | number
+    idQuadra?: IntFilter<"Favorito"> | number
+    favoritadoEm?: DateTimeFilter<"Favorito"> | Date | string
+    usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
+    quadra?: XOR<QuadraScalarRelationFilter, QuadraWhereInput>
+  }
+
+  export type FavoritoOrderByWithRelationInput = {
+    id?: SortOrder
+    idUsuario?: SortOrder
+    idQuadra?: SortOrder
+    favoritadoEm?: SortOrder
+    usuario?: UsuarioOrderByWithRelationInput
+    quadra?: QuadraOrderByWithRelationInput
+  }
+
+  export type FavoritoWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    idUsuario_idQuadra?: FavoritoIdUsuarioIdQuadraCompoundUniqueInput
+    AND?: FavoritoWhereInput | FavoritoWhereInput[]
+    OR?: FavoritoWhereInput[]
+    NOT?: FavoritoWhereInput | FavoritoWhereInput[]
+    idUsuario?: IntFilter<"Favorito"> | number
+    idQuadra?: IntFilter<"Favorito"> | number
+    favoritadoEm?: DateTimeFilter<"Favorito"> | Date | string
+    usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
+    quadra?: XOR<QuadraScalarRelationFilter, QuadraWhereInput>
+  }, "id" | "idUsuario_idQuadra">
+
+  export type FavoritoOrderByWithAggregationInput = {
+    id?: SortOrder
+    idUsuario?: SortOrder
+    idQuadra?: SortOrder
+    favoritadoEm?: SortOrder
+    _count?: FavoritoCountOrderByAggregateInput
+    _avg?: FavoritoAvgOrderByAggregateInput
+    _max?: FavoritoMaxOrderByAggregateInput
+    _min?: FavoritoMinOrderByAggregateInput
+    _sum?: FavoritoSumOrderByAggregateInput
+  }
+
+  export type FavoritoScalarWhereWithAggregatesInput = {
+    AND?: FavoritoScalarWhereWithAggregatesInput | FavoritoScalarWhereWithAggregatesInput[]
+    OR?: FavoritoScalarWhereWithAggregatesInput[]
+    NOT?: FavoritoScalarWhereWithAggregatesInput | FavoritoScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Favorito"> | number
+    idUsuario?: IntWithAggregatesFilter<"Favorito"> | number
+    idQuadra?: IntWithAggregatesFilter<"Favorito"> | number
+    favoritadoEm?: DateTimeWithAggregatesFilter<"Favorito"> | Date | string
+  }
+
   export type UsuarioCreateInput = {
     nome: string
     nascimento: Date | string
@@ -4624,6 +5817,7 @@ export namespace Prisma {
     senha: string
     criado_em?: Date | string
     locacao?: LocacaoCreateNestedManyWithoutUsuarioInput
+    favorito?: FavoritoCreateNestedManyWithoutUsuarioInput
   }
 
   export type UsuarioUncheckedCreateInput = {
@@ -4635,6 +5829,7 @@ export namespace Prisma {
     senha: string
     criado_em?: Date | string
     locacao?: LocacaoUncheckedCreateNestedManyWithoutUsuarioInput
+    favorito?: FavoritoUncheckedCreateNestedManyWithoutUsuarioInput
   }
 
   export type UsuarioUpdateInput = {
@@ -4645,6 +5840,7 @@ export namespace Prisma {
     senha?: StringFieldUpdateOperationsInput | string
     criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
     locacao?: LocacaoUpdateManyWithoutUsuarioNestedInput
+    favorito?: FavoritoUpdateManyWithoutUsuarioNestedInput
   }
 
   export type UsuarioUncheckedUpdateInput = {
@@ -4656,6 +5852,7 @@ export namespace Prisma {
     senha?: StringFieldUpdateOperationsInput | string
     criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
     locacao?: LocacaoUncheckedUpdateManyWithoutUsuarioNestedInput
+    favorito?: FavoritoUncheckedUpdateManyWithoutUsuarioNestedInput
   }
 
   export type UsuarioCreateManyInput = {
@@ -4699,7 +5896,7 @@ export namespace Prisma {
     preco: number
     dimensoes: string
     iluminacao: boolean
-    vestiarios: boolean
+    vestiario: boolean
     bebedouro: boolean
     estacionamento: boolean
     arquibancada: boolean
@@ -4708,6 +5905,7 @@ export namespace Prisma {
     wifi: boolean
     criado_em?: Date | string
     locacao?: LocacaoCreateNestedManyWithoutQuadraInput
+    favorito?: FavoritoCreateNestedManyWithoutQuadraInput
   }
 
   export type QuadraUncheckedCreateInput = {
@@ -4723,7 +5921,7 @@ export namespace Prisma {
     preco: number
     dimensoes: string
     iluminacao: boolean
-    vestiarios: boolean
+    vestiario: boolean
     bebedouro: boolean
     estacionamento: boolean
     arquibancada: boolean
@@ -4732,6 +5930,7 @@ export namespace Prisma {
     wifi: boolean
     criado_em?: Date | string
     locacao?: LocacaoUncheckedCreateNestedManyWithoutQuadraInput
+    favorito?: FavoritoUncheckedCreateNestedManyWithoutQuadraInput
   }
 
   export type QuadraUpdateInput = {
@@ -4746,7 +5945,7 @@ export namespace Prisma {
     preco?: FloatFieldUpdateOperationsInput | number
     dimensoes?: StringFieldUpdateOperationsInput | string
     iluminacao?: BoolFieldUpdateOperationsInput | boolean
-    vestiarios?: BoolFieldUpdateOperationsInput | boolean
+    vestiario?: BoolFieldUpdateOperationsInput | boolean
     bebedouro?: BoolFieldUpdateOperationsInput | boolean
     estacionamento?: BoolFieldUpdateOperationsInput | boolean
     arquibancada?: BoolFieldUpdateOperationsInput | boolean
@@ -4755,6 +5954,7 @@ export namespace Prisma {
     wifi?: BoolFieldUpdateOperationsInput | boolean
     criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
     locacao?: LocacaoUpdateManyWithoutQuadraNestedInput
+    favorito?: FavoritoUpdateManyWithoutQuadraNestedInput
   }
 
   export type QuadraUncheckedUpdateInput = {
@@ -4770,7 +5970,7 @@ export namespace Prisma {
     preco?: FloatFieldUpdateOperationsInput | number
     dimensoes?: StringFieldUpdateOperationsInput | string
     iluminacao?: BoolFieldUpdateOperationsInput | boolean
-    vestiarios?: BoolFieldUpdateOperationsInput | boolean
+    vestiario?: BoolFieldUpdateOperationsInput | boolean
     bebedouro?: BoolFieldUpdateOperationsInput | boolean
     estacionamento?: BoolFieldUpdateOperationsInput | boolean
     arquibancada?: BoolFieldUpdateOperationsInput | boolean
@@ -4779,6 +5979,7 @@ export namespace Prisma {
     wifi?: BoolFieldUpdateOperationsInput | boolean
     criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
     locacao?: LocacaoUncheckedUpdateManyWithoutQuadraNestedInput
+    favorito?: FavoritoUncheckedUpdateManyWithoutQuadraNestedInput
   }
 
   export type QuadraCreateManyInput = {
@@ -4794,7 +5995,7 @@ export namespace Prisma {
     preco: number
     dimensoes: string
     iluminacao: boolean
-    vestiarios: boolean
+    vestiario: boolean
     bebedouro: boolean
     estacionamento: boolean
     arquibancada: boolean
@@ -4816,7 +6017,7 @@ export namespace Prisma {
     preco?: FloatFieldUpdateOperationsInput | number
     dimensoes?: StringFieldUpdateOperationsInput | string
     iluminacao?: BoolFieldUpdateOperationsInput | boolean
-    vestiarios?: BoolFieldUpdateOperationsInput | boolean
+    vestiario?: BoolFieldUpdateOperationsInput | boolean
     bebedouro?: BoolFieldUpdateOperationsInput | boolean
     estacionamento?: BoolFieldUpdateOperationsInput | boolean
     arquibancada?: BoolFieldUpdateOperationsInput | boolean
@@ -4839,7 +6040,7 @@ export namespace Prisma {
     preco?: FloatFieldUpdateOperationsInput | number
     dimensoes?: StringFieldUpdateOperationsInput | string
     iluminacao?: BoolFieldUpdateOperationsInput | boolean
-    vestiarios?: BoolFieldUpdateOperationsInput | boolean
+    vestiario?: BoolFieldUpdateOperationsInput | boolean
     bebedouro?: BoolFieldUpdateOperationsInput | boolean
     estacionamento?: BoolFieldUpdateOperationsInput | boolean
     arquibancada?: BoolFieldUpdateOperationsInput | boolean
@@ -4893,6 +6094,50 @@ export namespace Prisma {
     dataHora?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type FavoritoCreateInput = {
+    favoritadoEm: Date | string
+    usuario: UsuarioCreateNestedOneWithoutFavoritoInput
+    quadra: QuadraCreateNestedOneWithoutFavoritoInput
+  }
+
+  export type FavoritoUncheckedCreateInput = {
+    id?: number
+    idUsuario: number
+    idQuadra: number
+    favoritadoEm: Date | string
+  }
+
+  export type FavoritoUpdateInput = {
+    favoritadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    usuario?: UsuarioUpdateOneRequiredWithoutFavoritoNestedInput
+    quadra?: QuadraUpdateOneRequiredWithoutFavoritoNestedInput
+  }
+
+  export type FavoritoUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    idUsuario?: IntFieldUpdateOperationsInput | number
+    idQuadra?: IntFieldUpdateOperationsInput | number
+    favoritadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FavoritoCreateManyInput = {
+    id?: number
+    idUsuario: number
+    idQuadra: number
+    favoritadoEm: Date | string
+  }
+
+  export type FavoritoUpdateManyMutationInput = {
+    favoritadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FavoritoUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    idUsuario?: IntFieldUpdateOperationsInput | number
+    idQuadra?: IntFieldUpdateOperationsInput | number
+    favoritadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[]
@@ -4936,7 +6181,17 @@ export namespace Prisma {
     none?: LocacaoWhereInput
   }
 
+  export type FavoritoListRelationFilter = {
+    every?: FavoritoWhereInput
+    some?: FavoritoWhereInput
+    none?: FavoritoWhereInput
+  }
+
   export type LocacaoOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type FavoritoOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -5067,7 +6322,7 @@ export namespace Prisma {
     preco?: SortOrder
     dimensoes?: SortOrder
     iluminacao?: SortOrder
-    vestiarios?: SortOrder
+    vestiario?: SortOrder
     bebedouro?: SortOrder
     estacionamento?: SortOrder
     arquibancada?: SortOrder
@@ -5095,7 +6350,7 @@ export namespace Prisma {
     preco?: SortOrder
     dimensoes?: SortOrder
     iluminacao?: SortOrder
-    vestiarios?: SortOrder
+    vestiario?: SortOrder
     bebedouro?: SortOrder
     estacionamento?: SortOrder
     arquibancada?: SortOrder
@@ -5118,7 +6373,7 @@ export namespace Prisma {
     preco?: SortOrder
     dimensoes?: SortOrder
     iluminacao?: SortOrder
-    vestiarios?: SortOrder
+    vestiario?: SortOrder
     bebedouro?: SortOrder
     estacionamento?: SortOrder
     arquibancada?: SortOrder
@@ -5200,6 +6455,44 @@ export namespace Prisma {
     idQuadra?: SortOrder
   }
 
+  export type FavoritoIdUsuarioIdQuadraCompoundUniqueInput = {
+    idUsuario: number
+    idQuadra: number
+  }
+
+  export type FavoritoCountOrderByAggregateInput = {
+    id?: SortOrder
+    idUsuario?: SortOrder
+    idQuadra?: SortOrder
+    favoritadoEm?: SortOrder
+  }
+
+  export type FavoritoAvgOrderByAggregateInput = {
+    id?: SortOrder
+    idUsuario?: SortOrder
+    idQuadra?: SortOrder
+  }
+
+  export type FavoritoMaxOrderByAggregateInput = {
+    id?: SortOrder
+    idUsuario?: SortOrder
+    idQuadra?: SortOrder
+    favoritadoEm?: SortOrder
+  }
+
+  export type FavoritoMinOrderByAggregateInput = {
+    id?: SortOrder
+    idUsuario?: SortOrder
+    idQuadra?: SortOrder
+    favoritadoEm?: SortOrder
+  }
+
+  export type FavoritoSumOrderByAggregateInput = {
+    id?: SortOrder
+    idUsuario?: SortOrder
+    idQuadra?: SortOrder
+  }
+
   export type LocacaoCreateNestedManyWithoutUsuarioInput = {
     create?: XOR<LocacaoCreateWithoutUsuarioInput, LocacaoUncheckedCreateWithoutUsuarioInput> | LocacaoCreateWithoutUsuarioInput[] | LocacaoUncheckedCreateWithoutUsuarioInput[]
     connectOrCreate?: LocacaoCreateOrConnectWithoutUsuarioInput | LocacaoCreateOrConnectWithoutUsuarioInput[]
@@ -5207,11 +6500,25 @@ export namespace Prisma {
     connect?: LocacaoWhereUniqueInput | LocacaoWhereUniqueInput[]
   }
 
+  export type FavoritoCreateNestedManyWithoutUsuarioInput = {
+    create?: XOR<FavoritoCreateWithoutUsuarioInput, FavoritoUncheckedCreateWithoutUsuarioInput> | FavoritoCreateWithoutUsuarioInput[] | FavoritoUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: FavoritoCreateOrConnectWithoutUsuarioInput | FavoritoCreateOrConnectWithoutUsuarioInput[]
+    createMany?: FavoritoCreateManyUsuarioInputEnvelope
+    connect?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+  }
+
   export type LocacaoUncheckedCreateNestedManyWithoutUsuarioInput = {
     create?: XOR<LocacaoCreateWithoutUsuarioInput, LocacaoUncheckedCreateWithoutUsuarioInput> | LocacaoCreateWithoutUsuarioInput[] | LocacaoUncheckedCreateWithoutUsuarioInput[]
     connectOrCreate?: LocacaoCreateOrConnectWithoutUsuarioInput | LocacaoCreateOrConnectWithoutUsuarioInput[]
     createMany?: LocacaoCreateManyUsuarioInputEnvelope
     connect?: LocacaoWhereUniqueInput | LocacaoWhereUniqueInput[]
+  }
+
+  export type FavoritoUncheckedCreateNestedManyWithoutUsuarioInput = {
+    create?: XOR<FavoritoCreateWithoutUsuarioInput, FavoritoUncheckedCreateWithoutUsuarioInput> | FavoritoCreateWithoutUsuarioInput[] | FavoritoUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: FavoritoCreateOrConnectWithoutUsuarioInput | FavoritoCreateOrConnectWithoutUsuarioInput[]
+    createMany?: FavoritoCreateManyUsuarioInputEnvelope
+    connect?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -5236,6 +6543,20 @@ export namespace Prisma {
     deleteMany?: LocacaoScalarWhereInput | LocacaoScalarWhereInput[]
   }
 
+  export type FavoritoUpdateManyWithoutUsuarioNestedInput = {
+    create?: XOR<FavoritoCreateWithoutUsuarioInput, FavoritoUncheckedCreateWithoutUsuarioInput> | FavoritoCreateWithoutUsuarioInput[] | FavoritoUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: FavoritoCreateOrConnectWithoutUsuarioInput | FavoritoCreateOrConnectWithoutUsuarioInput[]
+    upsert?: FavoritoUpsertWithWhereUniqueWithoutUsuarioInput | FavoritoUpsertWithWhereUniqueWithoutUsuarioInput[]
+    createMany?: FavoritoCreateManyUsuarioInputEnvelope
+    set?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+    disconnect?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+    delete?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+    connect?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+    update?: FavoritoUpdateWithWhereUniqueWithoutUsuarioInput | FavoritoUpdateWithWhereUniqueWithoutUsuarioInput[]
+    updateMany?: FavoritoUpdateManyWithWhereWithoutUsuarioInput | FavoritoUpdateManyWithWhereWithoutUsuarioInput[]
+    deleteMany?: FavoritoScalarWhereInput | FavoritoScalarWhereInput[]
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -5258,6 +6579,20 @@ export namespace Prisma {
     deleteMany?: LocacaoScalarWhereInput | LocacaoScalarWhereInput[]
   }
 
+  export type FavoritoUncheckedUpdateManyWithoutUsuarioNestedInput = {
+    create?: XOR<FavoritoCreateWithoutUsuarioInput, FavoritoUncheckedCreateWithoutUsuarioInput> | FavoritoCreateWithoutUsuarioInput[] | FavoritoUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: FavoritoCreateOrConnectWithoutUsuarioInput | FavoritoCreateOrConnectWithoutUsuarioInput[]
+    upsert?: FavoritoUpsertWithWhereUniqueWithoutUsuarioInput | FavoritoUpsertWithWhereUniqueWithoutUsuarioInput[]
+    createMany?: FavoritoCreateManyUsuarioInputEnvelope
+    set?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+    disconnect?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+    delete?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+    connect?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+    update?: FavoritoUpdateWithWhereUniqueWithoutUsuarioInput | FavoritoUpdateWithWhereUniqueWithoutUsuarioInput[]
+    updateMany?: FavoritoUpdateManyWithWhereWithoutUsuarioInput | FavoritoUpdateManyWithWhereWithoutUsuarioInput[]
+    deleteMany?: FavoritoScalarWhereInput | FavoritoScalarWhereInput[]
+  }
+
   export type LocacaoCreateNestedManyWithoutQuadraInput = {
     create?: XOR<LocacaoCreateWithoutQuadraInput, LocacaoUncheckedCreateWithoutQuadraInput> | LocacaoCreateWithoutQuadraInput[] | LocacaoUncheckedCreateWithoutQuadraInput[]
     connectOrCreate?: LocacaoCreateOrConnectWithoutQuadraInput | LocacaoCreateOrConnectWithoutQuadraInput[]
@@ -5265,11 +6600,25 @@ export namespace Prisma {
     connect?: LocacaoWhereUniqueInput | LocacaoWhereUniqueInput[]
   }
 
+  export type FavoritoCreateNestedManyWithoutQuadraInput = {
+    create?: XOR<FavoritoCreateWithoutQuadraInput, FavoritoUncheckedCreateWithoutQuadraInput> | FavoritoCreateWithoutQuadraInput[] | FavoritoUncheckedCreateWithoutQuadraInput[]
+    connectOrCreate?: FavoritoCreateOrConnectWithoutQuadraInput | FavoritoCreateOrConnectWithoutQuadraInput[]
+    createMany?: FavoritoCreateManyQuadraInputEnvelope
+    connect?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+  }
+
   export type LocacaoUncheckedCreateNestedManyWithoutQuadraInput = {
     create?: XOR<LocacaoCreateWithoutQuadraInput, LocacaoUncheckedCreateWithoutQuadraInput> | LocacaoCreateWithoutQuadraInput[] | LocacaoUncheckedCreateWithoutQuadraInput[]
     connectOrCreate?: LocacaoCreateOrConnectWithoutQuadraInput | LocacaoCreateOrConnectWithoutQuadraInput[]
     createMany?: LocacaoCreateManyQuadraInputEnvelope
     connect?: LocacaoWhereUniqueInput | LocacaoWhereUniqueInput[]
+  }
+
+  export type FavoritoUncheckedCreateNestedManyWithoutQuadraInput = {
+    create?: XOR<FavoritoCreateWithoutQuadraInput, FavoritoUncheckedCreateWithoutQuadraInput> | FavoritoCreateWithoutQuadraInput[] | FavoritoUncheckedCreateWithoutQuadraInput[]
+    connectOrCreate?: FavoritoCreateOrConnectWithoutQuadraInput | FavoritoCreateOrConnectWithoutQuadraInput[]
+    createMany?: FavoritoCreateManyQuadraInputEnvelope
+    connect?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
   }
 
   export type FloatFieldUpdateOperationsInput = {
@@ -5298,6 +6647,20 @@ export namespace Prisma {
     deleteMany?: LocacaoScalarWhereInput | LocacaoScalarWhereInput[]
   }
 
+  export type FavoritoUpdateManyWithoutQuadraNestedInput = {
+    create?: XOR<FavoritoCreateWithoutQuadraInput, FavoritoUncheckedCreateWithoutQuadraInput> | FavoritoCreateWithoutQuadraInput[] | FavoritoUncheckedCreateWithoutQuadraInput[]
+    connectOrCreate?: FavoritoCreateOrConnectWithoutQuadraInput | FavoritoCreateOrConnectWithoutQuadraInput[]
+    upsert?: FavoritoUpsertWithWhereUniqueWithoutQuadraInput | FavoritoUpsertWithWhereUniqueWithoutQuadraInput[]
+    createMany?: FavoritoCreateManyQuadraInputEnvelope
+    set?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+    disconnect?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+    delete?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+    connect?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+    update?: FavoritoUpdateWithWhereUniqueWithoutQuadraInput | FavoritoUpdateWithWhereUniqueWithoutQuadraInput[]
+    updateMany?: FavoritoUpdateManyWithWhereWithoutQuadraInput | FavoritoUpdateManyWithWhereWithoutQuadraInput[]
+    deleteMany?: FavoritoScalarWhereInput | FavoritoScalarWhereInput[]
+  }
+
   export type LocacaoUncheckedUpdateManyWithoutQuadraNestedInput = {
     create?: XOR<LocacaoCreateWithoutQuadraInput, LocacaoUncheckedCreateWithoutQuadraInput> | LocacaoCreateWithoutQuadraInput[] | LocacaoUncheckedCreateWithoutQuadraInput[]
     connectOrCreate?: LocacaoCreateOrConnectWithoutQuadraInput | LocacaoCreateOrConnectWithoutQuadraInput[]
@@ -5310,6 +6673,20 @@ export namespace Prisma {
     update?: LocacaoUpdateWithWhereUniqueWithoutQuadraInput | LocacaoUpdateWithWhereUniqueWithoutQuadraInput[]
     updateMany?: LocacaoUpdateManyWithWhereWithoutQuadraInput | LocacaoUpdateManyWithWhereWithoutQuadraInput[]
     deleteMany?: LocacaoScalarWhereInput | LocacaoScalarWhereInput[]
+  }
+
+  export type FavoritoUncheckedUpdateManyWithoutQuadraNestedInput = {
+    create?: XOR<FavoritoCreateWithoutQuadraInput, FavoritoUncheckedCreateWithoutQuadraInput> | FavoritoCreateWithoutQuadraInput[] | FavoritoUncheckedCreateWithoutQuadraInput[]
+    connectOrCreate?: FavoritoCreateOrConnectWithoutQuadraInput | FavoritoCreateOrConnectWithoutQuadraInput[]
+    upsert?: FavoritoUpsertWithWhereUniqueWithoutQuadraInput | FavoritoUpsertWithWhereUniqueWithoutQuadraInput[]
+    createMany?: FavoritoCreateManyQuadraInputEnvelope
+    set?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+    disconnect?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+    delete?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+    connect?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+    update?: FavoritoUpdateWithWhereUniqueWithoutQuadraInput | FavoritoUpdateWithWhereUniqueWithoutQuadraInput[]
+    updateMany?: FavoritoUpdateManyWithWhereWithoutQuadraInput | FavoritoUpdateManyWithWhereWithoutQuadraInput[]
+    deleteMany?: FavoritoScalarWhereInput | FavoritoScalarWhereInput[]
   }
 
   export type UsuarioCreateNestedOneWithoutLocacaoInput = {
@@ -5338,6 +6715,34 @@ export namespace Prisma {
     upsert?: QuadraUpsertWithoutLocacaoInput
     connect?: QuadraWhereUniqueInput
     update?: XOR<XOR<QuadraUpdateToOneWithWhereWithoutLocacaoInput, QuadraUpdateWithoutLocacaoInput>, QuadraUncheckedUpdateWithoutLocacaoInput>
+  }
+
+  export type UsuarioCreateNestedOneWithoutFavoritoInput = {
+    create?: XOR<UsuarioCreateWithoutFavoritoInput, UsuarioUncheckedCreateWithoutFavoritoInput>
+    connectOrCreate?: UsuarioCreateOrConnectWithoutFavoritoInput
+    connect?: UsuarioWhereUniqueInput
+  }
+
+  export type QuadraCreateNestedOneWithoutFavoritoInput = {
+    create?: XOR<QuadraCreateWithoutFavoritoInput, QuadraUncheckedCreateWithoutFavoritoInput>
+    connectOrCreate?: QuadraCreateOrConnectWithoutFavoritoInput
+    connect?: QuadraWhereUniqueInput
+  }
+
+  export type UsuarioUpdateOneRequiredWithoutFavoritoNestedInput = {
+    create?: XOR<UsuarioCreateWithoutFavoritoInput, UsuarioUncheckedCreateWithoutFavoritoInput>
+    connectOrCreate?: UsuarioCreateOrConnectWithoutFavoritoInput
+    upsert?: UsuarioUpsertWithoutFavoritoInput
+    connect?: UsuarioWhereUniqueInput
+    update?: XOR<XOR<UsuarioUpdateToOneWithWhereWithoutFavoritoInput, UsuarioUpdateWithoutFavoritoInput>, UsuarioUncheckedUpdateWithoutFavoritoInput>
+  }
+
+  export type QuadraUpdateOneRequiredWithoutFavoritoNestedInput = {
+    create?: XOR<QuadraCreateWithoutFavoritoInput, QuadraUncheckedCreateWithoutFavoritoInput>
+    connectOrCreate?: QuadraCreateOrConnectWithoutFavoritoInput
+    upsert?: QuadraUpsertWithoutFavoritoInput
+    connect?: QuadraWhereUniqueInput
+    update?: XOR<XOR<QuadraUpdateToOneWithWhereWithoutFavoritoInput, QuadraUpdateWithoutFavoritoInput>, QuadraUncheckedUpdateWithoutFavoritoInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -5486,6 +6891,27 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type FavoritoCreateWithoutUsuarioInput = {
+    favoritadoEm: Date | string
+    quadra: QuadraCreateNestedOneWithoutFavoritoInput
+  }
+
+  export type FavoritoUncheckedCreateWithoutUsuarioInput = {
+    id?: number
+    idQuadra: number
+    favoritadoEm: Date | string
+  }
+
+  export type FavoritoCreateOrConnectWithoutUsuarioInput = {
+    where: FavoritoWhereUniqueInput
+    create: XOR<FavoritoCreateWithoutUsuarioInput, FavoritoUncheckedCreateWithoutUsuarioInput>
+  }
+
+  export type FavoritoCreateManyUsuarioInputEnvelope = {
+    data: FavoritoCreateManyUsuarioInput | FavoritoCreateManyUsuarioInput[]
+    skipDuplicates?: boolean
+  }
+
   export type LocacaoUpsertWithWhereUniqueWithoutUsuarioInput = {
     where: LocacaoWhereUniqueInput
     update: XOR<LocacaoUpdateWithoutUsuarioInput, LocacaoUncheckedUpdateWithoutUsuarioInput>
@@ -5512,6 +6938,32 @@ export namespace Prisma {
     dataHora?: DateTimeFilter<"Locacao"> | Date | string
   }
 
+  export type FavoritoUpsertWithWhereUniqueWithoutUsuarioInput = {
+    where: FavoritoWhereUniqueInput
+    update: XOR<FavoritoUpdateWithoutUsuarioInput, FavoritoUncheckedUpdateWithoutUsuarioInput>
+    create: XOR<FavoritoCreateWithoutUsuarioInput, FavoritoUncheckedCreateWithoutUsuarioInput>
+  }
+
+  export type FavoritoUpdateWithWhereUniqueWithoutUsuarioInput = {
+    where: FavoritoWhereUniqueInput
+    data: XOR<FavoritoUpdateWithoutUsuarioInput, FavoritoUncheckedUpdateWithoutUsuarioInput>
+  }
+
+  export type FavoritoUpdateManyWithWhereWithoutUsuarioInput = {
+    where: FavoritoScalarWhereInput
+    data: XOR<FavoritoUpdateManyMutationInput, FavoritoUncheckedUpdateManyWithoutUsuarioInput>
+  }
+
+  export type FavoritoScalarWhereInput = {
+    AND?: FavoritoScalarWhereInput | FavoritoScalarWhereInput[]
+    OR?: FavoritoScalarWhereInput[]
+    NOT?: FavoritoScalarWhereInput | FavoritoScalarWhereInput[]
+    id?: IntFilter<"Favorito"> | number
+    idUsuario?: IntFilter<"Favorito"> | number
+    idQuadra?: IntFilter<"Favorito"> | number
+    favoritadoEm?: DateTimeFilter<"Favorito"> | Date | string
+  }
+
   export type LocacaoCreateWithoutQuadraInput = {
     dataHora: Date | string
     usuario: UsuarioCreateNestedOneWithoutLocacaoInput
@@ -5533,6 +6985,27 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type FavoritoCreateWithoutQuadraInput = {
+    favoritadoEm: Date | string
+    usuario: UsuarioCreateNestedOneWithoutFavoritoInput
+  }
+
+  export type FavoritoUncheckedCreateWithoutQuadraInput = {
+    id?: number
+    idUsuario: number
+    favoritadoEm: Date | string
+  }
+
+  export type FavoritoCreateOrConnectWithoutQuadraInput = {
+    where: FavoritoWhereUniqueInput
+    create: XOR<FavoritoCreateWithoutQuadraInput, FavoritoUncheckedCreateWithoutQuadraInput>
+  }
+
+  export type FavoritoCreateManyQuadraInputEnvelope = {
+    data: FavoritoCreateManyQuadraInput | FavoritoCreateManyQuadraInput[]
+    skipDuplicates?: boolean
+  }
+
   export type LocacaoUpsertWithWhereUniqueWithoutQuadraInput = {
     where: LocacaoWhereUniqueInput
     update: XOR<LocacaoUpdateWithoutQuadraInput, LocacaoUncheckedUpdateWithoutQuadraInput>
@@ -5549,6 +7022,22 @@ export namespace Prisma {
     data: XOR<LocacaoUpdateManyMutationInput, LocacaoUncheckedUpdateManyWithoutQuadraInput>
   }
 
+  export type FavoritoUpsertWithWhereUniqueWithoutQuadraInput = {
+    where: FavoritoWhereUniqueInput
+    update: XOR<FavoritoUpdateWithoutQuadraInput, FavoritoUncheckedUpdateWithoutQuadraInput>
+    create: XOR<FavoritoCreateWithoutQuadraInput, FavoritoUncheckedCreateWithoutQuadraInput>
+  }
+
+  export type FavoritoUpdateWithWhereUniqueWithoutQuadraInput = {
+    where: FavoritoWhereUniqueInput
+    data: XOR<FavoritoUpdateWithoutQuadraInput, FavoritoUncheckedUpdateWithoutQuadraInput>
+  }
+
+  export type FavoritoUpdateManyWithWhereWithoutQuadraInput = {
+    where: FavoritoScalarWhereInput
+    data: XOR<FavoritoUpdateManyMutationInput, FavoritoUncheckedUpdateManyWithoutQuadraInput>
+  }
+
   export type UsuarioCreateWithoutLocacaoInput = {
     nome: string
     nascimento: Date | string
@@ -5556,6 +7045,7 @@ export namespace Prisma {
     cpf: string
     senha: string
     criado_em?: Date | string
+    favorito?: FavoritoCreateNestedManyWithoutUsuarioInput
   }
 
   export type UsuarioUncheckedCreateWithoutLocacaoInput = {
@@ -5566,6 +7056,7 @@ export namespace Prisma {
     cpf: string
     senha: string
     criado_em?: Date | string
+    favorito?: FavoritoUncheckedCreateNestedManyWithoutUsuarioInput
   }
 
   export type UsuarioCreateOrConnectWithoutLocacaoInput = {
@@ -5585,7 +7076,7 @@ export namespace Prisma {
     preco: number
     dimensoes: string
     iluminacao: boolean
-    vestiarios: boolean
+    vestiario: boolean
     bebedouro: boolean
     estacionamento: boolean
     arquibancada: boolean
@@ -5593,6 +7084,7 @@ export namespace Prisma {
     acessibilidade: boolean
     wifi: boolean
     criado_em?: Date | string
+    favorito?: FavoritoCreateNestedManyWithoutQuadraInput
   }
 
   export type QuadraUncheckedCreateWithoutLocacaoInput = {
@@ -5608,7 +7100,7 @@ export namespace Prisma {
     preco: number
     dimensoes: string
     iluminacao: boolean
-    vestiarios: boolean
+    vestiario: boolean
     bebedouro: boolean
     estacionamento: boolean
     arquibancada: boolean
@@ -5616,6 +7108,7 @@ export namespace Prisma {
     acessibilidade: boolean
     wifi: boolean
     criado_em?: Date | string
+    favorito?: FavoritoUncheckedCreateNestedManyWithoutQuadraInput
   }
 
   export type QuadraCreateOrConnectWithoutLocacaoInput = {
@@ -5641,6 +7134,7 @@ export namespace Prisma {
     cpf?: StringFieldUpdateOperationsInput | string
     senha?: StringFieldUpdateOperationsInput | string
     criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
+    favorito?: FavoritoUpdateManyWithoutUsuarioNestedInput
   }
 
   export type UsuarioUncheckedUpdateWithoutLocacaoInput = {
@@ -5651,6 +7145,7 @@ export namespace Prisma {
     cpf?: StringFieldUpdateOperationsInput | string
     senha?: StringFieldUpdateOperationsInput | string
     criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
+    favorito?: FavoritoUncheckedUpdateManyWithoutUsuarioNestedInput
   }
 
   export type QuadraUpsertWithoutLocacaoInput = {
@@ -5676,7 +7171,7 @@ export namespace Prisma {
     preco?: FloatFieldUpdateOperationsInput | number
     dimensoes?: StringFieldUpdateOperationsInput | string
     iluminacao?: BoolFieldUpdateOperationsInput | boolean
-    vestiarios?: BoolFieldUpdateOperationsInput | boolean
+    vestiario?: BoolFieldUpdateOperationsInput | boolean
     bebedouro?: BoolFieldUpdateOperationsInput | boolean
     estacionamento?: BoolFieldUpdateOperationsInput | boolean
     arquibancada?: BoolFieldUpdateOperationsInput | boolean
@@ -5684,6 +7179,7 @@ export namespace Prisma {
     acessibilidade?: BoolFieldUpdateOperationsInput | boolean
     wifi?: BoolFieldUpdateOperationsInput | boolean
     criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
+    favorito?: FavoritoUpdateManyWithoutQuadraNestedInput
   }
 
   export type QuadraUncheckedUpdateWithoutLocacaoInput = {
@@ -5699,7 +7195,7 @@ export namespace Prisma {
     preco?: FloatFieldUpdateOperationsInput | number
     dimensoes?: StringFieldUpdateOperationsInput | string
     iluminacao?: BoolFieldUpdateOperationsInput | boolean
-    vestiarios?: BoolFieldUpdateOperationsInput | boolean
+    vestiario?: BoolFieldUpdateOperationsInput | boolean
     bebedouro?: BoolFieldUpdateOperationsInput | boolean
     estacionamento?: BoolFieldUpdateOperationsInput | boolean
     arquibancada?: BoolFieldUpdateOperationsInput | boolean
@@ -5707,12 +7203,187 @@ export namespace Prisma {
     acessibilidade?: BoolFieldUpdateOperationsInput | boolean
     wifi?: BoolFieldUpdateOperationsInput | boolean
     criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
+    favorito?: FavoritoUncheckedUpdateManyWithoutQuadraNestedInput
+  }
+
+  export type UsuarioCreateWithoutFavoritoInput = {
+    nome: string
+    nascimento: Date | string
+    email: string
+    cpf: string
+    senha: string
+    criado_em?: Date | string
+    locacao?: LocacaoCreateNestedManyWithoutUsuarioInput
+  }
+
+  export type UsuarioUncheckedCreateWithoutFavoritoInput = {
+    id?: number
+    nome: string
+    nascimento: Date | string
+    email: string
+    cpf: string
+    senha: string
+    criado_em?: Date | string
+    locacao?: LocacaoUncheckedCreateNestedManyWithoutUsuarioInput
+  }
+
+  export type UsuarioCreateOrConnectWithoutFavoritoInput = {
+    where: UsuarioWhereUniqueInput
+    create: XOR<UsuarioCreateWithoutFavoritoInput, UsuarioUncheckedCreateWithoutFavoritoInput>
+  }
+
+  export type QuadraCreateWithoutFavoritoInput = {
+    nomeLocal: string
+    tipoQuadra: string
+    localizacao: string
+    imagemPrincipal: string
+    imagemPri: string
+    imagemSeg: string
+    imagemTer: string
+    telefone: string
+    preco: number
+    dimensoes: string
+    iluminacao: boolean
+    vestiario: boolean
+    bebedouro: boolean
+    estacionamento: boolean
+    arquibancada: boolean
+    coberta: boolean
+    acessibilidade: boolean
+    wifi: boolean
+    criado_em?: Date | string
+    locacao?: LocacaoCreateNestedManyWithoutQuadraInput
+  }
+
+  export type QuadraUncheckedCreateWithoutFavoritoInput = {
+    id?: number
+    nomeLocal: string
+    tipoQuadra: string
+    localizacao: string
+    imagemPrincipal: string
+    imagemPri: string
+    imagemSeg: string
+    imagemTer: string
+    telefone: string
+    preco: number
+    dimensoes: string
+    iluminacao: boolean
+    vestiario: boolean
+    bebedouro: boolean
+    estacionamento: boolean
+    arquibancada: boolean
+    coberta: boolean
+    acessibilidade: boolean
+    wifi: boolean
+    criado_em?: Date | string
+    locacao?: LocacaoUncheckedCreateNestedManyWithoutQuadraInput
+  }
+
+  export type QuadraCreateOrConnectWithoutFavoritoInput = {
+    where: QuadraWhereUniqueInput
+    create: XOR<QuadraCreateWithoutFavoritoInput, QuadraUncheckedCreateWithoutFavoritoInput>
+  }
+
+  export type UsuarioUpsertWithoutFavoritoInput = {
+    update: XOR<UsuarioUpdateWithoutFavoritoInput, UsuarioUncheckedUpdateWithoutFavoritoInput>
+    create: XOR<UsuarioCreateWithoutFavoritoInput, UsuarioUncheckedCreateWithoutFavoritoInput>
+    where?: UsuarioWhereInput
+  }
+
+  export type UsuarioUpdateToOneWithWhereWithoutFavoritoInput = {
+    where?: UsuarioWhereInput
+    data: XOR<UsuarioUpdateWithoutFavoritoInput, UsuarioUncheckedUpdateWithoutFavoritoInput>
+  }
+
+  export type UsuarioUpdateWithoutFavoritoInput = {
+    nome?: StringFieldUpdateOperationsInput | string
+    nascimento?: DateTimeFieldUpdateOperationsInput | Date | string
+    email?: StringFieldUpdateOperationsInput | string
+    cpf?: StringFieldUpdateOperationsInput | string
+    senha?: StringFieldUpdateOperationsInput | string
+    criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
+    locacao?: LocacaoUpdateManyWithoutUsuarioNestedInput
+  }
+
+  export type UsuarioUncheckedUpdateWithoutFavoritoInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nome?: StringFieldUpdateOperationsInput | string
+    nascimento?: DateTimeFieldUpdateOperationsInput | Date | string
+    email?: StringFieldUpdateOperationsInput | string
+    cpf?: StringFieldUpdateOperationsInput | string
+    senha?: StringFieldUpdateOperationsInput | string
+    criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
+    locacao?: LocacaoUncheckedUpdateManyWithoutUsuarioNestedInput
+  }
+
+  export type QuadraUpsertWithoutFavoritoInput = {
+    update: XOR<QuadraUpdateWithoutFavoritoInput, QuadraUncheckedUpdateWithoutFavoritoInput>
+    create: XOR<QuadraCreateWithoutFavoritoInput, QuadraUncheckedCreateWithoutFavoritoInput>
+    where?: QuadraWhereInput
+  }
+
+  export type QuadraUpdateToOneWithWhereWithoutFavoritoInput = {
+    where?: QuadraWhereInput
+    data: XOR<QuadraUpdateWithoutFavoritoInput, QuadraUncheckedUpdateWithoutFavoritoInput>
+  }
+
+  export type QuadraUpdateWithoutFavoritoInput = {
+    nomeLocal?: StringFieldUpdateOperationsInput | string
+    tipoQuadra?: StringFieldUpdateOperationsInput | string
+    localizacao?: StringFieldUpdateOperationsInput | string
+    imagemPrincipal?: StringFieldUpdateOperationsInput | string
+    imagemPri?: StringFieldUpdateOperationsInput | string
+    imagemSeg?: StringFieldUpdateOperationsInput | string
+    imagemTer?: StringFieldUpdateOperationsInput | string
+    telefone?: StringFieldUpdateOperationsInput | string
+    preco?: FloatFieldUpdateOperationsInput | number
+    dimensoes?: StringFieldUpdateOperationsInput | string
+    iluminacao?: BoolFieldUpdateOperationsInput | boolean
+    vestiario?: BoolFieldUpdateOperationsInput | boolean
+    bebedouro?: BoolFieldUpdateOperationsInput | boolean
+    estacionamento?: BoolFieldUpdateOperationsInput | boolean
+    arquibancada?: BoolFieldUpdateOperationsInput | boolean
+    coberta?: BoolFieldUpdateOperationsInput | boolean
+    acessibilidade?: BoolFieldUpdateOperationsInput | boolean
+    wifi?: BoolFieldUpdateOperationsInput | boolean
+    criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
+    locacao?: LocacaoUpdateManyWithoutQuadraNestedInput
+  }
+
+  export type QuadraUncheckedUpdateWithoutFavoritoInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nomeLocal?: StringFieldUpdateOperationsInput | string
+    tipoQuadra?: StringFieldUpdateOperationsInput | string
+    localizacao?: StringFieldUpdateOperationsInput | string
+    imagemPrincipal?: StringFieldUpdateOperationsInput | string
+    imagemPri?: StringFieldUpdateOperationsInput | string
+    imagemSeg?: StringFieldUpdateOperationsInput | string
+    imagemTer?: StringFieldUpdateOperationsInput | string
+    telefone?: StringFieldUpdateOperationsInput | string
+    preco?: FloatFieldUpdateOperationsInput | number
+    dimensoes?: StringFieldUpdateOperationsInput | string
+    iluminacao?: BoolFieldUpdateOperationsInput | boolean
+    vestiario?: BoolFieldUpdateOperationsInput | boolean
+    bebedouro?: BoolFieldUpdateOperationsInput | boolean
+    estacionamento?: BoolFieldUpdateOperationsInput | boolean
+    arquibancada?: BoolFieldUpdateOperationsInput | boolean
+    coberta?: BoolFieldUpdateOperationsInput | boolean
+    acessibilidade?: BoolFieldUpdateOperationsInput | boolean
+    wifi?: BoolFieldUpdateOperationsInput | boolean
+    criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
+    locacao?: LocacaoUncheckedUpdateManyWithoutQuadraNestedInput
   }
 
   export type LocacaoCreateManyUsuarioInput = {
     id?: number
     idQuadra: number
     dataHora: Date | string
+  }
+
+  export type FavoritoCreateManyUsuarioInput = {
+    id?: number
+    idQuadra: number
+    favoritadoEm: Date | string
   }
 
   export type LocacaoUpdateWithoutUsuarioInput = {
@@ -5732,10 +7403,33 @@ export namespace Prisma {
     dataHora?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type FavoritoUpdateWithoutUsuarioInput = {
+    favoritadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    quadra?: QuadraUpdateOneRequiredWithoutFavoritoNestedInput
+  }
+
+  export type FavoritoUncheckedUpdateWithoutUsuarioInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    idQuadra?: IntFieldUpdateOperationsInput | number
+    favoritadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FavoritoUncheckedUpdateManyWithoutUsuarioInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    idQuadra?: IntFieldUpdateOperationsInput | number
+    favoritadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type LocacaoCreateManyQuadraInput = {
     id?: number
     idUsuario: number
     dataHora: Date | string
+  }
+
+  export type FavoritoCreateManyQuadraInput = {
+    id?: number
+    idUsuario: number
+    favoritadoEm: Date | string
   }
 
   export type LocacaoUpdateWithoutQuadraInput = {
@@ -5753,6 +7447,23 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     idUsuario?: IntFieldUpdateOperationsInput | number
     dataHora?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FavoritoUpdateWithoutQuadraInput = {
+    favoritadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    usuario?: UsuarioUpdateOneRequiredWithoutFavoritoNestedInput
+  }
+
+  export type FavoritoUncheckedUpdateWithoutQuadraInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    idUsuario?: IntFieldUpdateOperationsInput | number
+    favoritadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FavoritoUncheckedUpdateManyWithoutQuadraInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    idUsuario?: IntFieldUpdateOperationsInput | number
+    favoritadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 
