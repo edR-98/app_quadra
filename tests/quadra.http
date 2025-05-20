@@ -1,4 +1,4 @@
-POST http://localhost:3000/quadra/create HTTP/1.1
+POST http://localhost:4000/quadra/create HTTP/1.1
 Content-type: application/json
 
 {
@@ -11,19 +11,19 @@ Content-type: application/json
 }    
 
 ###
-GET  http://localhost:3000/quadra/read HTTP/1.1
+GET  http://localhost:4000/quadras?preco_min=100&preco_max=300 HTTP/1.1
 Content-Type: application/json
 
 ###
-GET  http://localhost:3000/quadra/show/2 HTTP/1.1
+GET  http://localhost:4000/quadra/show/2 HTTP/1.1
 Content-Type: application/json
 
 ###
-DELETE  http://localhost:3000/quadra/delete/1 HTTP/1.1
+DELETE  http://localhost:4000/quadra/delete/1 HTTP/1.1
 Content-Type: application/json
 
 ###
-PUT http://localhost:3000/quadra/update/2 HTTP/1.1
+PUT http://localhost:4000/quadra/update/2 HTTP/1.1
 Content-Type: application/json
 
 {

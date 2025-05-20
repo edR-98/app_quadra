@@ -103,3 +103,40 @@ Código em questão:
 
 - npx prisma generate = Quando precisar mudar o nome no "modelo" você atualiza usando esse comando.
 - npx prisma migrate dev = Esse comando serve para criar tabelas no banco de dados e alterar nome de campos na tabela
+
+# Insert banco de dados SQL
+
+INSERT INTO `usuarios` (`id`, `nome`, `nascimento`, `email`, `cpf`, `senha`, `criado_em`) VALUES
+(1, 'João da Silva', '1990-05-15 00:00:00.000', 'joao@example.com', '12345678900', 'senha123', '2025-05-13 20:52:47.987'),
+(2, 'Maria Oliveira', '1985-09-22 00:00:00.000', 'maria@example.com', '98765432100', 'senha456', '2025-05-13 20:52:47.987'),
+(3, 'Carlos Souza', '1992-12-01 00:00:00.000', 'carlos@example.com', '45678912300', 'senha789', '2025-05-13 20:52:47.987'),
+(4, 'Alex Mineiro', '1995-08-15 00:00:00.000', 'joao.silva@email.com', '123.456.789-00', 'senhaSegura123', '2025-05-14 00:25:07.890'),
+(5, 'Bruno Ferreira', '1992-11-05 00:00:00.000', 'bruno.ferreira@email.com', '56789012344', 'senha789', '2025-05-16 19:34:13.221'),
+(6, 'Letícia Martins', '1988-07-12 00:00:00.000', 'leticia.martins@email.com', '67890123455', 'minhasenha123', '2025-05-16 19:34:13.221'),
+(7, 'Rafael Costa', '1997-02-25 00:00:00.000', 'rafael.costa@email.com', '78901234566', '123rafael', '2025-05-16 19:34:13.221'),
+(8, 'Paula Andrade', '1994-09-18 00:00:00.000', 'paula.andrade@email.com', '89012345677', 'senha321', '2025-05-16 19:34:13.221');
+
+INSERT INTO `quadras` (`id`, `nome_local`, `tipo_quadra`, `localizacao`, `imagem_principal`, `imagem_pri`, `imagem_seg`, `imagem_ter`, `telefone`, `preco`, `dimensoes`, `iluminacao`, `vestiario`, `bebedouro`, `estacionamento`, `arquibancada`, `coberta`, `acessibilidade`, `wi_fi`, `criado_em`) VALUES
+(1, 'Arena Sol Azul', 'basquete', 'Rua das Palmeiras, 123 - Centro', 'https://i.imgur.com/fgqYnsz.jpeg', 'https://i.imgur.com/DkwzUkd.jpeg', 'https://i.imgur.com/O66Dwe3.jpeg', 'https://i.imgur.com/0PNCSOo.jpeg', '(11) 99999-1234', 300, '28x15m', 0, 0, 0, 0, 0, 0, 0, 0, '2025-05-12 20:08:32.000'),
+(2, 'Quadra Estrela do Norte', 'futsal', 'Av. Brasil, 456 - Zona Norte', 'https://i.imgur.com/fgqYnsz.jpeg', 'https://i.imgur.com/DkwzUkd.jpeg', 'https://i.imgur.com/O66Dwe3.jpeg', 'https://i.imgur.com/0PNCSOo.jpeg', '(11) 98888-1111', 300, '25x15m', 0, 0, 0, 0, 0, 0, 0, 0, '2025-05-12 20:08:32.000'),
+(3, 'Clube Raquete Dourada', 'tenis', 'Rua das Flores, 789 - Jardim', 'https://i.imgur.com/fgqYnsz.jpeg', 'https://i.imgur.com/DkwzUkd.jpeg', 'https://i.imgur.com/O66Dwe3.jpeg', 'https://i.imgur.com/0PNCSOo.jpeg', '(11) 97777-2222', 180, '23.77x8.23m', 0, 0, 0, 0, 0, 0, 0, 0, '2025-05-12 20:08:32.000'),
+(4, 'Ginásio Vôlei+', 'volei', 'Rua da Rede, 321 - Centro', 'https://i.imgur.com/fgqYnsz.jpeg', 'https://i.imgur.com/DkwzUkd.jpeg', 'https://i.imgur.com/O66Dwe3.jpeg', 'https://i.imgur.com/0PNCSOo.jpeg', '(11) 96666-3333', 140, '18x9m', 1, 0, 1, 0, 1, 0, 1, 0, '2025-05-12 20:08:32.000'),
+(5, 'Arena Basquete 360', 'basquete', 'Av. dos Atletas, 1000 - Sul', 'https://i.imgur.com/fgqYnsz.jpeg', 'https://i.imgur.com/DkwzUkd.jpeg', 'https://i.imgur.com/O66Dwe3.jpeg', 'https://i.imgur.com/0PNCSOo.jpeg', '(11) 95555-4444', 160, '28x15m', 0, 0, 1, 0, 1, 1, 1, 0, '2025-05-12 20:08:32.000'),
+(10, 'Futsal Clube Centro', 'futsal', 'Rua Central, 999 - Centro', 'https://i.imgur.com/fgqYnsz.jpeg', 'https://i.imgur.com/DkwzUkd.jpeg', 'https://i.imgur.com/O66Dwe3.jpeg', 'https://i.imgur.com/0PNCSOo.jpeg', '(11) 90000-0001', 110, '25x15m', 1, 1, 0, 1, 1, 1, 1, 1, '2025-05-13 20:07:51.000'),
+(11, 'Arena Futsal Pro', 'futsal', 'Av. Esportiva, 1234 - Zona Leste', 'https://i.imgur.com/fgqYnsz.jpeg', 'https://i.imgur.com/DkwzUkd.jpeg', 'https://i.imgur.com/O66Dwe3.jpeg', 'https://i.imgur.com/0PNCSOo.jpeg', '(11) 90000-0002', 130, '24x14m', 1, 1, 1, 1, 0, 0, 1, 0, '2025-05-13 20:07:51.000'),
+(12, 'Centro Vôlei Forte', 'volei', 'Rua do Esporte, 222 - Oeste', 'https://i.imgur.com/fgqYnsz.jpeg', 'https://i.imgur.com/DkwzUkd.jpeg', 'https://i.imgur.com/O66Dwe3.jpeg', 'https://i.imgur.com/0PNCSOo.jpeg', '(11) 90000-0003', 125, '18x9m', 0, 1, 1, 0, 1, 0, 0, 1, '2025-05-13 20:07:51.000');
+
+
+INSERT INTO `locacoes` (`id`, `id_usuario`, `id_quadra`, `data_hora`) VALUES
+(16, 1, 2, '1998-12-24 06:22:33.444'),
+(17, 1, 1, '2025-05-20 18:00:00.000'),
+(18, 2, 2, '2025-05-21 19:00:00.000'),
+(19, 3, 3, '2025-05-22 20:00:00.000'),
+(20, 1, 2, '2025-05-23 17:00:00.000'),
+(21, 4, 1, '2025-05-24 16:00:00.000'),
+(22, 2, 3, '2025-05-25 19:30:00.000'),
+(23, 3, 1, '2025-05-26 20:00:00.000'),
+(24, 4, 2, '2025-05-27 18:00:00.000'),
+(25, 1, 3, '2025-05-28 17:00:00.000'),
+(26, 2, 1, '2025-05-29 19:00:00.000'),
+(27, 1, 2, '1998-12-24 06:22:33.444');
