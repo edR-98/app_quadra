@@ -191,7 +191,7 @@ app.get("/locacoes/:id", async (req, res) => {
 
 app.post("/locacoes", async (req, res) => {
 
-  if ((req.body.id_usuario === undefined) || (req.body.id_quadra === undefined) || (req.body.data_hora === undefined)) { 
+  if (!req.body.id_usuario || !req.body.id_quadra || req.body.data_hora == null) { 
     res.status(400).send("Campos obrigatórios faltantes");
   } else {
     const novaLocacao = await prisma.locacao.create({ data: {
