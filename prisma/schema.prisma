@@ -23,6 +23,7 @@ model Usuario {
   cpf         String   @unique
   senha       String
   criado_em   DateTime @default(now())
+  
   locacao     Locacao[]
   favorito    Favorito[]
   
