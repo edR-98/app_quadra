@@ -159,7 +159,7 @@ app.post("/usuarios", async (req, res) => {
   } else {
     const novoUsuario = await prisma.usuario.create({ data: {
       nome: req.body.nome,
-      nascimento: req.body.nascimento,
+      nascimento: new Date(req.body.nascimento),
       email: req.body.email,
       cpf: req.body.cpf,
       senha: req.body.senha
