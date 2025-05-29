@@ -18,6 +18,7 @@ datasource db {
 model Usuario {
   id    Int     @id @default(autoincrement())
   nome        String
+  telefone    String?
   nascimento  DateTime
   email       String   @unique
   cpf         String   @unique

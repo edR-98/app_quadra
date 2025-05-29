@@ -15,15 +15,17 @@ datasource db {
 }
 
 model Usuario {
-  id         Int        @id @default(autoincrement())
+  id         Int      @id @default(autoincrement())
   nome       String
+  telefone   String?
   nascimento DateTime
-  email      String     @unique
-  cpf        String     @unique
+  email      String   @unique
+  cpf        String   @unique
   senha      String
-  criado_em  DateTime   @default(now())
-  locacao    Locacao[]
-  favorito   Favorito[]
+  criado_em  DateTime @default(now())
+
+  locacao  Locacao[]
+  favorito Favorito[]
 
   @@map("usuarios") // <-- Define o nome da tabela
 }
