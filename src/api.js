@@ -95,7 +95,6 @@ app.get("/quadras/:id/usuarios", async (req, res) => {
   }
 });
 
-
 app.delete("/quadras/:id", async (req, res) => {
   const id = parseInt(req.params.id); 
   
@@ -130,13 +129,13 @@ app.get("/usuarios/:id", async (req, res) => {
 });
 
 app.get("/usuarios/:id/quadras", async (req, res) => {
-  const idUsuario = parseInt(req.params.id); 
+  const idUsuario = parseInt(req.params.id);
 
   try {
     const locacoes = await prisma.locacao.findMany({
-      where: { id_usuario: idUsuario },
+      where: { idUsuario: idUsuario },
       include: {
-        quadra: true, 
+        quadra: true,
       },
     });
 
@@ -144,11 +143,12 @@ app.get("/usuarios/:id/quadras", async (req, res) => {
       return res.status(404).json({ error: "Este usuário não alugou nenhuma quadra." });
     }
 
-    const quadras = locacoes.map((locacao) => locacao.quadra);
+    const quadras = locacoes.map(locacao => locacao.quadra);
 
-    res.json(quadras); 
+    res.json(quadras);
   } catch (error) {
-    res.status(500).json({ error: "Erro ao obter as quadras alugadas pelo usuário" });
+    console.error(error);
+    res.status(500).json({ error: "Erro ao obter as quadras alugadas pelo usuário." });
   }
 });
 
@@ -167,6 +167,20 @@ app.post("/usuarios", async (req, res) => {
     
     res.status(201).location(`/usuarios/${novoUsuario.id}`).send();
   }
+});
+
+app.post("/autenticar", async (req, res) => {
+  const { cpf, senha } = req.body;
+
+  const usuario = await prisma.usuario.findFirst({
+    where: { cpf, senha }
+  });
+
+  if (!usuario) {
+    return res.status(404).json({ erro: "Usuário não encontrado" });
+  }
+
+  res.json(usuario);
 });
 
 
