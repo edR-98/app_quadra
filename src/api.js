@@ -143,9 +143,9 @@ app.get("/usuarios/:id/quadras", async (req, res) => {
       return res.status(404).json({ error: "Este usuário não alugou nenhuma quadra." });
     }
 
-    const quadras = locacoes.map(locacao => locacao.quadra);
+    //const quadras = locacoes.map(locacao => locacao.quadra);
 
-    res.json(quadras);
+    res.json(locacoes);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Erro ao obter as quadras alugadas pelo usuário." });
@@ -211,7 +211,7 @@ app.post("/locacoes", async (req, res) => {
     const novaLocacao = await prisma.locacao.create({ data: {
       idUsuario: req.body.id_usuario,
       idQuadra: req.body.id_quadra,
-      dataHora: new Date(req.body.data_hora)
+      dataHora: req.body.data_hora.toString()
     }});
     res.status(201).location(`/locacoes/${novaLocacao.id}`).send();
   }
