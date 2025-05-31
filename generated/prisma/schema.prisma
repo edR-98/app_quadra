@@ -24,8 +24,9 @@ model Usuario {
   senha      String
   criado_em  DateTime @default(now())
 
-  locacao  Locacao[]
-  favorito Favorito[]
+  locacao   Locacao[]
+  favorito  Favorito[]
+  avaliacao Avaliacao[]
 
   @@map("usuarios") // <-- Define o nome da tabela
 }
@@ -52,8 +53,9 @@ model Quadra {
   wifi            Boolean  @map("wi_fi")
   criado_em       DateTime @default(now())
 
-  locacao  Locacao[]
-  favorito Favorito[]
+  locacao   Locacao[]
+  favorito  Favorito[]
+  avaliacao Avaliacao[]
 
   @@map("quadras") // Nome da tabela no banco
 }
@@ -81,4 +83,18 @@ model Favorito {
 
   @@unique([idUsuario, idQuadra]) // impede favoritos duplicados
   @@map("favoritos") // nome real da tabela
+}
+
+model Avaliacao {
+  id         Int      @id @default(autoincrement())
+  nota       Int
+  comentario String
+  idUsuario  Int      @map("id_usuario")
+  idQuadra   Int      @map("id_quadra")
+  criado_em  DateTime @default(now())
+
+  usuario Usuario @relation(fields: [idUsuario], references: [id])
+  quadra  Quadra  @relation(fields: [idQuadra], references: [id])
+
+  @@map("avaliacoes")
 }

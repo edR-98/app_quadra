@@ -33,6 +33,11 @@ export type Locacao = $Result.DefaultSelection<Prisma.$LocacaoPayload>
  * 
  */
 export type Favorito = $Result.DefaultSelection<Prisma.$FavoritoPayload>
+/**
+ * Model Avaliacao
+ * 
+ */
+export type Avaliacao = $Result.DefaultSelection<Prisma.$AvaliacaoPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -198,6 +203,16 @@ export class PrismaClient<
     * ```
     */
   get favorito(): Prisma.FavoritoDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.avaliacao`: Exposes CRUD operations for the **Avaliacao** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Avaliacaos
+    * const avaliacaos = await prisma.avaliacao.findMany()
+    * ```
+    */
+  get avaliacao(): Prisma.AvaliacaoDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -256,8 +271,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.7.0
-   * Query Engine version: 3cff47a7f5d65c3ea74883f1d736e41d68ce91ed
+   * Prisma Client JS version: 6.8.2
+   * Query Engine version: 2060c79ba17c6bb9f5823312b6f6b7f4a845738e
    */
   export type PrismaVersion = {
     client: string
@@ -641,7 +656,8 @@ export namespace Prisma {
     Usuario: 'Usuario',
     Quadra: 'Quadra',
     Locacao: 'Locacao',
-    Favorito: 'Favorito'
+    Favorito: 'Favorito',
+    Avaliacao: 'Avaliacao'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -660,7 +676,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "usuario" | "quadra" | "locacao" | "favorito"
+      modelProps: "usuario" | "quadra" | "locacao" | "favorito" | "avaliacao"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -928,6 +944,72 @@ export namespace Prisma {
           }
         }
       }
+      Avaliacao: {
+        payload: Prisma.$AvaliacaoPayload<ExtArgs>
+        fields: Prisma.AvaliacaoFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AvaliacaoFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvaliacaoPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AvaliacaoFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvaliacaoPayload>
+          }
+          findFirst: {
+            args: Prisma.AvaliacaoFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvaliacaoPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AvaliacaoFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvaliacaoPayload>
+          }
+          findMany: {
+            args: Prisma.AvaliacaoFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvaliacaoPayload>[]
+          }
+          create: {
+            args: Prisma.AvaliacaoCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvaliacaoPayload>
+          }
+          createMany: {
+            args: Prisma.AvaliacaoCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.AvaliacaoDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvaliacaoPayload>
+          }
+          update: {
+            args: Prisma.AvaliacaoUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvaliacaoPayload>
+          }
+          deleteMany: {
+            args: Prisma.AvaliacaoDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AvaliacaoUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.AvaliacaoUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvaliacaoPayload>
+          }
+          aggregate: {
+            args: Prisma.AvaliacaoAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAvaliacao>
+          }
+          groupBy: {
+            args: Prisma.AvaliacaoGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AvaliacaoGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AvaliacaoCountArgs<ExtArgs>
+            result: $Utils.Optional<AvaliacaoCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1016,6 +1098,7 @@ export namespace Prisma {
     quadra?: QuadraOmit
     locacao?: LocacaoOmit
     favorito?: FavoritoOmit
+    avaliacao?: AvaliacaoOmit
   }
 
   /* Types for Logging */
@@ -1112,11 +1195,13 @@ export namespace Prisma {
   export type UsuarioCountOutputType = {
     locacao: number
     favorito: number
+    avaliacao: number
   }
 
   export type UsuarioCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     locacao?: boolean | UsuarioCountOutputTypeCountLocacaoArgs
     favorito?: boolean | UsuarioCountOutputTypeCountFavoritoArgs
+    avaliacao?: boolean | UsuarioCountOutputTypeCountAvaliacaoArgs
   }
 
   // Custom InputTypes
@@ -1144,6 +1229,13 @@ export namespace Prisma {
     where?: FavoritoWhereInput
   }
 
+  /**
+   * UsuarioCountOutputType without action
+   */
+  export type UsuarioCountOutputTypeCountAvaliacaoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AvaliacaoWhereInput
+  }
+
 
   /**
    * Count Type QuadraCountOutputType
@@ -1152,11 +1244,13 @@ export namespace Prisma {
   export type QuadraCountOutputType = {
     locacao: number
     favorito: number
+    avaliacao: number
   }
 
   export type QuadraCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     locacao?: boolean | QuadraCountOutputTypeCountLocacaoArgs
     favorito?: boolean | QuadraCountOutputTypeCountFavoritoArgs
+    avaliacao?: boolean | QuadraCountOutputTypeCountAvaliacaoArgs
   }
 
   // Custom InputTypes
@@ -1182,6 +1276,13 @@ export namespace Prisma {
    */
   export type QuadraCountOutputTypeCountFavoritoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: FavoritoWhereInput
+  }
+
+  /**
+   * QuadraCountOutputType without action
+   */
+  export type QuadraCountOutputTypeCountAvaliacaoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AvaliacaoWhereInput
   }
 
 
@@ -1413,6 +1514,7 @@ export namespace Prisma {
     criado_em?: boolean
     locacao?: boolean | Usuario$locacaoArgs<ExtArgs>
     favorito?: boolean | Usuario$favoritoArgs<ExtArgs>
+    avaliacao?: boolean | Usuario$avaliacaoArgs<ExtArgs>
     _count?: boolean | UsuarioCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["usuario"]>
 
@@ -1433,6 +1535,7 @@ export namespace Prisma {
   export type UsuarioInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     locacao?: boolean | Usuario$locacaoArgs<ExtArgs>
     favorito?: boolean | Usuario$favoritoArgs<ExtArgs>
+    avaliacao?: boolean | Usuario$avaliacaoArgs<ExtArgs>
     _count?: boolean | UsuarioCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -1441,6 +1544,7 @@ export namespace Prisma {
     objects: {
       locacao: Prisma.$LocacaoPayload<ExtArgs>[]
       favorito: Prisma.$FavoritoPayload<ExtArgs>[]
+      avaliacao: Prisma.$AvaliacaoPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -1793,6 +1897,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     locacao<T extends Usuario$locacaoArgs<ExtArgs> = {}>(args?: Subset<T, Usuario$locacaoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LocacaoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     favorito<T extends Usuario$favoritoArgs<ExtArgs> = {}>(args?: Subset<T, Usuario$favoritoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FavoritoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    avaliacao<T extends Usuario$avaliacaoArgs<ExtArgs> = {}>(args?: Subset<T, Usuario$avaliacaoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2221,6 +2326,30 @@ export namespace Prisma {
   }
 
   /**
+   * Usuario.avaliacao
+   */
+  export type Usuario$avaliacaoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    where?: AvaliacaoWhereInput
+    orderBy?: AvaliacaoOrderByWithRelationInput | AvaliacaoOrderByWithRelationInput[]
+    cursor?: AvaliacaoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AvaliacaoScalarFieldEnum | AvaliacaoScalarFieldEnum[]
+  }
+
+  /**
    * Usuario without action
    */
   export type UsuarioDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2563,6 +2692,7 @@ export namespace Prisma {
     criado_em?: boolean
     locacao?: boolean | Quadra$locacaoArgs<ExtArgs>
     favorito?: boolean | Quadra$favoritoArgs<ExtArgs>
+    avaliacao?: boolean | Quadra$avaliacaoArgs<ExtArgs>
     _count?: boolean | QuadraCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["quadra"]>
 
@@ -2595,6 +2725,7 @@ export namespace Prisma {
   export type QuadraInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     locacao?: boolean | Quadra$locacaoArgs<ExtArgs>
     favorito?: boolean | Quadra$favoritoArgs<ExtArgs>
+    avaliacao?: boolean | Quadra$avaliacaoArgs<ExtArgs>
     _count?: boolean | QuadraCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -2603,6 +2734,7 @@ export namespace Prisma {
     objects: {
       locacao: Prisma.$LocacaoPayload<ExtArgs>[]
       favorito: Prisma.$FavoritoPayload<ExtArgs>[]
+      avaliacao: Prisma.$AvaliacaoPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -2967,6 +3099,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     locacao<T extends Quadra$locacaoArgs<ExtArgs> = {}>(args?: Subset<T, Quadra$locacaoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LocacaoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     favorito<T extends Quadra$favoritoArgs<ExtArgs> = {}>(args?: Subset<T, Quadra$favoritoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FavoritoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    avaliacao<T extends Quadra$avaliacaoArgs<ExtArgs> = {}>(args?: Subset<T, Quadra$avaliacaoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3404,6 +3537,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: FavoritoScalarFieldEnum | FavoritoScalarFieldEnum[]
+  }
+
+  /**
+   * Quadra.avaliacao
+   */
+  export type Quadra$avaliacaoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    where?: AvaliacaoWhereInput
+    orderBy?: AvaliacaoOrderByWithRelationInput | AvaliacaoOrderByWithRelationInput[]
+    cursor?: AvaliacaoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AvaliacaoScalarFieldEnum | AvaliacaoScalarFieldEnum[]
   }
 
   /**
@@ -5354,6 +5511,996 @@ export namespace Prisma {
 
 
   /**
+   * Model Avaliacao
+   */
+
+  export type AggregateAvaliacao = {
+    _count: AvaliacaoCountAggregateOutputType | null
+    _avg: AvaliacaoAvgAggregateOutputType | null
+    _sum: AvaliacaoSumAggregateOutputType | null
+    _min: AvaliacaoMinAggregateOutputType | null
+    _max: AvaliacaoMaxAggregateOutputType | null
+  }
+
+  export type AvaliacaoAvgAggregateOutputType = {
+    id: number | null
+    nota: number | null
+    idUsuario: number | null
+    idQuadra: number | null
+  }
+
+  export type AvaliacaoSumAggregateOutputType = {
+    id: number | null
+    nota: number | null
+    idUsuario: number | null
+    idQuadra: number | null
+  }
+
+  export type AvaliacaoMinAggregateOutputType = {
+    id: number | null
+    nota: number | null
+    comentario: string | null
+    idUsuario: number | null
+    idQuadra: number | null
+    criado_em: Date | null
+  }
+
+  export type AvaliacaoMaxAggregateOutputType = {
+    id: number | null
+    nota: number | null
+    comentario: string | null
+    idUsuario: number | null
+    idQuadra: number | null
+    criado_em: Date | null
+  }
+
+  export type AvaliacaoCountAggregateOutputType = {
+    id: number
+    nota: number
+    comentario: number
+    idUsuario: number
+    idQuadra: number
+    criado_em: number
+    _all: number
+  }
+
+
+  export type AvaliacaoAvgAggregateInputType = {
+    id?: true
+    nota?: true
+    idUsuario?: true
+    idQuadra?: true
+  }
+
+  export type AvaliacaoSumAggregateInputType = {
+    id?: true
+    nota?: true
+    idUsuario?: true
+    idQuadra?: true
+  }
+
+  export type AvaliacaoMinAggregateInputType = {
+    id?: true
+    nota?: true
+    comentario?: true
+    idUsuario?: true
+    idQuadra?: true
+    criado_em?: true
+  }
+
+  export type AvaliacaoMaxAggregateInputType = {
+    id?: true
+    nota?: true
+    comentario?: true
+    idUsuario?: true
+    idQuadra?: true
+    criado_em?: true
+  }
+
+  export type AvaliacaoCountAggregateInputType = {
+    id?: true
+    nota?: true
+    comentario?: true
+    idUsuario?: true
+    idQuadra?: true
+    criado_em?: true
+    _all?: true
+  }
+
+  export type AvaliacaoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Avaliacao to aggregate.
+     */
+    where?: AvaliacaoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Avaliacaos to fetch.
+     */
+    orderBy?: AvaliacaoOrderByWithRelationInput | AvaliacaoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AvaliacaoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Avaliacaos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Avaliacaos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Avaliacaos
+    **/
+    _count?: true | AvaliacaoCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: AvaliacaoAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: AvaliacaoSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AvaliacaoMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AvaliacaoMaxAggregateInputType
+  }
+
+  export type GetAvaliacaoAggregateType<T extends AvaliacaoAggregateArgs> = {
+        [P in keyof T & keyof AggregateAvaliacao]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAvaliacao[P]>
+      : GetScalarType<T[P], AggregateAvaliacao[P]>
+  }
+
+
+
+
+  export type AvaliacaoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AvaliacaoWhereInput
+    orderBy?: AvaliacaoOrderByWithAggregationInput | AvaliacaoOrderByWithAggregationInput[]
+    by: AvaliacaoScalarFieldEnum[] | AvaliacaoScalarFieldEnum
+    having?: AvaliacaoScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AvaliacaoCountAggregateInputType | true
+    _avg?: AvaliacaoAvgAggregateInputType
+    _sum?: AvaliacaoSumAggregateInputType
+    _min?: AvaliacaoMinAggregateInputType
+    _max?: AvaliacaoMaxAggregateInputType
+  }
+
+  export type AvaliacaoGroupByOutputType = {
+    id: number
+    nota: number
+    comentario: string
+    idUsuario: number
+    idQuadra: number
+    criado_em: Date
+    _count: AvaliacaoCountAggregateOutputType | null
+    _avg: AvaliacaoAvgAggregateOutputType | null
+    _sum: AvaliacaoSumAggregateOutputType | null
+    _min: AvaliacaoMinAggregateOutputType | null
+    _max: AvaliacaoMaxAggregateOutputType | null
+  }
+
+  type GetAvaliacaoGroupByPayload<T extends AvaliacaoGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AvaliacaoGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AvaliacaoGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AvaliacaoGroupByOutputType[P]>
+            : GetScalarType<T[P], AvaliacaoGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AvaliacaoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    nota?: boolean
+    comentario?: boolean
+    idUsuario?: boolean
+    idQuadra?: boolean
+    criado_em?: boolean
+    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+    quadra?: boolean | QuadraDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["avaliacao"]>
+
+
+
+  export type AvaliacaoSelectScalar = {
+    id?: boolean
+    nota?: boolean
+    comentario?: boolean
+    idUsuario?: boolean
+    idQuadra?: boolean
+    criado_em?: boolean
+  }
+
+  export type AvaliacaoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nota" | "comentario" | "idUsuario" | "idQuadra" | "criado_em", ExtArgs["result"]["avaliacao"]>
+  export type AvaliacaoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+    quadra?: boolean | QuadraDefaultArgs<ExtArgs>
+  }
+
+  export type $AvaliacaoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Avaliacao"
+    objects: {
+      usuario: Prisma.$UsuarioPayload<ExtArgs>
+      quadra: Prisma.$QuadraPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      nota: number
+      comentario: string
+      idUsuario: number
+      idQuadra: number
+      criado_em: Date
+    }, ExtArgs["result"]["avaliacao"]>
+    composites: {}
+  }
+
+  type AvaliacaoGetPayload<S extends boolean | null | undefined | AvaliacaoDefaultArgs> = $Result.GetResult<Prisma.$AvaliacaoPayload, S>
+
+  type AvaliacaoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AvaliacaoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AvaliacaoCountAggregateInputType | true
+    }
+
+  export interface AvaliacaoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Avaliacao'], meta: { name: 'Avaliacao' } }
+    /**
+     * Find zero or one Avaliacao that matches the filter.
+     * @param {AvaliacaoFindUniqueArgs} args - Arguments to find a Avaliacao
+     * @example
+     * // Get one Avaliacao
+     * const avaliacao = await prisma.avaliacao.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AvaliacaoFindUniqueArgs>(args: SelectSubset<T, AvaliacaoFindUniqueArgs<ExtArgs>>): Prisma__AvaliacaoClient<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Avaliacao that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {AvaliacaoFindUniqueOrThrowArgs} args - Arguments to find a Avaliacao
+     * @example
+     * // Get one Avaliacao
+     * const avaliacao = await prisma.avaliacao.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AvaliacaoFindUniqueOrThrowArgs>(args: SelectSubset<T, AvaliacaoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AvaliacaoClient<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Avaliacao that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvaliacaoFindFirstArgs} args - Arguments to find a Avaliacao
+     * @example
+     * // Get one Avaliacao
+     * const avaliacao = await prisma.avaliacao.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AvaliacaoFindFirstArgs>(args?: SelectSubset<T, AvaliacaoFindFirstArgs<ExtArgs>>): Prisma__AvaliacaoClient<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Avaliacao that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvaliacaoFindFirstOrThrowArgs} args - Arguments to find a Avaliacao
+     * @example
+     * // Get one Avaliacao
+     * const avaliacao = await prisma.avaliacao.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AvaliacaoFindFirstOrThrowArgs>(args?: SelectSubset<T, AvaliacaoFindFirstOrThrowArgs<ExtArgs>>): Prisma__AvaliacaoClient<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Avaliacaos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvaliacaoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Avaliacaos
+     * const avaliacaos = await prisma.avaliacao.findMany()
+     * 
+     * // Get first 10 Avaliacaos
+     * const avaliacaos = await prisma.avaliacao.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const avaliacaoWithIdOnly = await prisma.avaliacao.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends AvaliacaoFindManyArgs>(args?: SelectSubset<T, AvaliacaoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Avaliacao.
+     * @param {AvaliacaoCreateArgs} args - Arguments to create a Avaliacao.
+     * @example
+     * // Create one Avaliacao
+     * const Avaliacao = await prisma.avaliacao.create({
+     *   data: {
+     *     // ... data to create a Avaliacao
+     *   }
+     * })
+     * 
+     */
+    create<T extends AvaliacaoCreateArgs>(args: SelectSubset<T, AvaliacaoCreateArgs<ExtArgs>>): Prisma__AvaliacaoClient<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Avaliacaos.
+     * @param {AvaliacaoCreateManyArgs} args - Arguments to create many Avaliacaos.
+     * @example
+     * // Create many Avaliacaos
+     * const avaliacao = await prisma.avaliacao.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends AvaliacaoCreateManyArgs>(args?: SelectSubset<T, AvaliacaoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Avaliacao.
+     * @param {AvaliacaoDeleteArgs} args - Arguments to delete one Avaliacao.
+     * @example
+     * // Delete one Avaliacao
+     * const Avaliacao = await prisma.avaliacao.delete({
+     *   where: {
+     *     // ... filter to delete one Avaliacao
+     *   }
+     * })
+     * 
+     */
+    delete<T extends AvaliacaoDeleteArgs>(args: SelectSubset<T, AvaliacaoDeleteArgs<ExtArgs>>): Prisma__AvaliacaoClient<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Avaliacao.
+     * @param {AvaliacaoUpdateArgs} args - Arguments to update one Avaliacao.
+     * @example
+     * // Update one Avaliacao
+     * const avaliacao = await prisma.avaliacao.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends AvaliacaoUpdateArgs>(args: SelectSubset<T, AvaliacaoUpdateArgs<ExtArgs>>): Prisma__AvaliacaoClient<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Avaliacaos.
+     * @param {AvaliacaoDeleteManyArgs} args - Arguments to filter Avaliacaos to delete.
+     * @example
+     * // Delete a few Avaliacaos
+     * const { count } = await prisma.avaliacao.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends AvaliacaoDeleteManyArgs>(args?: SelectSubset<T, AvaliacaoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Avaliacaos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvaliacaoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Avaliacaos
+     * const avaliacao = await prisma.avaliacao.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends AvaliacaoUpdateManyArgs>(args: SelectSubset<T, AvaliacaoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Avaliacao.
+     * @param {AvaliacaoUpsertArgs} args - Arguments to update or create a Avaliacao.
+     * @example
+     * // Update or create a Avaliacao
+     * const avaliacao = await prisma.avaliacao.upsert({
+     *   create: {
+     *     // ... data to create a Avaliacao
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Avaliacao we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AvaliacaoUpsertArgs>(args: SelectSubset<T, AvaliacaoUpsertArgs<ExtArgs>>): Prisma__AvaliacaoClient<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Avaliacaos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvaliacaoCountArgs} args - Arguments to filter Avaliacaos to count.
+     * @example
+     * // Count the number of Avaliacaos
+     * const count = await prisma.avaliacao.count({
+     *   where: {
+     *     // ... the filter for the Avaliacaos we want to count
+     *   }
+     * })
+    **/
+    count<T extends AvaliacaoCountArgs>(
+      args?: Subset<T, AvaliacaoCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AvaliacaoCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Avaliacao.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvaliacaoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AvaliacaoAggregateArgs>(args: Subset<T, AvaliacaoAggregateArgs>): Prisma.PrismaPromise<GetAvaliacaoAggregateType<T>>
+
+    /**
+     * Group by Avaliacao.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvaliacaoGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AvaliacaoGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AvaliacaoGroupByArgs['orderBy'] }
+        : { orderBy?: AvaliacaoGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AvaliacaoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAvaliacaoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Avaliacao model
+   */
+  readonly fields: AvaliacaoFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Avaliacao.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AvaliacaoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    usuario<T extends UsuarioDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsuarioDefaultArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    quadra<T extends QuadraDefaultArgs<ExtArgs> = {}>(args?: Subset<T, QuadraDefaultArgs<ExtArgs>>): Prisma__QuadraClient<$Result.GetResult<Prisma.$QuadraPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Avaliacao model
+   */
+  interface AvaliacaoFieldRefs {
+    readonly id: FieldRef<"Avaliacao", 'Int'>
+    readonly nota: FieldRef<"Avaliacao", 'Int'>
+    readonly comentario: FieldRef<"Avaliacao", 'String'>
+    readonly idUsuario: FieldRef<"Avaliacao", 'Int'>
+    readonly idQuadra: FieldRef<"Avaliacao", 'Int'>
+    readonly criado_em: FieldRef<"Avaliacao", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Avaliacao findUnique
+   */
+  export type AvaliacaoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    /**
+     * Filter, which Avaliacao to fetch.
+     */
+    where: AvaliacaoWhereUniqueInput
+  }
+
+  /**
+   * Avaliacao findUniqueOrThrow
+   */
+  export type AvaliacaoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    /**
+     * Filter, which Avaliacao to fetch.
+     */
+    where: AvaliacaoWhereUniqueInput
+  }
+
+  /**
+   * Avaliacao findFirst
+   */
+  export type AvaliacaoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    /**
+     * Filter, which Avaliacao to fetch.
+     */
+    where?: AvaliacaoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Avaliacaos to fetch.
+     */
+    orderBy?: AvaliacaoOrderByWithRelationInput | AvaliacaoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Avaliacaos.
+     */
+    cursor?: AvaliacaoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Avaliacaos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Avaliacaos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Avaliacaos.
+     */
+    distinct?: AvaliacaoScalarFieldEnum | AvaliacaoScalarFieldEnum[]
+  }
+
+  /**
+   * Avaliacao findFirstOrThrow
+   */
+  export type AvaliacaoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    /**
+     * Filter, which Avaliacao to fetch.
+     */
+    where?: AvaliacaoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Avaliacaos to fetch.
+     */
+    orderBy?: AvaliacaoOrderByWithRelationInput | AvaliacaoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Avaliacaos.
+     */
+    cursor?: AvaliacaoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Avaliacaos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Avaliacaos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Avaliacaos.
+     */
+    distinct?: AvaliacaoScalarFieldEnum | AvaliacaoScalarFieldEnum[]
+  }
+
+  /**
+   * Avaliacao findMany
+   */
+  export type AvaliacaoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    /**
+     * Filter, which Avaliacaos to fetch.
+     */
+    where?: AvaliacaoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Avaliacaos to fetch.
+     */
+    orderBy?: AvaliacaoOrderByWithRelationInput | AvaliacaoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Avaliacaos.
+     */
+    cursor?: AvaliacaoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Avaliacaos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Avaliacaos.
+     */
+    skip?: number
+    distinct?: AvaliacaoScalarFieldEnum | AvaliacaoScalarFieldEnum[]
+  }
+
+  /**
+   * Avaliacao create
+   */
+  export type AvaliacaoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Avaliacao.
+     */
+    data: XOR<AvaliacaoCreateInput, AvaliacaoUncheckedCreateInput>
+  }
+
+  /**
+   * Avaliacao createMany
+   */
+  export type AvaliacaoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Avaliacaos.
+     */
+    data: AvaliacaoCreateManyInput | AvaliacaoCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Avaliacao update
+   */
+  export type AvaliacaoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Avaliacao.
+     */
+    data: XOR<AvaliacaoUpdateInput, AvaliacaoUncheckedUpdateInput>
+    /**
+     * Choose, which Avaliacao to update.
+     */
+    where: AvaliacaoWhereUniqueInput
+  }
+
+  /**
+   * Avaliacao updateMany
+   */
+  export type AvaliacaoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Avaliacaos.
+     */
+    data: XOR<AvaliacaoUpdateManyMutationInput, AvaliacaoUncheckedUpdateManyInput>
+    /**
+     * Filter which Avaliacaos to update
+     */
+    where?: AvaliacaoWhereInput
+    /**
+     * Limit how many Avaliacaos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Avaliacao upsert
+   */
+  export type AvaliacaoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Avaliacao to update in case it exists.
+     */
+    where: AvaliacaoWhereUniqueInput
+    /**
+     * In case the Avaliacao found by the `where` argument doesn't exist, create a new Avaliacao with this data.
+     */
+    create: XOR<AvaliacaoCreateInput, AvaliacaoUncheckedCreateInput>
+    /**
+     * In case the Avaliacao was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AvaliacaoUpdateInput, AvaliacaoUncheckedUpdateInput>
+  }
+
+  /**
+   * Avaliacao delete
+   */
+  export type AvaliacaoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    /**
+     * Filter which Avaliacao to delete.
+     */
+    where: AvaliacaoWhereUniqueInput
+  }
+
+  /**
+   * Avaliacao deleteMany
+   */
+  export type AvaliacaoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Avaliacaos to delete
+     */
+    where?: AvaliacaoWhereInput
+    /**
+     * Limit how many Avaliacaos to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Avaliacao without action
+   */
+  export type AvaliacaoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -5427,6 +6574,18 @@ export namespace Prisma {
   export type FavoritoScalarFieldEnum = (typeof FavoritoScalarFieldEnum)[keyof typeof FavoritoScalarFieldEnum]
 
 
+  export const AvaliacaoScalarFieldEnum: {
+    id: 'id',
+    nota: 'nota',
+    comentario: 'comentario',
+    idUsuario: 'idUsuario',
+    idQuadra: 'idQuadra',
+    criado_em: 'criado_em'
+  };
+
+  export type AvaliacaoScalarFieldEnum = (typeof AvaliacaoScalarFieldEnum)[keyof typeof AvaliacaoScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -5467,6 +6626,13 @@ export namespace Prisma {
   };
 
   export type QuadraOrderByRelevanceFieldEnum = (typeof QuadraOrderByRelevanceFieldEnum)[keyof typeof QuadraOrderByRelevanceFieldEnum]
+
+
+  export const AvaliacaoOrderByRelevanceFieldEnum: {
+    comentario: 'comentario'
+  };
+
+  export type AvaliacaoOrderByRelevanceFieldEnum = (typeof AvaliacaoOrderByRelevanceFieldEnum)[keyof typeof AvaliacaoOrderByRelevanceFieldEnum]
 
 
   /**
@@ -5526,6 +6692,7 @@ export namespace Prisma {
     criado_em?: DateTimeFilter<"Usuario"> | Date | string
     locacao?: LocacaoListRelationFilter
     favorito?: FavoritoListRelationFilter
+    avaliacao?: AvaliacaoListRelationFilter
   }
 
   export type UsuarioOrderByWithRelationInput = {
@@ -5539,6 +6706,7 @@ export namespace Prisma {
     criado_em?: SortOrder
     locacao?: LocacaoOrderByRelationAggregateInput
     favorito?: FavoritoOrderByRelationAggregateInput
+    avaliacao?: AvaliacaoOrderByRelationAggregateInput
     _relevance?: UsuarioOrderByRelevanceInput
   }
 
@@ -5556,6 +6724,7 @@ export namespace Prisma {
     criado_em?: DateTimeFilter<"Usuario"> | Date | string
     locacao?: LocacaoListRelationFilter
     favorito?: FavoritoListRelationFilter
+    avaliacao?: AvaliacaoListRelationFilter
   }, "id" | "email" | "cpf">
 
   export type UsuarioOrderByWithAggregationInput = {
@@ -5614,6 +6783,7 @@ export namespace Prisma {
     criado_em?: DateTimeFilter<"Quadra"> | Date | string
     locacao?: LocacaoListRelationFilter
     favorito?: FavoritoListRelationFilter
+    avaliacao?: AvaliacaoListRelationFilter
   }
 
   export type QuadraOrderByWithRelationInput = {
@@ -5639,6 +6809,7 @@ export namespace Prisma {
     criado_em?: SortOrder
     locacao?: LocacaoOrderByRelationAggregateInput
     favorito?: FavoritoOrderByRelationAggregateInput
+    avaliacao?: AvaliacaoOrderByRelationAggregateInput
     _relevance?: QuadraOrderByRelevanceInput
   }
 
@@ -5668,6 +6839,7 @@ export namespace Prisma {
     criado_em?: DateTimeFilter<"Quadra"> | Date | string
     locacao?: LocacaoListRelationFilter
     favorito?: FavoritoListRelationFilter
+    avaliacao?: AvaliacaoListRelationFilter
   }, "id">
 
   export type QuadraOrderByWithAggregationInput = {
@@ -5835,6 +7007,72 @@ export namespace Prisma {
     favoritadoEm?: DateTimeWithAggregatesFilter<"Favorito"> | Date | string
   }
 
+  export type AvaliacaoWhereInput = {
+    AND?: AvaliacaoWhereInput | AvaliacaoWhereInput[]
+    OR?: AvaliacaoWhereInput[]
+    NOT?: AvaliacaoWhereInput | AvaliacaoWhereInput[]
+    id?: IntFilter<"Avaliacao"> | number
+    nota?: IntFilter<"Avaliacao"> | number
+    comentario?: StringFilter<"Avaliacao"> | string
+    idUsuario?: IntFilter<"Avaliacao"> | number
+    idQuadra?: IntFilter<"Avaliacao"> | number
+    criado_em?: DateTimeFilter<"Avaliacao"> | Date | string
+    usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
+    quadra?: XOR<QuadraScalarRelationFilter, QuadraWhereInput>
+  }
+
+  export type AvaliacaoOrderByWithRelationInput = {
+    id?: SortOrder
+    nota?: SortOrder
+    comentario?: SortOrder
+    idUsuario?: SortOrder
+    idQuadra?: SortOrder
+    criado_em?: SortOrder
+    usuario?: UsuarioOrderByWithRelationInput
+    quadra?: QuadraOrderByWithRelationInput
+    _relevance?: AvaliacaoOrderByRelevanceInput
+  }
+
+  export type AvaliacaoWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: AvaliacaoWhereInput | AvaliacaoWhereInput[]
+    OR?: AvaliacaoWhereInput[]
+    NOT?: AvaliacaoWhereInput | AvaliacaoWhereInput[]
+    nota?: IntFilter<"Avaliacao"> | number
+    comentario?: StringFilter<"Avaliacao"> | string
+    idUsuario?: IntFilter<"Avaliacao"> | number
+    idQuadra?: IntFilter<"Avaliacao"> | number
+    criado_em?: DateTimeFilter<"Avaliacao"> | Date | string
+    usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
+    quadra?: XOR<QuadraScalarRelationFilter, QuadraWhereInput>
+  }, "id">
+
+  export type AvaliacaoOrderByWithAggregationInput = {
+    id?: SortOrder
+    nota?: SortOrder
+    comentario?: SortOrder
+    idUsuario?: SortOrder
+    idQuadra?: SortOrder
+    criado_em?: SortOrder
+    _count?: AvaliacaoCountOrderByAggregateInput
+    _avg?: AvaliacaoAvgOrderByAggregateInput
+    _max?: AvaliacaoMaxOrderByAggregateInput
+    _min?: AvaliacaoMinOrderByAggregateInput
+    _sum?: AvaliacaoSumOrderByAggregateInput
+  }
+
+  export type AvaliacaoScalarWhereWithAggregatesInput = {
+    AND?: AvaliacaoScalarWhereWithAggregatesInput | AvaliacaoScalarWhereWithAggregatesInput[]
+    OR?: AvaliacaoScalarWhereWithAggregatesInput[]
+    NOT?: AvaliacaoScalarWhereWithAggregatesInput | AvaliacaoScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Avaliacao"> | number
+    nota?: IntWithAggregatesFilter<"Avaliacao"> | number
+    comentario?: StringWithAggregatesFilter<"Avaliacao"> | string
+    idUsuario?: IntWithAggregatesFilter<"Avaliacao"> | number
+    idQuadra?: IntWithAggregatesFilter<"Avaliacao"> | number
+    criado_em?: DateTimeWithAggregatesFilter<"Avaliacao"> | Date | string
+  }
+
   export type UsuarioCreateInput = {
     nome: string
     telefone?: string | null
@@ -5845,6 +7083,7 @@ export namespace Prisma {
     criado_em?: Date | string
     locacao?: LocacaoCreateNestedManyWithoutUsuarioInput
     favorito?: FavoritoCreateNestedManyWithoutUsuarioInput
+    avaliacao?: AvaliacaoCreateNestedManyWithoutUsuarioInput
   }
 
   export type UsuarioUncheckedCreateInput = {
@@ -5858,6 +7097,7 @@ export namespace Prisma {
     criado_em?: Date | string
     locacao?: LocacaoUncheckedCreateNestedManyWithoutUsuarioInput
     favorito?: FavoritoUncheckedCreateNestedManyWithoutUsuarioInput
+    avaliacao?: AvaliacaoUncheckedCreateNestedManyWithoutUsuarioInput
   }
 
   export type UsuarioUpdateInput = {
@@ -5870,6 +7110,7 @@ export namespace Prisma {
     criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
     locacao?: LocacaoUpdateManyWithoutUsuarioNestedInput
     favorito?: FavoritoUpdateManyWithoutUsuarioNestedInput
+    avaliacao?: AvaliacaoUpdateManyWithoutUsuarioNestedInput
   }
 
   export type UsuarioUncheckedUpdateInput = {
@@ -5883,6 +7124,7 @@ export namespace Prisma {
     criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
     locacao?: LocacaoUncheckedUpdateManyWithoutUsuarioNestedInput
     favorito?: FavoritoUncheckedUpdateManyWithoutUsuarioNestedInput
+    avaliacao?: AvaliacaoUncheckedUpdateManyWithoutUsuarioNestedInput
   }
 
   export type UsuarioCreateManyInput = {
@@ -5939,6 +7181,7 @@ export namespace Prisma {
     criado_em?: Date | string
     locacao?: LocacaoCreateNestedManyWithoutQuadraInput
     favorito?: FavoritoCreateNestedManyWithoutQuadraInput
+    avaliacao?: AvaliacaoCreateNestedManyWithoutQuadraInput
   }
 
   export type QuadraUncheckedCreateInput = {
@@ -5964,6 +7207,7 @@ export namespace Prisma {
     criado_em?: Date | string
     locacao?: LocacaoUncheckedCreateNestedManyWithoutQuadraInput
     favorito?: FavoritoUncheckedCreateNestedManyWithoutQuadraInput
+    avaliacao?: AvaliacaoUncheckedCreateNestedManyWithoutQuadraInput
   }
 
   export type QuadraUpdateInput = {
@@ -5988,6 +7232,7 @@ export namespace Prisma {
     criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
     locacao?: LocacaoUpdateManyWithoutQuadraNestedInput
     favorito?: FavoritoUpdateManyWithoutQuadraNestedInput
+    avaliacao?: AvaliacaoUpdateManyWithoutQuadraNestedInput
   }
 
   export type QuadraUncheckedUpdateInput = {
@@ -6013,6 +7258,7 @@ export namespace Prisma {
     criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
     locacao?: LocacaoUncheckedUpdateManyWithoutQuadraNestedInput
     favorito?: FavoritoUncheckedUpdateManyWithoutQuadraNestedInput
+    avaliacao?: AvaliacaoUncheckedUpdateManyWithoutQuadraNestedInput
   }
 
   export type QuadraCreateManyInput = {
@@ -6171,6 +7417,64 @@ export namespace Prisma {
     favoritadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type AvaliacaoCreateInput = {
+    nota: number
+    comentario: string
+    criado_em?: Date | string
+    usuario: UsuarioCreateNestedOneWithoutAvaliacaoInput
+    quadra: QuadraCreateNestedOneWithoutAvaliacaoInput
+  }
+
+  export type AvaliacaoUncheckedCreateInput = {
+    id?: number
+    nota: number
+    comentario: string
+    idUsuario: number
+    idQuadra: number
+    criado_em?: Date | string
+  }
+
+  export type AvaliacaoUpdateInput = {
+    nota?: IntFieldUpdateOperationsInput | number
+    comentario?: StringFieldUpdateOperationsInput | string
+    criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
+    usuario?: UsuarioUpdateOneRequiredWithoutAvaliacaoNestedInput
+    quadra?: QuadraUpdateOneRequiredWithoutAvaliacaoNestedInput
+  }
+
+  export type AvaliacaoUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nota?: IntFieldUpdateOperationsInput | number
+    comentario?: StringFieldUpdateOperationsInput | string
+    idUsuario?: IntFieldUpdateOperationsInput | number
+    idQuadra?: IntFieldUpdateOperationsInput | number
+    criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AvaliacaoCreateManyInput = {
+    id?: number
+    nota: number
+    comentario: string
+    idUsuario: number
+    idQuadra: number
+    criado_em?: Date | string
+  }
+
+  export type AvaliacaoUpdateManyMutationInput = {
+    nota?: IntFieldUpdateOperationsInput | number
+    comentario?: StringFieldUpdateOperationsInput | string
+    criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AvaliacaoUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nota?: IntFieldUpdateOperationsInput | number
+    comentario?: StringFieldUpdateOperationsInput | string
+    idUsuario?: IntFieldUpdateOperationsInput | number
+    idQuadra?: IntFieldUpdateOperationsInput | number
+    criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[]
@@ -6235,6 +7539,12 @@ export namespace Prisma {
     none?: FavoritoWhereInput
   }
 
+  export type AvaliacaoListRelationFilter = {
+    every?: AvaliacaoWhereInput
+    some?: AvaliacaoWhereInput
+    none?: AvaliacaoWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -6245,6 +7555,10 @@ export namespace Prisma {
   }
 
   export type FavoritoOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type AvaliacaoOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -6567,6 +7881,53 @@ export namespace Prisma {
     idQuadra?: SortOrder
   }
 
+  export type AvaliacaoOrderByRelevanceInput = {
+    fields: AvaliacaoOrderByRelevanceFieldEnum | AvaliacaoOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type AvaliacaoCountOrderByAggregateInput = {
+    id?: SortOrder
+    nota?: SortOrder
+    comentario?: SortOrder
+    idUsuario?: SortOrder
+    idQuadra?: SortOrder
+    criado_em?: SortOrder
+  }
+
+  export type AvaliacaoAvgOrderByAggregateInput = {
+    id?: SortOrder
+    nota?: SortOrder
+    idUsuario?: SortOrder
+    idQuadra?: SortOrder
+  }
+
+  export type AvaliacaoMaxOrderByAggregateInput = {
+    id?: SortOrder
+    nota?: SortOrder
+    comentario?: SortOrder
+    idUsuario?: SortOrder
+    idQuadra?: SortOrder
+    criado_em?: SortOrder
+  }
+
+  export type AvaliacaoMinOrderByAggregateInput = {
+    id?: SortOrder
+    nota?: SortOrder
+    comentario?: SortOrder
+    idUsuario?: SortOrder
+    idQuadra?: SortOrder
+    criado_em?: SortOrder
+  }
+
+  export type AvaliacaoSumOrderByAggregateInput = {
+    id?: SortOrder
+    nota?: SortOrder
+    idUsuario?: SortOrder
+    idQuadra?: SortOrder
+  }
+
   export type LocacaoCreateNestedManyWithoutUsuarioInput = {
     create?: XOR<LocacaoCreateWithoutUsuarioInput, LocacaoUncheckedCreateWithoutUsuarioInput> | LocacaoCreateWithoutUsuarioInput[] | LocacaoUncheckedCreateWithoutUsuarioInput[]
     connectOrCreate?: LocacaoCreateOrConnectWithoutUsuarioInput | LocacaoCreateOrConnectWithoutUsuarioInput[]
@@ -6581,6 +7942,13 @@ export namespace Prisma {
     connect?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
   }
 
+  export type AvaliacaoCreateNestedManyWithoutUsuarioInput = {
+    create?: XOR<AvaliacaoCreateWithoutUsuarioInput, AvaliacaoUncheckedCreateWithoutUsuarioInput> | AvaliacaoCreateWithoutUsuarioInput[] | AvaliacaoUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: AvaliacaoCreateOrConnectWithoutUsuarioInput | AvaliacaoCreateOrConnectWithoutUsuarioInput[]
+    createMany?: AvaliacaoCreateManyUsuarioInputEnvelope
+    connect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+  }
+
   export type LocacaoUncheckedCreateNestedManyWithoutUsuarioInput = {
     create?: XOR<LocacaoCreateWithoutUsuarioInput, LocacaoUncheckedCreateWithoutUsuarioInput> | LocacaoCreateWithoutUsuarioInput[] | LocacaoUncheckedCreateWithoutUsuarioInput[]
     connectOrCreate?: LocacaoCreateOrConnectWithoutUsuarioInput | LocacaoCreateOrConnectWithoutUsuarioInput[]
@@ -6593,6 +7961,13 @@ export namespace Prisma {
     connectOrCreate?: FavoritoCreateOrConnectWithoutUsuarioInput | FavoritoCreateOrConnectWithoutUsuarioInput[]
     createMany?: FavoritoCreateManyUsuarioInputEnvelope
     connect?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+  }
+
+  export type AvaliacaoUncheckedCreateNestedManyWithoutUsuarioInput = {
+    create?: XOR<AvaliacaoCreateWithoutUsuarioInput, AvaliacaoUncheckedCreateWithoutUsuarioInput> | AvaliacaoCreateWithoutUsuarioInput[] | AvaliacaoUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: AvaliacaoCreateOrConnectWithoutUsuarioInput | AvaliacaoCreateOrConnectWithoutUsuarioInput[]
+    createMany?: AvaliacaoCreateManyUsuarioInputEnvelope
+    connect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -6635,6 +8010,20 @@ export namespace Prisma {
     deleteMany?: FavoritoScalarWhereInput | FavoritoScalarWhereInput[]
   }
 
+  export type AvaliacaoUpdateManyWithoutUsuarioNestedInput = {
+    create?: XOR<AvaliacaoCreateWithoutUsuarioInput, AvaliacaoUncheckedCreateWithoutUsuarioInput> | AvaliacaoCreateWithoutUsuarioInput[] | AvaliacaoUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: AvaliacaoCreateOrConnectWithoutUsuarioInput | AvaliacaoCreateOrConnectWithoutUsuarioInput[]
+    upsert?: AvaliacaoUpsertWithWhereUniqueWithoutUsuarioInput | AvaliacaoUpsertWithWhereUniqueWithoutUsuarioInput[]
+    createMany?: AvaliacaoCreateManyUsuarioInputEnvelope
+    set?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    disconnect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    delete?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    connect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    update?: AvaliacaoUpdateWithWhereUniqueWithoutUsuarioInput | AvaliacaoUpdateWithWhereUniqueWithoutUsuarioInput[]
+    updateMany?: AvaliacaoUpdateManyWithWhereWithoutUsuarioInput | AvaliacaoUpdateManyWithWhereWithoutUsuarioInput[]
+    deleteMany?: AvaliacaoScalarWhereInput | AvaliacaoScalarWhereInput[]
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -6671,6 +8060,20 @@ export namespace Prisma {
     deleteMany?: FavoritoScalarWhereInput | FavoritoScalarWhereInput[]
   }
 
+  export type AvaliacaoUncheckedUpdateManyWithoutUsuarioNestedInput = {
+    create?: XOR<AvaliacaoCreateWithoutUsuarioInput, AvaliacaoUncheckedCreateWithoutUsuarioInput> | AvaliacaoCreateWithoutUsuarioInput[] | AvaliacaoUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: AvaliacaoCreateOrConnectWithoutUsuarioInput | AvaliacaoCreateOrConnectWithoutUsuarioInput[]
+    upsert?: AvaliacaoUpsertWithWhereUniqueWithoutUsuarioInput | AvaliacaoUpsertWithWhereUniqueWithoutUsuarioInput[]
+    createMany?: AvaliacaoCreateManyUsuarioInputEnvelope
+    set?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    disconnect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    delete?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    connect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    update?: AvaliacaoUpdateWithWhereUniqueWithoutUsuarioInput | AvaliacaoUpdateWithWhereUniqueWithoutUsuarioInput[]
+    updateMany?: AvaliacaoUpdateManyWithWhereWithoutUsuarioInput | AvaliacaoUpdateManyWithWhereWithoutUsuarioInput[]
+    deleteMany?: AvaliacaoScalarWhereInput | AvaliacaoScalarWhereInput[]
+  }
+
   export type LocacaoCreateNestedManyWithoutQuadraInput = {
     create?: XOR<LocacaoCreateWithoutQuadraInput, LocacaoUncheckedCreateWithoutQuadraInput> | LocacaoCreateWithoutQuadraInput[] | LocacaoUncheckedCreateWithoutQuadraInput[]
     connectOrCreate?: LocacaoCreateOrConnectWithoutQuadraInput | LocacaoCreateOrConnectWithoutQuadraInput[]
@@ -6685,6 +8088,13 @@ export namespace Prisma {
     connect?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
   }
 
+  export type AvaliacaoCreateNestedManyWithoutQuadraInput = {
+    create?: XOR<AvaliacaoCreateWithoutQuadraInput, AvaliacaoUncheckedCreateWithoutQuadraInput> | AvaliacaoCreateWithoutQuadraInput[] | AvaliacaoUncheckedCreateWithoutQuadraInput[]
+    connectOrCreate?: AvaliacaoCreateOrConnectWithoutQuadraInput | AvaliacaoCreateOrConnectWithoutQuadraInput[]
+    createMany?: AvaliacaoCreateManyQuadraInputEnvelope
+    connect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+  }
+
   export type LocacaoUncheckedCreateNestedManyWithoutQuadraInput = {
     create?: XOR<LocacaoCreateWithoutQuadraInput, LocacaoUncheckedCreateWithoutQuadraInput> | LocacaoCreateWithoutQuadraInput[] | LocacaoUncheckedCreateWithoutQuadraInput[]
     connectOrCreate?: LocacaoCreateOrConnectWithoutQuadraInput | LocacaoCreateOrConnectWithoutQuadraInput[]
@@ -6697,6 +8107,13 @@ export namespace Prisma {
     connectOrCreate?: FavoritoCreateOrConnectWithoutQuadraInput | FavoritoCreateOrConnectWithoutQuadraInput[]
     createMany?: FavoritoCreateManyQuadraInputEnvelope
     connect?: FavoritoWhereUniqueInput | FavoritoWhereUniqueInput[]
+  }
+
+  export type AvaliacaoUncheckedCreateNestedManyWithoutQuadraInput = {
+    create?: XOR<AvaliacaoCreateWithoutQuadraInput, AvaliacaoUncheckedCreateWithoutQuadraInput> | AvaliacaoCreateWithoutQuadraInput[] | AvaliacaoUncheckedCreateWithoutQuadraInput[]
+    connectOrCreate?: AvaliacaoCreateOrConnectWithoutQuadraInput | AvaliacaoCreateOrConnectWithoutQuadraInput[]
+    createMany?: AvaliacaoCreateManyQuadraInputEnvelope
+    connect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
   }
 
   export type FloatFieldUpdateOperationsInput = {
@@ -6739,6 +8156,20 @@ export namespace Prisma {
     deleteMany?: FavoritoScalarWhereInput | FavoritoScalarWhereInput[]
   }
 
+  export type AvaliacaoUpdateManyWithoutQuadraNestedInput = {
+    create?: XOR<AvaliacaoCreateWithoutQuadraInput, AvaliacaoUncheckedCreateWithoutQuadraInput> | AvaliacaoCreateWithoutQuadraInput[] | AvaliacaoUncheckedCreateWithoutQuadraInput[]
+    connectOrCreate?: AvaliacaoCreateOrConnectWithoutQuadraInput | AvaliacaoCreateOrConnectWithoutQuadraInput[]
+    upsert?: AvaliacaoUpsertWithWhereUniqueWithoutQuadraInput | AvaliacaoUpsertWithWhereUniqueWithoutQuadraInput[]
+    createMany?: AvaliacaoCreateManyQuadraInputEnvelope
+    set?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    disconnect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    delete?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    connect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    update?: AvaliacaoUpdateWithWhereUniqueWithoutQuadraInput | AvaliacaoUpdateWithWhereUniqueWithoutQuadraInput[]
+    updateMany?: AvaliacaoUpdateManyWithWhereWithoutQuadraInput | AvaliacaoUpdateManyWithWhereWithoutQuadraInput[]
+    deleteMany?: AvaliacaoScalarWhereInput | AvaliacaoScalarWhereInput[]
+  }
+
   export type LocacaoUncheckedUpdateManyWithoutQuadraNestedInput = {
     create?: XOR<LocacaoCreateWithoutQuadraInput, LocacaoUncheckedCreateWithoutQuadraInput> | LocacaoCreateWithoutQuadraInput[] | LocacaoUncheckedCreateWithoutQuadraInput[]
     connectOrCreate?: LocacaoCreateOrConnectWithoutQuadraInput | LocacaoCreateOrConnectWithoutQuadraInput[]
@@ -6765,6 +8196,20 @@ export namespace Prisma {
     update?: FavoritoUpdateWithWhereUniqueWithoutQuadraInput | FavoritoUpdateWithWhereUniqueWithoutQuadraInput[]
     updateMany?: FavoritoUpdateManyWithWhereWithoutQuadraInput | FavoritoUpdateManyWithWhereWithoutQuadraInput[]
     deleteMany?: FavoritoScalarWhereInput | FavoritoScalarWhereInput[]
+  }
+
+  export type AvaliacaoUncheckedUpdateManyWithoutQuadraNestedInput = {
+    create?: XOR<AvaliacaoCreateWithoutQuadraInput, AvaliacaoUncheckedCreateWithoutQuadraInput> | AvaliacaoCreateWithoutQuadraInput[] | AvaliacaoUncheckedCreateWithoutQuadraInput[]
+    connectOrCreate?: AvaliacaoCreateOrConnectWithoutQuadraInput | AvaliacaoCreateOrConnectWithoutQuadraInput[]
+    upsert?: AvaliacaoUpsertWithWhereUniqueWithoutQuadraInput | AvaliacaoUpsertWithWhereUniqueWithoutQuadraInput[]
+    createMany?: AvaliacaoCreateManyQuadraInputEnvelope
+    set?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    disconnect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    delete?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    connect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    update?: AvaliacaoUpdateWithWhereUniqueWithoutQuadraInput | AvaliacaoUpdateWithWhereUniqueWithoutQuadraInput[]
+    updateMany?: AvaliacaoUpdateManyWithWhereWithoutQuadraInput | AvaliacaoUpdateManyWithWhereWithoutQuadraInput[]
+    deleteMany?: AvaliacaoScalarWhereInput | AvaliacaoScalarWhereInput[]
   }
 
   export type UsuarioCreateNestedOneWithoutLocacaoInput = {
@@ -6821,6 +8266,34 @@ export namespace Prisma {
     upsert?: QuadraUpsertWithoutFavoritoInput
     connect?: QuadraWhereUniqueInput
     update?: XOR<XOR<QuadraUpdateToOneWithWhereWithoutFavoritoInput, QuadraUpdateWithoutFavoritoInput>, QuadraUncheckedUpdateWithoutFavoritoInput>
+  }
+
+  export type UsuarioCreateNestedOneWithoutAvaliacaoInput = {
+    create?: XOR<UsuarioCreateWithoutAvaliacaoInput, UsuarioUncheckedCreateWithoutAvaliacaoInput>
+    connectOrCreate?: UsuarioCreateOrConnectWithoutAvaliacaoInput
+    connect?: UsuarioWhereUniqueInput
+  }
+
+  export type QuadraCreateNestedOneWithoutAvaliacaoInput = {
+    create?: XOR<QuadraCreateWithoutAvaliacaoInput, QuadraUncheckedCreateWithoutAvaliacaoInput>
+    connectOrCreate?: QuadraCreateOrConnectWithoutAvaliacaoInput
+    connect?: QuadraWhereUniqueInput
+  }
+
+  export type UsuarioUpdateOneRequiredWithoutAvaliacaoNestedInput = {
+    create?: XOR<UsuarioCreateWithoutAvaliacaoInput, UsuarioUncheckedCreateWithoutAvaliacaoInput>
+    connectOrCreate?: UsuarioCreateOrConnectWithoutAvaliacaoInput
+    upsert?: UsuarioUpsertWithoutAvaliacaoInput
+    connect?: UsuarioWhereUniqueInput
+    update?: XOR<XOR<UsuarioUpdateToOneWithWhereWithoutAvaliacaoInput, UsuarioUpdateWithoutAvaliacaoInput>, UsuarioUncheckedUpdateWithoutAvaliacaoInput>
+  }
+
+  export type QuadraUpdateOneRequiredWithoutAvaliacaoNestedInput = {
+    create?: XOR<QuadraCreateWithoutAvaliacaoInput, QuadraUncheckedCreateWithoutAvaliacaoInput>
+    connectOrCreate?: QuadraCreateOrConnectWithoutAvaliacaoInput
+    upsert?: QuadraUpsertWithoutAvaliacaoInput
+    connect?: QuadraWhereUniqueInput
+    update?: XOR<XOR<QuadraUpdateToOneWithWhereWithoutAvaliacaoInput, QuadraUpdateWithoutAvaliacaoInput>, QuadraUncheckedUpdateWithoutAvaliacaoInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -7034,6 +8507,31 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type AvaliacaoCreateWithoutUsuarioInput = {
+    nota: number
+    comentario: string
+    criado_em?: Date | string
+    quadra: QuadraCreateNestedOneWithoutAvaliacaoInput
+  }
+
+  export type AvaliacaoUncheckedCreateWithoutUsuarioInput = {
+    id?: number
+    nota: number
+    comentario: string
+    idQuadra: number
+    criado_em?: Date | string
+  }
+
+  export type AvaliacaoCreateOrConnectWithoutUsuarioInput = {
+    where: AvaliacaoWhereUniqueInput
+    create: XOR<AvaliacaoCreateWithoutUsuarioInput, AvaliacaoUncheckedCreateWithoutUsuarioInput>
+  }
+
+  export type AvaliacaoCreateManyUsuarioInputEnvelope = {
+    data: AvaliacaoCreateManyUsuarioInput | AvaliacaoCreateManyUsuarioInput[]
+    skipDuplicates?: boolean
+  }
+
   export type LocacaoUpsertWithWhereUniqueWithoutUsuarioInput = {
     where: LocacaoWhereUniqueInput
     update: XOR<LocacaoUpdateWithoutUsuarioInput, LocacaoUncheckedUpdateWithoutUsuarioInput>
@@ -7086,6 +8584,34 @@ export namespace Prisma {
     favoritadoEm?: DateTimeFilter<"Favorito"> | Date | string
   }
 
+  export type AvaliacaoUpsertWithWhereUniqueWithoutUsuarioInput = {
+    where: AvaliacaoWhereUniqueInput
+    update: XOR<AvaliacaoUpdateWithoutUsuarioInput, AvaliacaoUncheckedUpdateWithoutUsuarioInput>
+    create: XOR<AvaliacaoCreateWithoutUsuarioInput, AvaliacaoUncheckedCreateWithoutUsuarioInput>
+  }
+
+  export type AvaliacaoUpdateWithWhereUniqueWithoutUsuarioInput = {
+    where: AvaliacaoWhereUniqueInput
+    data: XOR<AvaliacaoUpdateWithoutUsuarioInput, AvaliacaoUncheckedUpdateWithoutUsuarioInput>
+  }
+
+  export type AvaliacaoUpdateManyWithWhereWithoutUsuarioInput = {
+    where: AvaliacaoScalarWhereInput
+    data: XOR<AvaliacaoUpdateManyMutationInput, AvaliacaoUncheckedUpdateManyWithoutUsuarioInput>
+  }
+
+  export type AvaliacaoScalarWhereInput = {
+    AND?: AvaliacaoScalarWhereInput | AvaliacaoScalarWhereInput[]
+    OR?: AvaliacaoScalarWhereInput[]
+    NOT?: AvaliacaoScalarWhereInput | AvaliacaoScalarWhereInput[]
+    id?: IntFilter<"Avaliacao"> | number
+    nota?: IntFilter<"Avaliacao"> | number
+    comentario?: StringFilter<"Avaliacao"> | string
+    idUsuario?: IntFilter<"Avaliacao"> | number
+    idQuadra?: IntFilter<"Avaliacao"> | number
+    criado_em?: DateTimeFilter<"Avaliacao"> | Date | string
+  }
+
   export type LocacaoCreateWithoutQuadraInput = {
     dataHora: Date | string
     usuario: UsuarioCreateNestedOneWithoutLocacaoInput
@@ -7128,6 +8654,31 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type AvaliacaoCreateWithoutQuadraInput = {
+    nota: number
+    comentario: string
+    criado_em?: Date | string
+    usuario: UsuarioCreateNestedOneWithoutAvaliacaoInput
+  }
+
+  export type AvaliacaoUncheckedCreateWithoutQuadraInput = {
+    id?: number
+    nota: number
+    comentario: string
+    idUsuario: number
+    criado_em?: Date | string
+  }
+
+  export type AvaliacaoCreateOrConnectWithoutQuadraInput = {
+    where: AvaliacaoWhereUniqueInput
+    create: XOR<AvaliacaoCreateWithoutQuadraInput, AvaliacaoUncheckedCreateWithoutQuadraInput>
+  }
+
+  export type AvaliacaoCreateManyQuadraInputEnvelope = {
+    data: AvaliacaoCreateManyQuadraInput | AvaliacaoCreateManyQuadraInput[]
+    skipDuplicates?: boolean
+  }
+
   export type LocacaoUpsertWithWhereUniqueWithoutQuadraInput = {
     where: LocacaoWhereUniqueInput
     update: XOR<LocacaoUpdateWithoutQuadraInput, LocacaoUncheckedUpdateWithoutQuadraInput>
@@ -7160,6 +8711,22 @@ export namespace Prisma {
     data: XOR<FavoritoUpdateManyMutationInput, FavoritoUncheckedUpdateManyWithoutQuadraInput>
   }
 
+  export type AvaliacaoUpsertWithWhereUniqueWithoutQuadraInput = {
+    where: AvaliacaoWhereUniqueInput
+    update: XOR<AvaliacaoUpdateWithoutQuadraInput, AvaliacaoUncheckedUpdateWithoutQuadraInput>
+    create: XOR<AvaliacaoCreateWithoutQuadraInput, AvaliacaoUncheckedCreateWithoutQuadraInput>
+  }
+
+  export type AvaliacaoUpdateWithWhereUniqueWithoutQuadraInput = {
+    where: AvaliacaoWhereUniqueInput
+    data: XOR<AvaliacaoUpdateWithoutQuadraInput, AvaliacaoUncheckedUpdateWithoutQuadraInput>
+  }
+
+  export type AvaliacaoUpdateManyWithWhereWithoutQuadraInput = {
+    where: AvaliacaoScalarWhereInput
+    data: XOR<AvaliacaoUpdateManyMutationInput, AvaliacaoUncheckedUpdateManyWithoutQuadraInput>
+  }
+
   export type UsuarioCreateWithoutLocacaoInput = {
     nome: string
     telefone?: string | null
@@ -7169,6 +8736,7 @@ export namespace Prisma {
     senha: string
     criado_em?: Date | string
     favorito?: FavoritoCreateNestedManyWithoutUsuarioInput
+    avaliacao?: AvaliacaoCreateNestedManyWithoutUsuarioInput
   }
 
   export type UsuarioUncheckedCreateWithoutLocacaoInput = {
@@ -7181,6 +8749,7 @@ export namespace Prisma {
     senha: string
     criado_em?: Date | string
     favorito?: FavoritoUncheckedCreateNestedManyWithoutUsuarioInput
+    avaliacao?: AvaliacaoUncheckedCreateNestedManyWithoutUsuarioInput
   }
 
   export type UsuarioCreateOrConnectWithoutLocacaoInput = {
@@ -7209,6 +8778,7 @@ export namespace Prisma {
     wifi: boolean
     criado_em?: Date | string
     favorito?: FavoritoCreateNestedManyWithoutQuadraInput
+    avaliacao?: AvaliacaoCreateNestedManyWithoutQuadraInput
   }
 
   export type QuadraUncheckedCreateWithoutLocacaoInput = {
@@ -7233,6 +8803,7 @@ export namespace Prisma {
     wifi: boolean
     criado_em?: Date | string
     favorito?: FavoritoUncheckedCreateNestedManyWithoutQuadraInput
+    avaliacao?: AvaliacaoUncheckedCreateNestedManyWithoutQuadraInput
   }
 
   export type QuadraCreateOrConnectWithoutLocacaoInput = {
@@ -7260,6 +8831,7 @@ export namespace Prisma {
     senha?: StringFieldUpdateOperationsInput | string
     criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
     favorito?: FavoritoUpdateManyWithoutUsuarioNestedInput
+    avaliacao?: AvaliacaoUpdateManyWithoutUsuarioNestedInput
   }
 
   export type UsuarioUncheckedUpdateWithoutLocacaoInput = {
@@ -7272,6 +8844,7 @@ export namespace Prisma {
     senha?: StringFieldUpdateOperationsInput | string
     criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
     favorito?: FavoritoUncheckedUpdateManyWithoutUsuarioNestedInput
+    avaliacao?: AvaliacaoUncheckedUpdateManyWithoutUsuarioNestedInput
   }
 
   export type QuadraUpsertWithoutLocacaoInput = {
@@ -7306,6 +8879,7 @@ export namespace Prisma {
     wifi?: BoolFieldUpdateOperationsInput | boolean
     criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
     favorito?: FavoritoUpdateManyWithoutQuadraNestedInput
+    avaliacao?: AvaliacaoUpdateManyWithoutQuadraNestedInput
   }
 
   export type QuadraUncheckedUpdateWithoutLocacaoInput = {
@@ -7330,6 +8904,7 @@ export namespace Prisma {
     wifi?: BoolFieldUpdateOperationsInput | boolean
     criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
     favorito?: FavoritoUncheckedUpdateManyWithoutQuadraNestedInput
+    avaliacao?: AvaliacaoUncheckedUpdateManyWithoutQuadraNestedInput
   }
 
   export type UsuarioCreateWithoutFavoritoInput = {
@@ -7341,6 +8916,7 @@ export namespace Prisma {
     senha: string
     criado_em?: Date | string
     locacao?: LocacaoCreateNestedManyWithoutUsuarioInput
+    avaliacao?: AvaliacaoCreateNestedManyWithoutUsuarioInput
   }
 
   export type UsuarioUncheckedCreateWithoutFavoritoInput = {
@@ -7353,6 +8929,7 @@ export namespace Prisma {
     senha: string
     criado_em?: Date | string
     locacao?: LocacaoUncheckedCreateNestedManyWithoutUsuarioInput
+    avaliacao?: AvaliacaoUncheckedCreateNestedManyWithoutUsuarioInput
   }
 
   export type UsuarioCreateOrConnectWithoutFavoritoInput = {
@@ -7381,6 +8958,7 @@ export namespace Prisma {
     wifi: boolean
     criado_em?: Date | string
     locacao?: LocacaoCreateNestedManyWithoutQuadraInput
+    avaliacao?: AvaliacaoCreateNestedManyWithoutQuadraInput
   }
 
   export type QuadraUncheckedCreateWithoutFavoritoInput = {
@@ -7405,6 +8983,7 @@ export namespace Prisma {
     wifi: boolean
     criado_em?: Date | string
     locacao?: LocacaoUncheckedCreateNestedManyWithoutQuadraInput
+    avaliacao?: AvaliacaoUncheckedCreateNestedManyWithoutQuadraInput
   }
 
   export type QuadraCreateOrConnectWithoutFavoritoInput = {
@@ -7432,6 +9011,7 @@ export namespace Prisma {
     senha?: StringFieldUpdateOperationsInput | string
     criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
     locacao?: LocacaoUpdateManyWithoutUsuarioNestedInput
+    avaliacao?: AvaliacaoUpdateManyWithoutUsuarioNestedInput
   }
 
   export type UsuarioUncheckedUpdateWithoutFavoritoInput = {
@@ -7444,6 +9024,7 @@ export namespace Prisma {
     senha?: StringFieldUpdateOperationsInput | string
     criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
     locacao?: LocacaoUncheckedUpdateManyWithoutUsuarioNestedInput
+    avaliacao?: AvaliacaoUncheckedUpdateManyWithoutUsuarioNestedInput
   }
 
   export type QuadraUpsertWithoutFavoritoInput = {
@@ -7478,6 +9059,7 @@ export namespace Prisma {
     wifi?: BoolFieldUpdateOperationsInput | boolean
     criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
     locacao?: LocacaoUpdateManyWithoutQuadraNestedInput
+    avaliacao?: AvaliacaoUpdateManyWithoutQuadraNestedInput
   }
 
   export type QuadraUncheckedUpdateWithoutFavoritoInput = {
@@ -7502,6 +9084,187 @@ export namespace Prisma {
     wifi?: BoolFieldUpdateOperationsInput | boolean
     criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
     locacao?: LocacaoUncheckedUpdateManyWithoutQuadraNestedInput
+    avaliacao?: AvaliacaoUncheckedUpdateManyWithoutQuadraNestedInput
+  }
+
+  export type UsuarioCreateWithoutAvaliacaoInput = {
+    nome: string
+    telefone?: string | null
+    nascimento: Date | string
+    email: string
+    cpf: string
+    senha: string
+    criado_em?: Date | string
+    locacao?: LocacaoCreateNestedManyWithoutUsuarioInput
+    favorito?: FavoritoCreateNestedManyWithoutUsuarioInput
+  }
+
+  export type UsuarioUncheckedCreateWithoutAvaliacaoInput = {
+    id?: number
+    nome: string
+    telefone?: string | null
+    nascimento: Date | string
+    email: string
+    cpf: string
+    senha: string
+    criado_em?: Date | string
+    locacao?: LocacaoUncheckedCreateNestedManyWithoutUsuarioInput
+    favorito?: FavoritoUncheckedCreateNestedManyWithoutUsuarioInput
+  }
+
+  export type UsuarioCreateOrConnectWithoutAvaliacaoInput = {
+    where: UsuarioWhereUniqueInput
+    create: XOR<UsuarioCreateWithoutAvaliacaoInput, UsuarioUncheckedCreateWithoutAvaliacaoInput>
+  }
+
+  export type QuadraCreateWithoutAvaliacaoInput = {
+    nomeLocal: string
+    tipoQuadra: string
+    localizacao: string
+    imagemPrincipal: string
+    imagemPri: string
+    imagemSeg: string
+    imagemTer: string
+    telefone: string
+    preco: number
+    dimensoes: string
+    iluminacao: boolean
+    vestiario: boolean
+    bebedouro: boolean
+    estacionamento: boolean
+    arquibancada: boolean
+    coberta: boolean
+    acessibilidade: boolean
+    wifi: boolean
+    criado_em?: Date | string
+    locacao?: LocacaoCreateNestedManyWithoutQuadraInput
+    favorito?: FavoritoCreateNestedManyWithoutQuadraInput
+  }
+
+  export type QuadraUncheckedCreateWithoutAvaliacaoInput = {
+    id?: number
+    nomeLocal: string
+    tipoQuadra: string
+    localizacao: string
+    imagemPrincipal: string
+    imagemPri: string
+    imagemSeg: string
+    imagemTer: string
+    telefone: string
+    preco: number
+    dimensoes: string
+    iluminacao: boolean
+    vestiario: boolean
+    bebedouro: boolean
+    estacionamento: boolean
+    arquibancada: boolean
+    coberta: boolean
+    acessibilidade: boolean
+    wifi: boolean
+    criado_em?: Date | string
+    locacao?: LocacaoUncheckedCreateNestedManyWithoutQuadraInput
+    favorito?: FavoritoUncheckedCreateNestedManyWithoutQuadraInput
+  }
+
+  export type QuadraCreateOrConnectWithoutAvaliacaoInput = {
+    where: QuadraWhereUniqueInput
+    create: XOR<QuadraCreateWithoutAvaliacaoInput, QuadraUncheckedCreateWithoutAvaliacaoInput>
+  }
+
+  export type UsuarioUpsertWithoutAvaliacaoInput = {
+    update: XOR<UsuarioUpdateWithoutAvaliacaoInput, UsuarioUncheckedUpdateWithoutAvaliacaoInput>
+    create: XOR<UsuarioCreateWithoutAvaliacaoInput, UsuarioUncheckedCreateWithoutAvaliacaoInput>
+    where?: UsuarioWhereInput
+  }
+
+  export type UsuarioUpdateToOneWithWhereWithoutAvaliacaoInput = {
+    where?: UsuarioWhereInput
+    data: XOR<UsuarioUpdateWithoutAvaliacaoInput, UsuarioUncheckedUpdateWithoutAvaliacaoInput>
+  }
+
+  export type UsuarioUpdateWithoutAvaliacaoInput = {
+    nome?: StringFieldUpdateOperationsInput | string
+    telefone?: NullableStringFieldUpdateOperationsInput | string | null
+    nascimento?: DateTimeFieldUpdateOperationsInput | Date | string
+    email?: StringFieldUpdateOperationsInput | string
+    cpf?: StringFieldUpdateOperationsInput | string
+    senha?: StringFieldUpdateOperationsInput | string
+    criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
+    locacao?: LocacaoUpdateManyWithoutUsuarioNestedInput
+    favorito?: FavoritoUpdateManyWithoutUsuarioNestedInput
+  }
+
+  export type UsuarioUncheckedUpdateWithoutAvaliacaoInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nome?: StringFieldUpdateOperationsInput | string
+    telefone?: NullableStringFieldUpdateOperationsInput | string | null
+    nascimento?: DateTimeFieldUpdateOperationsInput | Date | string
+    email?: StringFieldUpdateOperationsInput | string
+    cpf?: StringFieldUpdateOperationsInput | string
+    senha?: StringFieldUpdateOperationsInput | string
+    criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
+    locacao?: LocacaoUncheckedUpdateManyWithoutUsuarioNestedInput
+    favorito?: FavoritoUncheckedUpdateManyWithoutUsuarioNestedInput
+  }
+
+  export type QuadraUpsertWithoutAvaliacaoInput = {
+    update: XOR<QuadraUpdateWithoutAvaliacaoInput, QuadraUncheckedUpdateWithoutAvaliacaoInput>
+    create: XOR<QuadraCreateWithoutAvaliacaoInput, QuadraUncheckedCreateWithoutAvaliacaoInput>
+    where?: QuadraWhereInput
+  }
+
+  export type QuadraUpdateToOneWithWhereWithoutAvaliacaoInput = {
+    where?: QuadraWhereInput
+    data: XOR<QuadraUpdateWithoutAvaliacaoInput, QuadraUncheckedUpdateWithoutAvaliacaoInput>
+  }
+
+  export type QuadraUpdateWithoutAvaliacaoInput = {
+    nomeLocal?: StringFieldUpdateOperationsInput | string
+    tipoQuadra?: StringFieldUpdateOperationsInput | string
+    localizacao?: StringFieldUpdateOperationsInput | string
+    imagemPrincipal?: StringFieldUpdateOperationsInput | string
+    imagemPri?: StringFieldUpdateOperationsInput | string
+    imagemSeg?: StringFieldUpdateOperationsInput | string
+    imagemTer?: StringFieldUpdateOperationsInput | string
+    telefone?: StringFieldUpdateOperationsInput | string
+    preco?: FloatFieldUpdateOperationsInput | number
+    dimensoes?: StringFieldUpdateOperationsInput | string
+    iluminacao?: BoolFieldUpdateOperationsInput | boolean
+    vestiario?: BoolFieldUpdateOperationsInput | boolean
+    bebedouro?: BoolFieldUpdateOperationsInput | boolean
+    estacionamento?: BoolFieldUpdateOperationsInput | boolean
+    arquibancada?: BoolFieldUpdateOperationsInput | boolean
+    coberta?: BoolFieldUpdateOperationsInput | boolean
+    acessibilidade?: BoolFieldUpdateOperationsInput | boolean
+    wifi?: BoolFieldUpdateOperationsInput | boolean
+    criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
+    locacao?: LocacaoUpdateManyWithoutQuadraNestedInput
+    favorito?: FavoritoUpdateManyWithoutQuadraNestedInput
+  }
+
+  export type QuadraUncheckedUpdateWithoutAvaliacaoInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nomeLocal?: StringFieldUpdateOperationsInput | string
+    tipoQuadra?: StringFieldUpdateOperationsInput | string
+    localizacao?: StringFieldUpdateOperationsInput | string
+    imagemPrincipal?: StringFieldUpdateOperationsInput | string
+    imagemPri?: StringFieldUpdateOperationsInput | string
+    imagemSeg?: StringFieldUpdateOperationsInput | string
+    imagemTer?: StringFieldUpdateOperationsInput | string
+    telefone?: StringFieldUpdateOperationsInput | string
+    preco?: FloatFieldUpdateOperationsInput | number
+    dimensoes?: StringFieldUpdateOperationsInput | string
+    iluminacao?: BoolFieldUpdateOperationsInput | boolean
+    vestiario?: BoolFieldUpdateOperationsInput | boolean
+    bebedouro?: BoolFieldUpdateOperationsInput | boolean
+    estacionamento?: BoolFieldUpdateOperationsInput | boolean
+    arquibancada?: BoolFieldUpdateOperationsInput | boolean
+    coberta?: BoolFieldUpdateOperationsInput | boolean
+    acessibilidade?: BoolFieldUpdateOperationsInput | boolean
+    wifi?: BoolFieldUpdateOperationsInput | boolean
+    criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
+    locacao?: LocacaoUncheckedUpdateManyWithoutQuadraNestedInput
+    favorito?: FavoritoUncheckedUpdateManyWithoutQuadraNestedInput
   }
 
   export type LocacaoCreateManyUsuarioInput = {
@@ -7514,6 +9277,14 @@ export namespace Prisma {
     id?: number
     idQuadra: number
     favoritadoEm: Date | string
+  }
+
+  export type AvaliacaoCreateManyUsuarioInput = {
+    id?: number
+    nota: number
+    comentario: string
+    idQuadra: number
+    criado_em?: Date | string
   }
 
   export type LocacaoUpdateWithoutUsuarioInput = {
@@ -7550,6 +9321,29 @@ export namespace Prisma {
     favoritadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type AvaliacaoUpdateWithoutUsuarioInput = {
+    nota?: IntFieldUpdateOperationsInput | number
+    comentario?: StringFieldUpdateOperationsInput | string
+    criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
+    quadra?: QuadraUpdateOneRequiredWithoutAvaliacaoNestedInput
+  }
+
+  export type AvaliacaoUncheckedUpdateWithoutUsuarioInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nota?: IntFieldUpdateOperationsInput | number
+    comentario?: StringFieldUpdateOperationsInput | string
+    idQuadra?: IntFieldUpdateOperationsInput | number
+    criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AvaliacaoUncheckedUpdateManyWithoutUsuarioInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nota?: IntFieldUpdateOperationsInput | number
+    comentario?: StringFieldUpdateOperationsInput | string
+    idQuadra?: IntFieldUpdateOperationsInput | number
+    criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type LocacaoCreateManyQuadraInput = {
     id?: number
     idUsuario: number
@@ -7560,6 +9354,14 @@ export namespace Prisma {
     id?: number
     idUsuario: number
     favoritadoEm: Date | string
+  }
+
+  export type AvaliacaoCreateManyQuadraInput = {
+    id?: number
+    nota: number
+    comentario: string
+    idUsuario: number
+    criado_em?: Date | string
   }
 
   export type LocacaoUpdateWithoutQuadraInput = {
@@ -7594,6 +9396,29 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     idUsuario?: IntFieldUpdateOperationsInput | number
     favoritadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AvaliacaoUpdateWithoutQuadraInput = {
+    nota?: IntFieldUpdateOperationsInput | number
+    comentario?: StringFieldUpdateOperationsInput | string
+    criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
+    usuario?: UsuarioUpdateOneRequiredWithoutAvaliacaoNestedInput
+  }
+
+  export type AvaliacaoUncheckedUpdateWithoutQuadraInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nota?: IntFieldUpdateOperationsInput | number
+    comentario?: StringFieldUpdateOperationsInput | string
+    idUsuario?: IntFieldUpdateOperationsInput | number
+    criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AvaliacaoUncheckedUpdateManyWithoutQuadraInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nota?: IntFieldUpdateOperationsInput | number
+    comentario?: StringFieldUpdateOperationsInput | string
+    idUsuario?: IntFieldUpdateOperationsInput | number
+    criado_em?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

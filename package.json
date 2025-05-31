@@ -12,7 +12,7 @@
   "license": "ISC",
   "description": "//////////////////////////////////////////////////// Extensões usadas na aula ///////////////////////////////////////////////////////////////////////",
   "dependencies": {
-    "@prisma/client": "^6.7.0",
+    "@prisma/client": "^6.8.2",
     "body-parser": "^2.2.0",
     "cors": "^2.8.5",
     "express": "^4.21.2",
@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "nodemon": "^3.1.10",
-    "prisma": "^6.7.0"
+    "prisma": "^6.8.2"
   },
   "directories": {
     "test": "tests"

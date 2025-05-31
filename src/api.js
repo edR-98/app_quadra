@@ -109,7 +109,7 @@ app.delete("/quadras/:id", async (req, res) => {
 });
 
 
-// Usuários ------------------------------------------------------------------------------------------------------------------------------------------------ //
+// Usuários ------------------------------------------------------------------------------------------------------------------------------------------ //
 
 app.get('/usuarios', async (req, res) => {
   const usuarios = await prisma.usuario.findMany(); 
@@ -154,13 +154,14 @@ app.get("/usuarios/:id/quadras", async (req, res) => {
 
 app.post("/usuarios", async (req, res) => {
 
-  if ((req.body.nome === undefined) || (req.body.nascimento === undefined) || (req.body.email === undefined) || (req.body.cpf === undefined) || (req.body.senha === undefined) ) { 
+  if ((req.body.nome === undefined) || (req.body.nascimento === undefined) || (req.body.email === undefined) || (req.body.telefone === undefined) || (req.body.cpf === undefined) || (req.body.senha === undefined) ) { 
     res.status(400).send("Campos obrigatórios faltantes");
   } else {
     const novoUsuario = await prisma.usuario.create({ data: {
       nome: req.body.nome,
-      nascimento: new Date(req.body.nascimento),
+      nascimento: req.body.nascimento,
       email: req.body.email,
+      telefone: req.body.telefone,
       cpf: req.body.cpf,
       senha: req.body.senha
     }});
@@ -184,7 +185,7 @@ app.post("/autenticar", async (req, res) => {
 });
 
 
-// Locações ------------------------------------------------------------------------------------------------------------------------------------------------ //
+// Locações ----------------------------------------------------------------------------------------------------------------------------------------- //
 
 app.get('/locacoes', async (req, res) => {
   const locacoes = await prisma.locacao.findMany();
@@ -219,7 +220,7 @@ app.post("/locacoes", async (req, res) => {
 
 // fazer um get em locacoes buscando as quadras pelo id do usário
 
-// Favoritos ------------------------------------------------------------------------------------------------------------------------------------------------ //
+// Favoritos --------------------------------------------------------------------------------------------------------------------------------------------- //
 
 app.get('/favoritos', async (req, res) => {
   const favoritos = await prisma.favorito.findMany();
@@ -227,7 +228,7 @@ app.get('/favoritos', async (req, res) => {
 });
 
 app.get("/favoritos/:id", async (req, res) => {
-
+  
   const id = parseInt(req.params.id); 
   const favorito = await prisma.favorito.findUnique({ where: {id} });
 
@@ -236,13 +237,11 @@ app.get("/favoritos/:id", async (req, res) => {
     } else {
       res.json(favorito);
     }
-});
-
-
-
+  });
+  
 app.post("/favoritos", async (req, res) => {
 
-  if ((req.body.id_usuario === undefined) || (req.body.id_quadra === undefined) || (req.body.favoritado_em === undefined)) { 
+    if ((req.body.id_usuario === undefined) || (req.body.id_quadra === undefined) || (req.body.favoritado_em === undefined)) { 
     res.status(400).send("Campos obrigatórios faltantes");
   } else {
     const novoFavorito = await prisma.favorito.create({ data: {
@@ -254,16 +253,14 @@ app.post("/favoritos", async (req, res) => {
   }
 });
 
-
-
 app.put("/favoritos/:id", async (req, res) => {
   const id = parseInt(req.params.id); 
 
   if ((req.body.nome === undefined) || (req.body.preco === undefined) ) { 
     res.status(400).send("Campos obrigatórios faltantes");
   } else {
-  try {
-    await prisma.favorito.update({
+    try {
+      await prisma.favorito.update({
       where: { id },
       data: { 
         nome: req.body.nome,
@@ -289,6 +286,40 @@ app.delete("/favoritos/:id", async (req, res) => {
     res.status(404).send("favorito não encontrado");
   }
 });
+
+
+// Avaliações -------------------------------------------------------------------------------------------------------------------------------------------- //
+
+app.get('/avaliacoes', async (req, res) => {
+  const avaliacoes = await prisma.avaliacao.findMany();
+  res.json(avaliacoes); 
+});
+
+app.post("/avaliacoes", async (req, res) => {
+
+  if (!req.body.id_usuario || !req.body.id_quadra || req.body.nota == null) {
+    return res.status(400).send("Campos obrigatórios faltantes");
+  }
+
+  try {
+    const novaAvaliacao = await prisma.avaliacao.create({
+      data: {
+        idUsuario: req.body.id_usuario,
+        idQuadra: req.body.id_quadra,
+        nota: req.body.nota,
+        comentario: req.body.comentario || ""  // Se não mandar, salva vazio
+      }
+    });
+
+    res.status(201).location(`/avaliacoes/${novaAvaliacao.id}`).send("Avaliação criada com sucesso!");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Erro interno no servidor");
+  }
+});
+
+
+// -------------------------------------------------------------------------------------------------------------------------------------------- //
 
 
 // ------------------------------------------------------------------------------------------------------------------------------------------------ 
