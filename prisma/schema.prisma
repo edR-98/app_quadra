@@ -98,5 +98,7 @@ model Avaliacao {
   usuario     Usuario  @relation(fields: [idUsuario], references: [id])
   quadra      Quadra   @relation(fields: [idQuadra], references: [id])
 
+  @@unique([idUsuario, idQuadra])
+
   @@map("avaliacoes")
 }

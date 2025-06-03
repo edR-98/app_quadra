@@ -240,38 +240,37 @@ app.get("/favoritos/:id", async (req, res) => {
   });
   
 app.post("/favoritos", async (req, res) => {
+    const { id_usuario, id_quadra, favoritado_em } = req.body;
 
-    if ((req.body.id_usuario === undefined) || (req.body.id_quadra === undefined) || (req.body.favoritado_em === undefined)) { 
-    res.status(400).send("Campos obrigatórios faltantes");
-  } else {
-    const novoFavorito = await prisma.favorito.create({ data: {
-      idUsuario: req.body.id_usuario,
-      idQuadra: req.body.id_quadra,
-      favoritadoEm: new Date(req.body.favoritado_em)
-    }});
-    res.status(201).location(`/favoritos/${novoFavorito.id}`).send();
-  }
-});
+    if (!id_usuario || !id_quadra || !favoritado_em) {
+        return res.status(400).send("Campos obrigatórios faltantes");
+    }
 
-app.put("/favoritos/:id", async (req, res) => {
-  const id = parseInt(req.params.id); 
-
-  if ((req.body.nome === undefined) || (req.body.preco === undefined) ) { 
-    res.status(400).send("Campos obrigatórios faltantes");
-  } else {
     try {
-      await prisma.favorito.update({
-      where: { id },
-      data: { 
-        nome: req.body.nome,
-        preco: req.body.preco
-      } 
-    });
-    res.status(204).send();
-  } catch(error) {
-    res.status(404).send("favorito não encontrado");
-  }
-}
+        const favoritoExistente = await prisma.favorito.findFirst({
+            where: {
+                idUsuario: id_usuario,
+                idQuadra: id_quadra
+            }
+        });
+
+        if (favoritoExistente) {
+            return res.status(409).json({ error: "Já está favoritado" });
+        }
+
+        const novoFavorito = await prisma.favorito.create({
+            data: {
+                idUsuario: id_usuario,
+                idQuadra: id_quadra,
+                favoritadoEm: new Date(favoritado_em)
+            }
+        });
+
+        res.status(201).json(novoFavorito);
+
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 });
 
 app.delete("/favoritos/:id", async (req, res) => {
@@ -295,34 +294,74 @@ app.get('/avaliacoes', async (req, res) => {
   res.json(avaliacoes); 
 });
 
-app.post("/avaliacoes", async (req, res) => {
+app.get('/avaliacoes/media/:id_quadra', async (req, res) => {
+    const id = parseInt(req.params.id_quadra);
 
-  if (!req.body.id_usuario || !req.body.id_quadra || req.body.nota == null) {
-    return res.status(400).send("Campos obrigatórios faltantes");
-  }
-
-  try {
-    const novaAvaliacao = await prisma.avaliacao.create({
-      data: {
-        idUsuario: req.body.id_usuario,
-        idQuadra: req.body.id_quadra,
-        nota: req.body.nota,
-        comentario: req.body.comentario || ""  // Se não mandar, salva vazio
-      }
+    const avaliacoes = await prisma.avaliacao.findMany({
+        where: { idQuadra: id },
+        select: { nota: true }
     });
 
-    res.status(201).location(`/avaliacoes/${novaAvaliacao.id}`).send("Avaliação criada com sucesso!");
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Erro interno no servidor");
-  }
+    const total = avaliacoes.length;
+    const media = total > 0 
+        ? avaliacoes.reduce((acc, cur) => acc + cur.nota, 0) / total 
+        : 0;
+
+    res.json({ media: media.toFixed(1), total });
 });
+
+
+app.post("/avaliacoes", async (req, res) => {
+    const { id_usuario, id_quadra, nota, comentario } = req.body;
+
+    if (!id_usuario || !id_quadra || nota == null) {
+        return res.status(400).send("Campos obrigatórios faltantes");
+    }
+
+    try {
+        // Verifica se já existe avaliação desse usuário para essa quadra
+        const avaliacaoExistente = await prisma.avaliacao.findFirst({
+            where: {
+                idUsuario: id_usuario,
+                idQuadra: id_quadra
+            }
+        });
+
+        if (avaliacaoExistente) {
+            // Atualiza a avaliação existente
+            const avaliacaoAtualizada = await prisma.avaliacao.update({
+                where: { id: avaliacaoExistente.id },
+                data: {
+                    nota,
+                    comentario: comentario || ""
+                }
+            });
+
+            return res.status(200).send("Avaliação atualizada com sucesso!");
+        }
+
+        // Se não existir, cria nova avaliação
+        const novaAvaliacao = await prisma.avaliacao.create({
+            data: {
+                idUsuario: id_usuario,
+                idQuadra: id_quadra,
+                nota,
+                comentario: comentario || ""
+            }
+        });
+
+        res.status(201).send("Avaliação criada com sucesso!");
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Erro interno no servidor");
+    }
+});
+
 
 
 // -------------------------------------------------------------------------------------------------------------------------------------------- //
 
-
-// ------------------------------------------------------------------------------------------------------------------------------------------------ 
 
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);
