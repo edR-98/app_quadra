@@ -152,6 +152,28 @@ app.get("/usuarios/:id/quadras", async (req, res) => {
   }
 });
 
+app.get("/usuarios/:id/favoritos", async (req, res) => {
+  const idUsuario = parseInt(req.params.id);
+
+  try {
+    const favoritos = await prisma.favorito.findMany({
+      where: { idUsuario: idUsuario },
+      include: {
+        quadra: true, // Traz os dados da quadra favoritada
+      },
+    });
+
+    if (favoritos.length === 0) {
+      return res.status(404).json({ error: "Este usuário não possui favoritos." });
+    }
+
+    res.json(favoritos);
+  } catch (error) {
+    console.error("Erro ao buscar favoritos:", error);
+    res.status(500).json({ error: "Erro ao obter os favoritos do usuário." });
+  }
+});
+
 app.post("/usuarios", async (req, res) => {
 
   if ((req.body.nome === undefined) || (req.body.nascimento === undefined) || (req.body.email === undefined) || (req.body.telefone === undefined) || (req.body.cpf === undefined) || (req.body.senha === undefined) ) { 
@@ -238,7 +260,7 @@ app.get("/favoritos/:id", async (req, res) => {
       res.json(favorito);
     }
   });
-  
+
 app.post("/favoritos", async (req, res) => {
     const { id_usuario, id_quadra, favoritado_em } = req.body;
 
