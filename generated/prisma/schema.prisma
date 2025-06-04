@@ -50,7 +50,7 @@ model Quadra {
   arquibancada    Boolean
   coberta         Boolean
   acessibilidade  Boolean
-  wifi            Boolean  @map("wi_fi")
+  wifi            Boolean
   criado_em       DateTime @default(now())
 
   locacao   Locacao[]
@@ -96,5 +96,6 @@ model Avaliacao {
   usuario Usuario @relation(fields: [idUsuario], references: [id])
   quadra  Quadra  @relation(fields: [idQuadra], references: [id])
 
+  @@unique([idUsuario, idQuadra])
   @@map("avaliacoes")
 }

@@ -51,7 +51,7 @@ model Quadra {
   arquibancada     Boolean
   coberta          Boolean
   acessibilidade   Boolean
-  wifi             Boolean   @map("wi_fi")
+  wifi             Boolean  
   criado_em        DateTime  @default(now()) 
 
   locacao          Locacao[]
